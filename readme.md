@@ -9,6 +9,6 @@ However
 
 | Screenshot | File Name | Lang | Remarks |
 |------------|-----------|----------|---------|
-| ![screenshot1](/ext.others/bar.scroll.ud.png) ![screenshot2](/ext.others/bar.scroll.lr.png) | [bar.scroll.nss1](/ext.others/bar.scroll.nss) | EN | adds icons to already<br>existing commands |
-| ![screenshot1](/ext.others/bar.title.png) | [bar.scroll.nss1](/ext.others/bar.title.nss) | ML | F11 does not work<br>good on win 11 24H2 |
-| ![screenshot1](/ext.others/bar.address.png) | [bar.scroll.nss1](/ext.others/bar.address.nss) | ML | does not work<br>on win 11 anymore |
+| ![screenshot1](/ext.others/bar.scroll.ud.png) ![screenshot2](/ext.others/bar.scroll.lr.png) | [bar.scroll](/ext.others/bar.scroll.nss) | EN | adds icons to already<br>existing commands |
+| ![screenshot1](/ext.others/bar.title.png) | [bar.title](/ext.others/bar.title.nss) | ML | F11 does not work<br>good on win 11 24H2 |
+| ![screenshot1](/ext.others/bar.address.png) | [bar.address](/ext.others/bar.address.nss) | ML | does not work<br>on win 11 anymore |
