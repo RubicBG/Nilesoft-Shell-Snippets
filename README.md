@@ -6,3 +6,8 @@ However
 - If anyone has an idea for a menu with commands, I am ready to participate in its creation
 - If anyone has a working cmd or ps code that needs to be adapted to NS commands, I will help
 - If anyone has questions about the NS code itself (not about the program) you can ask - I will answer
+
+| Screenshot | File Name | Language | Remarks |
+|------------|-----------|----------|---------|
+| ![screenshot1](/ext.others/bar.scroll.ud.png) ![screenshot2](/ext.others/bar.scroll.lr.png) | [bar.scroll.nss1](/ext.others/bar.scroll.nss) | EN | adds icons to already existing commands |
+
