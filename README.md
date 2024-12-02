@@ -9,5 +9,5 @@ However
 
 | Screenshot | File Name | Language | Remarks |
 |------------|-----------|----------|---------|
-| ![screenshot1](/ext.others/bar.scroll.ud.png) ![screenshot2](/ext.others/bar.scroll.lr.png) | [bar.scroll.nss1](/ext.others/bar.scroll.nss) | EN | adds icons to already existing commands |
+| ![screenshot1](/ext.others/bar.scroll.ud.png) ![screenshot2](/ext.others/bar.scroll.lr.png) | [bar.scroll.nss1](/ext.others/bar.scroll.nss) | EN | adds icons to already<br>existing commands |
 
