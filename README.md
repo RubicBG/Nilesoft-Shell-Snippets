@@ -7,7 +7,7 @@ However
 - If anyone has a working cmd or ps code that needs to be adapted to NS commands, I will help
 - If anyone has questions about the NS code itself (not about the program) you can ask - I will answer
 
-| Screenshot | File Name | Language | Remarks |
+| Screenshot | File Name | Lang | Remarks |
 |------------|-----------|----------|---------|
 | ![screenshot1](/ext.others/bar.scroll.ud.png) ![screenshot2](/ext.others/bar.scroll.lr.png) | [bar.scroll.nss1](/ext.others/bar.scroll.nss) | EN | adds icons to already<br>existing commands |
-
+| ![screenshot1](/ext.others/bar.title.png) | [bar.scroll.nss1](/ext.others/bar.title.nss) | ML | F11 does not work<br>good on win 11 24H2 |
