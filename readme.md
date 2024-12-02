@@ -12,3 +12,4 @@ However
 | ![screenshot1](/ext.others/bar.scroll.ud.png) ![screenshot2](/ext.others/bar.scroll.lr.png) | [bar.scroll](/ext.others/bar.scroll.nss) | EN | adds icons to already<br>existing commands |
 | ![screenshot1](/ext.others/bar.title.png) | [bar.title](/ext.others/bar.title.nss) | ML | F11 does not work<br>good on win 11 24H2 |
 | ![screenshot1](/ext.others/bar.address.png) | [bar.address](/ext.others/bar.address.nss) | EN | does not work<br>on win 11 anymore |
+| | [theme-manager](/theme-manager.nss) | EN | still alpha version<br>more info on [discord](https://discord.com/channels/1106387012707168318/1139275510506082336) |
