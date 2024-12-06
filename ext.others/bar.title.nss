@@ -1,7 +1,8 @@
 // 	Author: Rubic / RubicBG
 
-item(title='&Fullscreen' keys='F11' where=wnd.is_titlebar type='*' 
-	tip='Toggle fullscreen mode. Note: May not work reliably in Windows 11.'
+// After replacing shell32 components with XAML resources, Windows Explorer's fullscreen does not work properly.
+item(title=str.res('ieframe.dll', -17985) where=wnd.is_titlebar type='*' 
+	tip=str.res('ieframe.dll', -9531)
 	pos=indexof(str.replace(title.close, '&', '')) image=\uE1B1
 	cmd=key.send(key.F11))
 
