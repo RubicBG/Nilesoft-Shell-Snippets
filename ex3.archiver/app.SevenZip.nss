@@ -1,4 +1,4 @@
-// 	Author: Rubic / RubicBG
+// Author: Rubic / RubicBG
 
 // Hide default menu: NS can not recognize drag&drop paths, so use:
 remove(find='7-Zip')
