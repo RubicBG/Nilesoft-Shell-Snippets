@@ -1,5 +1,5 @@
 // Hide default menu
-//remove(find='7-Zip')
+remove(find='7-Zip')
 // remove(clsid='{23170F69-40C1-278A-1000-000100020000}' where=!this.isuwp)
 
 // Executable Paths
