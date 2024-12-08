@@ -1,3 +1,5 @@
+// 	Author: Rubic / RubicBG
+
 $cmd_UniExtract = eval(sys.prog32+'\UniExtract\UniExtract.exe')
 menu(title='UniExtract' type='file' image=cmd_UniExtract)
 {
