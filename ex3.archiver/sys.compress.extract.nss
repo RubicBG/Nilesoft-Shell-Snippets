@@ -4,9 +4,10 @@
 // modify(find='Extract All*' menu=title.more_options sep pos=0)
 // remove(clsid='{b8cdcb65-b1bf-4b42-9428-1dfdb7ee92af}' where=!this.isuwp)
 
+//> https://www.elevenforum.com/t/zip-compress-files-and-folders-in-windows-11.8235/
 $menu_archiver = ''
 menu(title='Compress and Extract' type='file|dir' image=icon.res('zipfldr.dll,-101')) {
-	modify(find='Extract All*' pos='middle' menu=menu_archiver+'/Compress and Extract')
+	modify(find=str.res('shell32.dll', -37514) pos='middle' menu=menu_archiver+'/Compress and Extract')
 	menu(title='NS Modern Commands' image=icon.settings sep pos=bottom tip='Clone commands from modern to legacy context menu') {
 		// $reg_path	= 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell'
 		$rk	= null // registry keyword name
