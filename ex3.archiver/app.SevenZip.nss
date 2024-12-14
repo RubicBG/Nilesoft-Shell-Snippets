@@ -68,6 +68,8 @@ menu(title='7-Zip' mode='multiple' type='file|dir|drive|back' image=cmd_7zipA vi
 				cmd=cmd_7zipG args='x @sel(true) -o*\' wait = 1,
 				cmd=if(msg('Are you sure you want to delete the archive file?', 'NileSoft Shell', msg.warning | msg.yesno)==msg.idyes, io.delete(sel)) wait = 1,
 				cmd=command.refresh} ) }
+		item(title='Extract...' keys='Smart' mode='single' image=inherit
+			cmd-ps = `$ArchivePath='@sel(true)'; write-host $ArchivePath; $isExtractSmart = ((& '@cmd_7zipC	' l $ArchivePath | Where-Object { $_ -match '^\d{4}-\d{2}-\d{2}' -and $_ -match 'D\.{4}' -and $_ -notmatch '\\' }).Count -eq 1); if ($isExtractSmart) { & '@cmd_7zipG' x $ArchivePath -spe } else { & '@cmd_7zipG' x $ArchivePath -o*\ -spe }` window='hidden')
 		item(title='Extract Here' image=inherit
 			cmd=cmd_7zipG args='x @sel_air -spe')
 		item(title='Extract'+if(sel.count==1, ' to "@sel.title\"', ' each archive to separate folder') image=inherit
