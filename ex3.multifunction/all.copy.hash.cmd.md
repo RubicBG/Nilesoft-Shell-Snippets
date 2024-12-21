@@ -1,4 +1,4 @@
-# File Hash Tool
+# File Hash Tool (CMD)
 
 A powerful context menu extension for Windows that allows you to calculate, verify, copy, and save various hash checksums of files directly from the right-click menu.
 
@@ -46,8 +46,8 @@ A powerful context menu extension for Windows that allows you to calculate, veri
 - Verification follows standard checksum file formats
 - Compatible with Windows command prompt environment
 
-**Snippet**:  
+## Snippet: 
 [`all.copy.hash.cmd.nss`](/ex3.multifunction/all.copy.hash.cmd.nss)
 
-**Screenshot**:  
-![File Hash Tool (CMD)](/ex3.multifunction/all.copy.hash.cmd.png)
+## Screenshot:
+![Screenshot 1)](/ex3.multifunction/all.copy.hash.cmd.png)
