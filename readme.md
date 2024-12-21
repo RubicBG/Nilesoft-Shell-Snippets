@@ -7,6 +7,11 @@ However
 - If anyone has a working cmd or ps code that needs to be adapted to NS commands, I will help
 - If anyone has questions about the NS code itself (not about the program) you can ask - I will answer
 
+## New
+- [`File Hash Tool (CMD)`](/ex3.multifunction/all.copy.hash.cmd.md)
+- [`File Hash Tool (Powershell)`](/ex3.multifunction/all.copy.hash.ps.md)
+
+## More
 | Screenshot | File Name | Lang | Remarks |
 |------------|-----------|----------|---------|
 | ![screenshot1](/ex3.archiver/app.WinRAR.png) | [app.WinRAR](/ex3.archiver/app.WinRAR.nss) | EN | This menu replace the original WinRar menu. It only works with an installed version of WinRAR (reads the registry) Never tested for 32bit installation.<br><br>- command to register the trial version (manual filling of the information in the source code is required, it won't work with the example I left.)<br>- command to download and install a theme (not all themes work because of the graphic files, only some look good)<br>- WinRar auto update command<br>- The archive profiles are created in the Winrar program, the menu uses them. Reordering the profiles is also reflected dynamically.<br>- ... and more<br><br>Тhe menu was created much earlier than the one for 7-zip. The menu commands used command switches that were not documented anywhere during the creation of the menu. |
