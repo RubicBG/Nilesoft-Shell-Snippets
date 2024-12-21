@@ -1,3 +1,5 @@
+// Author: Rubic / RubicBG
+
 menu(title='Hash' mode='multiple' type='file|dir|back.dir' image=\uE239) {
 	// icon.res(path.combine(sys.bin, 'certmgr.dll'),-450) -450 or -447 \uE239 \uE25E
 	//> https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-7.4
