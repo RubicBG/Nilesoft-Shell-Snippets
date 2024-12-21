@@ -5,8 +5,6 @@ A powerful context menu extension for Windows that allows you to calculate, veri
 ## Features
 
 ### Hash Types Supported
-- MD2
-- MD4
 - MD5
 - SHA1
 - SHA256

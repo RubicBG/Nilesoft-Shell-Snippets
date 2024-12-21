@@ -1,10 +1,8 @@
 menu(title='Hash' mode='multiple' type='file|dir|back.dir' image=\uE239) {
 	// icon.res(path.combine(sys.bin, 'certmgr.dll'),-450) -450 or -447 \uE239 \uE25E
-	//> https://www.elevenforum.com/t/add-hash-value-to-context-menu-of-files-in-windows-11.22212/
-	//> https://winaero.com/add-file-hash-context-menu-windows-10/
-	//- https://github.com/VincentBounce/WindowsContextMenuTools/blob/main/Get-fileHash.reg
+	//> https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-7.4
 	//> https://turbosfv.com/Features/Hash-Types
-	item(title='Verify Checksum file' mode='single' find='.md2|.md4|.md5|.sha1|.sha256|.SHA384|.SHA512'
+	item(title='Verify Checksum file' mode='single' find='.md5|.sha1|.sha256|.SHA384|.SHA512'
 		cmd-ps=`-Command "$hashFile = '@sel'; $files = Get-Content -LiteralPath $hashFile; foreach ($file in $files) { $fileParts = $file -split ' *\*'; $hash = $fileParts[0]; $filename = $fileParts[1]; if ($filename -like '*:*') { $fullPath = $filename } else { $fullPath = Join-Path (Split-Path $hashFile) $filename }; $hashType = $hashFile -split '\.' | Select-Object -Last 1; $computedHash = Get-FileHash -LiteralPath $fullPath -Algorithm $hashType | Select-Object -ExpandProperty Hash; if ($computedHash -eq $hash) { Write-Output ('Hash match: ' + $hash + ' ' + $fullPath) } else { Write-Host ('Hash does not match: ' + $hash + ' ' + $fullPath) -ForegroundColor Red }; }; Read-Host -Prompt '[Enter] to close'"`)
 	separator()
 	menu(image=inherit title='Copy Hash' mode='single' type='file') {
