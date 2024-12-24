@@ -10,6 +10,8 @@ However
 ## New
 - [`File Hash Tool (CMD)`](/ex3.multifunction/all.copy.hash.cmd.md)
 - [`File Hash Tool (Powershell)`](/ex3.multifunction/all.copy.hash.ps.md)
+- [`Copy List Tool (Nilesoft Shell)`](/ex3.multifunction/all.copy.list.ns.md)
+- [`Copy List Tool (CMD and Powershell)`](/ex3.multifunction/all.copy.list.cp.md)
 
 ## More
 | Screenshot | File Name | Lang | Remarks |
