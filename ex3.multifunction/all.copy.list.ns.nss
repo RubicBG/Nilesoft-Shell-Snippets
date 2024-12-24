@@ -2,7 +2,7 @@
 // https://github.com/RubicBG/Nilesoft-Shell-Snippets/
 
 
-menu(image=icon.copy_path title='Copy list' mode='multiple' type='file|dir|back.dir|drive|back.drive|desktop') {
+menu(image=icon.copy_path title='Copy list' mode='multiple' where=(sel.count==1 and (sel.type==3 or sel.type==5)) or sel.count>1) {
 	item(mode='multiple' where=sel.count>1 image=inherit title='Copy (@sel.count) item@if(sel.count>1, 's') selected'
 		tip='Copy the names of all selected items to the clipboard.'
 		cmd=command.copy(sel(false, "\n")))
