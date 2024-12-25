@@ -1,8 +1,17 @@
 # Copy List Tool (CMD and Powershell)
 
+## Source Code & Screenshot
+
+### Snippet:
+[`all.copy.list.cp.nss`](/ex3.multifunction/all.copy.list.cp.nss)
+
+### Screenshot:
+![Screenshot 1)](/ex3.multifunction/all.copy.list.cp.png)
+
+## Overview
 Windows context menu extension for copying file/folder lists with various formatting options.
 
-### Operations Available
+## Operations Available
 
 ### Basic Operations
 - Copy all item names
@@ -31,9 +40,3 @@ Windows context menu extension for copying file/folder lists with various format
 ## Requirements
 - Windows command prompt
 - PowerShell (for size formatting)
-
-## Snippet: 
-[`all.copy.list.cp.nss`](/ex3.multifunction/all.copy.list.cp.nss)
-
-## Screenshot:
-![Screenshot 1)](/ex3.multifunction/all.copy.list.cp.png)

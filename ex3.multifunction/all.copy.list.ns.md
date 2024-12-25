@@ -1,5 +1,14 @@
 # Copy List Tool (Nilesoft Shell)
 
+## Source Code & Screenshot
+
+### Snippet:
+[`all.copy.list.ns.nss`](/ex3.multifunction/all.copy.list.ns.nss)
+
+### Screenshot:
+![Screenshot 1)](/ex3.multifunction/all.copy.list.ns.png)
+
+## Overview
 A Windows context menu extension for copying lists of files and folders to clipboard.
 
 ## Operations Available
@@ -25,9 +34,3 @@ A Windows context menu extension for copying lists of files and folders to clipb
 - Works with Windows clipboard
 - Maintains original file/folder order
 - Compatible with all file system locations
-
-## Snippet: 
-[`all.copy.list.ns.nss`](/ex3.multifunction/all.copy.list.ns.nss)
-
-## Screenshot:
-![Screenshot 1)](/ex3.multifunction/all.copy.list.ns.png)

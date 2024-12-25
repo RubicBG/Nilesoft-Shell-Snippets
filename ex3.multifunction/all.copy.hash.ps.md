@@ -1,5 +1,14 @@
 # File Hash Tool (Powershell)
 
+## Source Code & Screenshot
+
+### Snippet:
+[`all.copy.hash.ps.nss`](/ex3.multifunction/all.copy.hash.ps.nss)
+
+### Screenshot:
+![Screenshot 1)](/ex3.multifunction/all.copy.hash.ps.png)
+
+## Overview
 A powerful context menu extension for Windows that allows you to calculate, verify, copy, and save various hash checksums of files directly from the right-click menu.
 
 ## Features
@@ -63,9 +72,3 @@ A powerful context menu extension for Windows that allows you to calculate, veri
 ## Requirements
 - Windows PowerShell 5.1 or later
 - Windows 10/11 recommended
-
-## Snippet:
-[`all.copy.hash.ps.nss`](/ex3.multifunction/all.copy.hash.ps.nss)
-
-## Screenshot:
-![Screenshot 1)](/ex3.multifunction/all.copy.hash.ps.png)
