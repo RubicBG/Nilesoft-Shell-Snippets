@@ -1,4 +1,4 @@
-# Windows Spotlight Enhancement Script Documentation
+# Windows Spotlight Enhancement
 
 ## Source Code & Screenshots
 
