@@ -12,6 +12,9 @@ However
 - [`File Hash Tool (Powershell)`](/ex3.multifunction/all.copy.hash.ps.md)
 - [`Copy List Tool (Nilesoft Shell)`](/ex3.multifunction/all.copy.list.ns.md)
 - [`Copy List Tool (CMD and Powershell)`](/ex3.multifunction/all.copy.list.cp.md)
+- [`Windows Spotlight Enhancement`](/ext.desktop/sys.spotlight.md)
+
+
 
 ## More
 | Screenshot | File Name | Lang | Remarks |
