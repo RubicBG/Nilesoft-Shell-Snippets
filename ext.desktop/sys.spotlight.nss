@@ -1,8 +1,7 @@
 /*	Author: Rubic / RubicBG
 	https://github.com/RubicBG/Nilesoft-Shell-Snippets/
 
-	Description: This script enhances Windows Spotlight functionality by adding a context menu to manage desktop wallpapers and related content from Windows Spotlight.
-*/
+	Description: This script enhances Windows Spotlight functionality by adding a context menu to manage desktop wallpapers and related content from Windows Spotlight. */
 
 // Define key variables
 $sp_default_type  = sel.type==0 and wnd.is_desktop and sel.raw=='::{2cc5ca98-6485-489a-920e-b3e88a6ccce3}'
