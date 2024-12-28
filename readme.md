@@ -10,10 +10,17 @@ However
 ## New
 - [`File Hash Tool (CMD)`](/ex3.multifunction/all.copy.hash.cmd.md)
 - [`File Hash Tool (Powershell)`](/ex3.multifunction/all.copy.hash.ps.md)
+
+- [`Windows Path Copy Tool`](/ex3.multifunction/all.copy.path.all.md)
+- [`Windows Environment Path Copy Tool`](/ex3.multifunction/all.copy.path.env.md)
+- [`Shortcut Path Copy Tool`](/ex3.multifunction/all.copy.path.lnk.md)
+- [`URL Path Copy Tool`](/ex3.multifunction/all.copy.path.url.md)
+- [`Copy Tool (Powershell)`](/ex3.multifunction/all.copy.path.ps.md)
+- [`Nilesoft Shell Path Copy Tool`](/dev.helpers/nss.paths.md)
 - [`Copy List Tool (Nilesoft Shell)`](/ex3.multifunction/all.copy.list.ns.md)
 - [`Copy List Tool (CMD and Powershell)`](/ex3.multifunction/all.copy.list.cp.md)
-- [`Windows Spotlight Enhancement`](/ext.desktop/sys.spotlight.md)
 
+- [`Windows Spotlight Enhancement`](/ext.desktop/sys.spotlight.md)
 
 
 ## More
