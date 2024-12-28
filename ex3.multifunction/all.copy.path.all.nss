@@ -1,4 +1,5 @@
 // Author: Rubic / RubicBG
+// Based on: Nilesoft Shell original snippet
 // https://github.com/RubicBG/Nilesoft-Shell-Snippets/
 
 menu(image=icon.copy_path title=title.copy_path	mode='single') {
