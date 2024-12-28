@@ -1,4 +1,4 @@
-# Windows Path Copy Tool Documentation
+# Windows Path Copy Tool
 
 ## Source Code & Screenshots
 
@@ -15,7 +15,6 @@
 Comprehensive Nilesoft Shell extension for copying various path formats and file information.
 
 ## Key Features
-
 - Multiple path format support (Windows, WSL, Cygwin, UNC)
 - File/folder name and extension extraction
 - UUID folder name handling
@@ -31,7 +30,6 @@ Comprehensive Nilesoft Shell extension for copying various path formats and file
 - Namespace paths (.library-ms)
 
 ## Usage Notes
-
 - Single selection mode
 - SHIFT key reveals additional path formats
 - Supports files, folders, libraries

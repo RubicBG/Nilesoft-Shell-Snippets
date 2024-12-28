@@ -1,4 +1,4 @@
-# Title Copy URL Path Tool
+# URL Path Copy Tool
 
 ## Source Code & Screenshots
 
