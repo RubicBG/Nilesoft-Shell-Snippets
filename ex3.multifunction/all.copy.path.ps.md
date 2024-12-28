@@ -6,7 +6,8 @@
 [`all.copy.path.ps.nss`](/ex3.multifunction/all.copy.path.ps.nss)
 
 ### Screenshot:
-![Screenshot 1)](/ex3.multifunction/all.copy.path.ps.png)
+![Screenshot 1)](/ex3.multifunction/all.copy.path.ps.1.png)
+![Screenshot 2)](/ex3.multifunction/all.copy.path.ps.2.png)
 
 ## Overview
 This Nilesoft Shell extension adds enhanced path and content copying capabilities to the Windows context menu.
