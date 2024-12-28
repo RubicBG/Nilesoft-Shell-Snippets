@@ -9,34 +9,35 @@
 ![Screenshot 1)](/ex3.multifunction/all.copy.list.cp.png)
 
 ## Overview
-Windows context menu extension for copying file/folder lists with various formatting options.
+Advanced directory listing extension using both Command Prompt and PowerShell commands to generate formatted file/folder lists with sizes and stats.
 
-## Operations Available
+## Key Features
+- Directory listing with multiple format options
+- File size reporting in bytes and formatted units
+- Recursive directory support
+- Hidden item inclusion
+- Stats and details options
+- PowerShell-based size formatting
 
-### Basic Operations
-- Copy all item names
-- Copy folder names only
-- Copy file names only
-- Hold SHIFT for full paths and recursive listing
+## Menu Structure
+- Item names (with/without stats)
+- Folder names (with/without stats)
+- File names (with/without stats)
+- File names with byte sizes
+- File names with formatted sizes (KB/MB/GB)
 
-### Advanced Options
-- Copy with detailed stats (SHIFT)
-- Copy files with size in bytes
-- Copy files with formatted sizes (KB/MB/GB)
-- Include hidden items
+## Usage Notes
+- Single directory selection
+- SHIFT key enables recursive listing and paths
+- Hidden items included in most options
+- Size formatting automatic based on file size
 
-### Output Format Options
-- Basic names only
-- Full paths
-- With file sizes
-- With detailed stats
+## Dependencies
+Required Components:
+- Windows Operating System
+- Nilesoft Shell framework
+- Windows Command Prompt
+- Windows PowerShell
+- clip.exe
 
-## Technical Details
-- Uses cmd.exe dir and PowerShell commands
-- Hidden window operation
-- Clipboard output
-- Natural sort order
-
-## Requirements
-- Windows command prompt
-- PowerShell (for size formatting)
+No additional software installation is required beyond the Nilesoft Shell framework and standard Windows components.

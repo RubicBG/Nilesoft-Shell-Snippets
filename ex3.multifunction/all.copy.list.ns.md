@@ -9,28 +9,33 @@
 ![Screenshot 1)](/ex3.multifunction/all.copy.list.ns.png)
 
 ## Overview
-A Windows context menu extension for copying lists of files and folders to clipboard.
+Nilesoft Shell extension for copying lists of files and folders with flexible formatting options.
 
-## Operations Available
+## Key Features
+- Multiple selection support
+- Directory content listing
+- Separate file/folder listing
+- Full path inclusion option
+- Hidden item support
 
-#### Multiple Selection
-- Copy names of selected items (files/folders)
-- Shows count of selected items in menu
+## Menu Structure
 
-#### Single Folder Operations
-- Copy all item names in folder
-- Copy only file names
-- Copy only folder names
-- Hold SHIFT to include full paths
+- Copy selected items
+- For directories:
+  - Copy all item names
+  - Copy file names only
+  - Copy folder names only
+  - SHIFT modifier for full paths
+
+## Usage Notes
+- Works with single/multiple selections
+- SHIFT key adds full paths
 - Includes hidden items
+- Shows item counts
 
-## Technical Details
+## Dependencies
+Required Components:
+- Windows Operating System
+- Nilesoft Shell framework
 
-- Fast clipboard operations
-- Supports files, folders, drives, and desktop
-- Shows item counts in menu
-
-## Notes
-- Works with Windows clipboard
-- Maintains original file/folder order
-- Compatible with all file system locations
+No additional software installation is required beyond the Nilesoft Shell framework and standard Windows components.
