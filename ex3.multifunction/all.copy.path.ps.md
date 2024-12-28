@@ -26,21 +26,16 @@ This Nilesoft Shell extension adds enhanced path and content copying capabilitie
 - Copy item(s) name
 - Copy item(s) title
 - Copy Content(s) - for files
-- Copy Contents - for directories
+- Copy Content(s) - for directories
 
 ## Usage Notes
 - Works with files, folders, drives and desktop
 - Supports multiple item selection
 - Hidden PowerShell window execution
 
-## Technical Details
-- Uses PowerShell commands for path manipulation
-- Leverages System.IO.Path methods
-- Implements conditional menu item text based on selection count
-- Uses Set-Clipboard for copying to clipboard
-
 ## Dependencies
 - Windows Operating System
 - Nilesoft Shell framework
 - PowerShell
 
+No additional software installation is required beyond the Nilesoft Shell framework and standard Windows components.

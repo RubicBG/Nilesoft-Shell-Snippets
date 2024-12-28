@@ -31,7 +31,6 @@ A Nilesoft Shell extension adding enhanced shortcut (.lnk) path management capab
 ## Usage Notes
 - Single file selection only
 - Works exclusively with .lnk files
-- Shows menu only for valid shortcuts
 
 ## Dependencies
 Required Components:

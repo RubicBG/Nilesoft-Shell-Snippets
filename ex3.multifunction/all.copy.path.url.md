@@ -29,9 +29,9 @@ A Nilesoft Shell extension for managing and copying URL components from .url sho
 
 ## Usage Notes
 - Single file selection only
-- Works with .url files
+- Works exclusively with .url files
 - SHIFT key enables direct URL launch
-- Supports various URI schemes
+- Supports various [`URI schemes`](https://en.wikipedia.org/wiki/List_of_URI_schemes)
 
 ## Dependencies
 Required Components:
