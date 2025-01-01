@@ -22,6 +22,8 @@ However
 
 - [`Windows Spotlight Enhancement`](/ext.desktop/sys.spotlight.md)
 
+- [`Windows Sandbox`](/dev.develop/app.sandbox.md)
+
 
 ## More
 | Screenshot | File Name | Lang | Remarks |
