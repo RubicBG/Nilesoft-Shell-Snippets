@@ -1,4 +1,5 @@
 // Author: Rubic / RubicBG
+// creeated: 2025-01-01 :)
 // https://github.com/RubicBG/Nilesoft-Shell-Snippets/
 
 menu(title='Windows Sandbox' mode='single' type='file|dir|back.dir|drive|back.drive|desktop' where=sys.ver.build>=1903 and user.name!='WDAGUtilityAccount'
