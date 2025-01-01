@@ -34,6 +34,7 @@ Advanced Windows Sandbox integration for Nilesoft Shell, enabling secure file/fo
 
 ## Technical Details
 - Windows Sandbox does not support these characters in the path: é è à â ê û î ä ë ü ï ö ù ò ~ ! @ # $ % ^ & + = } { ] [ | < > ;
+- Disables GPU acceleration, ensuring that the sandbox does not utilize the host system's GPU resources. Instead, all graphical rendering is handled via software.
 
 ## Dependencies
 - Windows Operating System (build 1903+)
