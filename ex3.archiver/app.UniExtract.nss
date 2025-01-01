@@ -4,7 +4,7 @@ $cmd_UniExtract = eval(sys.prog32+'\UniExtract\UniExtract.exe')
 menu(title='UniExtract' type='file' image=cmd_UniExtract)
 {
 	$vis_UE = if(!path.exists(cmd_UniExtract), 'disable')
-	$tip_UE = if(!path.exists(cmd_UniExtract), 'requires UniExtract to be installed')
+	$tip_UE = if(!path.exists(cmd_UniExtract), 'Requires UniExtract to be installed')
 	
 	item(vis=vis_UE tip=tip_UE title ='Extract Files...'		image cmd=cmd_UniExtract args='@sel.path(true)')
 	item(vis=vis_UE tip=tip_UE title ='Extract to Subdir...'	image cmd=cmd_UniExtract args='@sel.path(true) "/sub"')

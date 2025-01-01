@@ -31,7 +31,7 @@ $svg_7z_Info	= image.svg('<svg width="100" height="100" viewBox="-160 0 512 512"
 	<path style="fill:@image.color2" d="M20 424.229h20V279.771H20c-11.046 0-20-8.954-20-20V212c0-11.046 8.954-20 20-20h112c11.046 0 20 8.954 20 20v212.229h20c11.046 0 20 8.954 20 20V492c0 11.046-8.954 20-20 20H20c-11.046 0-20-8.954-20-20v-47.771c0-11.046 8.954-20 20-20zM96 0C56.235 0 24 32.235 24 72s32.235 72 72 72 72-32.235 72-72S135.764 0 96 0z"/></svg>')
 
 // Main
-menu(title='7-Zip' mode='multiple' type='file|dir|drive|back' image=cmd_7zipA vis=if(!path.exists(cmd_7zipC), 'disable') tip=if(!path.exists(cmd_7zipC), 'requires 7-Zip to be installed')) {
+menu(title='7-Zip' mode='multiple' type='file|dir|drive|back' image=cmd_7zipA vis=if(!path.exists(cmd_7zipC), 'disable') tip=if(!path.exists(cmd_7zipC), 'Requires 7-Zip to be installed')) {
 	$is_se7z1=if(keys.shift(), '', str.replace('."'+se7zP+'|'+se7zU+'"', '|', '"|."'))
 	$is_se7z2=if(keys.shift(), '', str.replace('."'+se7zC+'"', '|', '"|."'))
 	$is_se7z3=str.replace('."'+se7zM+'"', '|', '"|."')
