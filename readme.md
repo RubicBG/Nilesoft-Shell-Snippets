@@ -23,6 +23,7 @@ However
 - [`Windows Spotlight Enhancement`](/ext.desktop/sys.spotlight.md)
 
 - [`Windows Sandbox`](/dev.develop/app.sandbox.md)
+- [`Terminal`](/ex4.terminal/all.terminal.md)
 
 
 ## More
