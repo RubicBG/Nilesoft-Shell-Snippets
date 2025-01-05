@@ -26,20 +26,20 @@ However
 - [`Terminal`](/ex4.terminal/all.terminal.md)
 
 ## Group: Object Related ("Not-File-Folder-Drive")
-- [`Title  Bar Menu`](/ext.others/bar.title.nss)<br>
+- [`Title  Bar Menu`](/ext.others/bar.title.md)<br>
 ![Screenshot](/ext.others/bar.title.png)
 
-- [`Title  Bar Menu`](/ext.others/bar.address.nss)<br>
+- [`Title  Bar Menu`](/ext.others/bar.address.md)<br>
 ![Screenshot](/ext.others/bar.address.png)
 
-- [`Address Bar Menu`](/ext.others/bar.scroll.nss)<br>
+- [`Address Bar Menu`](/ext.others/bar.scroll.md)<br>
 ![Screenshot 1](/ext.others/bar.scroll.1.png)
 ![Screenshot 2](/ext.others/bar.scroll.2.png)
 
-- [`Editor Menu`](/ext.others/edit.nss)<br>
+- [`Editor Menu`](/ext.others/edit.md)<br>
 ![Screenshot](/ext.others/edit.1.png)
 
-- [`Recycle Bin and System Cleaning`](/ext.others/recycle.bin.nss)<br>
+- [`Recycle Bin and System Cleaning`](/ext.others/recycle.bin.md)<br>
 ![Screenshot](/ext.others/recycle.bin.png)
 
 ## OLD Preview
