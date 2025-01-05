@@ -29,20 +29,20 @@ However
 ![Screenshot 1](/ext.desktop/sys.spotlight.1.png)
 
 - [`Title Bar Menu`](/ext.others/bar.title.md)<br>
-![Screenshot](/ext.others/bar.title.png)
+![Screenshot](/ext.others/bar.title.1.png)
 
 - [`Title Bar Menu`](/ext.others/bar.address.md)<br>
-![Screenshot](/ext.others/bar.address.png)
+![Screenshot](/ext.others/bar.address.1.png)
 
 - [`Address Bar Menu`](/ext.others/bar.scroll.md)<br>
-![Screenshot 1](/ext.others/bar.scroll.1.png)
-![Screenshot 2](/ext.others/bar.scroll.2.png)
+![Screenshot](/ext.others/bar.scroll.1.png)
+![Screenshot](/ext.others/bar.scroll.2.png)
 
 - [`Editor Menu`](/ext.others/edit.md)<br>
 ![Screenshot](/ext.others/edit.1.png)
 
 - [`Recycle Bin and System Cleaning`](/ext.others/recycle.bin.md)<br>
-![Screenshot](/ext.others/recycle.bin.png)
+![Screenshot](/ext.others/recycle.bin.1.png)
 
 ## OLD Preview
 | Screenshot | File Name | Lang | Remarks |
