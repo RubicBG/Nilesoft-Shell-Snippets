@@ -1,4 +1,5 @@
-// 	Author: Rubic / RubicBG
+// Author: Rubic / RubicBG
+// https://github.com/RubicBG/Nilesoft-Shell-Snippets/
 
 $svg_triple_up = '<svg viewBox="0 0 24 24" width="100" height="100">
 	<path style="fill:none;stroke:@image.color1;" d="m5 10 7-7 7 7"/>
@@ -20,26 +21,26 @@ $svg_triple_right = '<svg viewBox="0 0 24 24" width="100" height="100">
 modify(type='*' where=wnd.parent.name=='DirectUIHWND' && this.title=='Scroll Here'
 	image=[[\uE170, image.color1],[\uE16E, image.color2]])
 modify(type='*' where=wnd.parent.name=='DirectUIHWND' && this.title=='Top'
-	image=image.svg(str.replace(svg_triple_up, '@image.color1', '@image.color2').replace('@image.color3', '@image.color2')))
+	image=image.svg(svg_triple_up().replace('@image.color1', '@image.color2').replace('@image.color3', '@image.color2')))
 modify(type='*' where=wnd.parent.name=='DirectUIHWND' && this.title=='Page Up'
-	image=image.svg(str.replace(svg_triple_up, '@image.color3', '@image.color2')))
+	image=image.svg(svg_triple_up().replace('@image.color3', '@image.color2')))
 modify(type='*' where=wnd.parent.name=='DirectUIHWND' && this.title=='Scroll Up'
-	image=image.svg(str.replace(svg_triple_up, '@image.color2', '@image.color1').replace('@image.color3', '@image.color2')))
+	image=image.svg(svg_triple_up().replace('@image.color2', '@image.color1').replace('@image.color3', '@image.color2')))
 modify(type='*' where=wnd.parent.name=='DirectUIHWND' && this.title=='Bottom'
-	image=image.svg(str.replace(svg_triple_down, '@image.color1', '@image.color2').replace('@image.color3', '@image.color2')))
+	image=image.svg(svg_triple_down().replace('@image.color1', '@image.color2').replace('@image.color3', '@image.color2')))
 modify(type='*' where=wnd.parent.name=='DirectUIHWND' && this.title=='Page Down'
-	image=image.svg(str.replace(svg_triple_down, '@image.color3', '@image.color2')))
+	image=image.svg(svg_triple_down().replace('@image.color3', '@image.color2')))
 modify(type='*' where=wnd.parent.name=='DirectUIHWND' && this.title=='Scroll Down'
-	image=image.svg(str.replace(svg_triple_down, '@image.color2', '@image.color1').replace('@image.color3', '@image.color2')))
+	image=image.svg(svg_triple_down().replace('@image.color2', '@image.color1').replace('@image.color3', '@image.color2')))
 modify(type='*' where=wnd.parent.name=='DirectUIHWND' && this.title=='Left Edge'
-	image=image.svg(str.replace(svg_triple_left, '@image.color1', '@image.color2').replace('@image.color3', '@image.color2')))
+	image=image.svg(svg_triple_left().replace('@image.color1', '@image.color2').replace('@image.color3', '@image.color2')))
 modify(type='*' where=wnd.parent.name=='DirectUIHWND' && this.title=='Page Left'
-	image=image.svg(str.replace(svg_triple_left, '@image.color3', '@image.color2')))
+	image=image.svg(svg_triple_left().replace('@image.color3', '@image.color2')))
 modify(type='*' where=wnd.parent.name=='DirectUIHWND' && this.title=='Scroll Left'
-	image=image.svg(str.replace(svg_triple_left, '@image.color2', '@image.color1').replace('@image.color3', '@image.color2')))
+	image=image.svg(svg_triple_left().replace('@image.color2', '@image.color1').replace('@image.color3', '@image.color2')))
 modify(type='*' where=wnd.parent.name=='DirectUIHWND' && this.title=='Right Edge'
-	image=image.svg(str.replace(svg_triple_right, '@image.color1', '@image.color2').replace('@image.color3', '@image.color2')))
+	image=image.svg(svg_triple_right().replace('@image.color1', '@image.color2').replace('@image.color3', '@image.color2')))
 modify(type='*' where=wnd.parent.name=='DirectUIHWND' && this.title=='Page Right'
-	image=image.svg(str.replace(svg_triple_right, '@image.color3', '@image.color2')))
+	image=image.svg(svg_triple_right().replace('@image.color3', '@image.color2')))
 modify(type='*' where=wnd.parent.name=='DirectUIHWND' && this.title=='Scroll Right'
-	image=image.svg(str.replace(svg_triple_right, '@image.color2', '@image.color1').replace('@image.color3', '@image.color2')))
+	image=image.svg(svg_triple_right().replace('@image.color2', '@image.color1').replace('@image.color3', '@image.color2')))

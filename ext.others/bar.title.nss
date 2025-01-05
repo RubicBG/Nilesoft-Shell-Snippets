@@ -1,4 +1,5 @@
-// 	Author: Rubic / RubicBG
+// Author: Rubic / RubicBG
+// https://github.com/RubicBG/Nilesoft-Shell-Snippets/
 
 // After replacing shell32 components with XAML resources, Windows Explorer's fullscreen does not work properly.
 item(title=str.res('ieframe.dll', -17985) where=wnd.is_titlebar type='*' 
