@@ -25,15 +25,28 @@ However
 - [`Windows Sandbox`](/dev.develop/app.sandbox.md)
 - [`Terminal`](/ex4.terminal/all.terminal.md)
 
+## Group: Object Related ("Not-File-Folder-Drive")
+- [`Title  Bar Menu`](/ext.others/bar.title.md)<br>
+![Screenshot](/ext.others/bar.title.png)
 
-## More
+- [`Title  Bar Menu`](/ext.others/bar.address.md)<br>
+![Screenshot](/ext.others/bar.address.png)
+
+- [`Address Bar Menu`](/ext.others/bar.scroll.md)<br>
+![Screenshot 1](/ext.others/bar.scroll.1.png)
+![Screenshot 2](/ext.others/bar.scroll.2.png)
+
+- [`Editor Menu`](/ext.others/edit.md)<br>
+![Screenshot](/ext.others/edit.1.png)
+
+- [`Recycle Bin and System Cleaning`](/ext.others/recycle.bin.md)<br>
+![Screenshot](/ext.others/recycle.bin.png)
+
+## OLD Preview
 | Screenshot | File Name | Lang | Remarks |
 |------------|-----------|----------|---------|
 | ![screenshot1](/ex3.archiver/app.WinRAR.png) | [app.WinRAR](/ex3.archiver/app.WinRAR.nss) | EN | This menu replace the original WinRar menu. It only works with an installed version of WinRAR (reads the registry) Never tested for 32bit installation.<br><br>- command to register the trial version (manual filling of the information in the source code is required, it won't work with the example I left.)<br>- command to download and install a theme (not all themes work because of the graphic files, only some look good)<br>- WinRar auto update command<br>- The archive profiles are created in the Winrar program, the menu uses them. Reordering the profiles is also reflected dynamically.<br>- ... and more<br><br>Тhe menu was created much earlier than the one for 7-zip. The menu commands used command switches that were not documented anywhere during the creation of the menu. |
 | ![screenshot1](/ex3.archiver/app.SevenZip.png) | [app.SevenZip](/ex3.archiver/app.SevenZip.nss) | EN | This menu replace the original 7-Zip menu.<br><br>In theory the menu should also work with NanaZip (if someone modifies the code, please share)<br><br>The presentation of the menu and other user versions of it on [discord](https://discord.com/channels/1106387012707168318/1142552812740423770) |
 | ![screenshot1](/ex3.archiver/app.UniExtract.png) | [app.SevenZip](/ex3.archiver/app.UniExtract.nss) | EN | "Universal Extractor 2 is a tool designed to extract files from any type of extractable file." [formats](https://github.com/Bioruebe/UniExtract2/blob/master/docs/FORMATS.md) |
 | ![screenshot1](/ex3.archiver/sys.compress.extract.png) | [FILE](/ex3.archiver/sys.compress.extract.nss) | ML<br>80% | The menu checks and clones commands from windows modern context menu into a legacy one, modifying the names and icons.<br>-Explanation of commands on [ElevenForum](https://www.elevenforum.com/t/zip-compress-files-and-folders-in-windows-11.8235/)<br>-It is highly recommended not to edit it if you are not sure what you are doing - it changes the registry!|
-| ![screenshot1](/ext.others/bar.scroll.ud.png) ![screenshot2](/ext.others/bar.scroll.lr.png) | [bar.scroll](/ext.others/bar.scroll.nss) | EN | adds icons to already existing commands |
-| ![screenshot1](/ext.others/bar.title.png) | [bar.title](/ext.others/bar.title.nss) | ML | F11 does not work good on win 11 24H2 |
-| ![screenshot1](/ext.others/bar.address.png) | [bar.address](/ext.others/bar.address.nss) | EN | does not work on win 11 anymore |
 | | [theme-manager](/theme-manager.nss) | EN | still alpha version<br>more info on [discord](https://discord.com/channels/1106387012707168318/1139275510506082336)<br>Preview on [github](https://github.com/moudey/Shell/issues/462#issuecomment-2094207347) |
