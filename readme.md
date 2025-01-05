@@ -20,16 +20,18 @@ However
 - [`Copy List Tool (Nilesoft Shell)`](/ex3.multifunction/all.copy.list.ns.md)
 - [`Copy List Tool (CMD and Powershell)`](/ex3.multifunction/all.copy.list.cp.md)
 
-- [`Windows Spotlight Enhancement`](/ext.desktop/sys.spotlight.md)
-
 - [`Windows Sandbox`](/dev.develop/app.sandbox.md)
 - [`Terminal`](/ex4.terminal/all.terminal.md)
 
 ## Group: Object Related ("Not-File-Folder-Drive")
-- [`Title  Bar Menu`](/ext.others/bar.title.md)<br>
+
+- [`Windows Spotlight Enhancement`](/ext.desktop/sys.spotlight.md))<br>
+![Screenshot 1](/ext.desktop/sys.spotlight.1.png)
+
+- [`Title Bar Menu`](/ext.others/bar.title.md)<br>
 ![Screenshot](/ext.others/bar.title.png)
 
-- [`Title  Bar Menu`](/ext.others/bar.address.md)<br>
+- [`Title Bar Menu`](/ext.others/bar.address.md)<br>
 ![Screenshot](/ext.others/bar.address.png)
 
 - [`Address Bar Menu`](/ext.others/bar.scroll.md)<br>
