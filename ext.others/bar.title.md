@@ -6,7 +6,7 @@
 [`bar.title.nss`](/ext.others/bar.title.nss)
 
 ### Screenshot:
-![Screenshot](/ext.others/bar.title.png)
+![Screenshot 1](/ext.others/bar.title.1.png)
 
 ## Overview
 Configuration for Windows title bar menu customization, adding window management controls and fullscreen functionality.

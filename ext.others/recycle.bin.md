@@ -6,7 +6,7 @@
 [`recycle.bin.nss`](/ext.others/recycle.bin.nss)
 
 ### Screenshot:
-![Screenshot](/ext.others/recycle.bin.png)
+![Screenshot 1](/ext.others/recycle.bin.1.png)
 
 
 ## Overview

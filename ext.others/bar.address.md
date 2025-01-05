@@ -6,7 +6,7 @@
 [`bar.address.nss`](/ext.others/bar.address.nss)
 
 ### Screenshot:
-![Screenshot](/ext.others/bar.address.png)
+![Screenshot 1](/ext.others/bar.address.1.png)
 
 ## Overview
 Customizing the context menu options for the address bar.
