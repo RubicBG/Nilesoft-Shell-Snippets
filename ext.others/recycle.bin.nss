@@ -13,7 +13,11 @@ menu(title='Cleaning / Recycling' image=icon.empty_recycle_bin where=sel.raw==':
 			“$env:windir\Prefetch\*” // Windows 8, 8.1, 10, 11 (Windows 7) - C:\Windows\Prefetch
 			“$env:systemdrive\Documents and Settings\*\Local Settings\temp\*” // Windows XP 
 			“$env:systemdrive\Users\*\Appdata\Local\Temp\*” // Windows 8, 8.1, 10, 11 (Windows 7) */
-		cmd-ps=`Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue` window='hidden' wait=1, 
+		// The following command will delete all files in the Temp folder, the Windows Temp folder, the Prefetch folder, and the Temp folder of all users
+		// admin cmd-ps=`Remove-Item -Path "$env:TEMP\*", "$env:windir\Temp\*", "$env:windir\Prefetch\*", "$env:systemdrive\Users\*\AppData\Local\Temp\*" -Recurse -Force -ErrorAction SilentlyContinue`
+		// The following command will delete all files in the Temp folder on windows 11 without admin rights
+		cmd-ps=`Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue`
+			window='hidden' wait=1, 
 		cmd=msg.beep })
 
 	separator()
