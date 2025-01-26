@@ -23,7 +23,7 @@ However
 - [`Windows Sandbox`](/dev.develop/app.sandbox.md)
 - [`Terminal`](/ex4.terminal/all.terminal.md)
 
-- [`Renamer`](/ex3.multifunction/commands.renamer.md)
+- [`Fast Renamer`](/ex3.multifunction/commands.renamer.md)
 
 ## Group: Object Related ("Not-File-Folder-Drive")
 
