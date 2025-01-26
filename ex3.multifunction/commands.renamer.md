@@ -1,4 +1,4 @@
-# Fast Renamer: Nilesoft Shell Rename Utility
+# Fast Renamer
 
 ## Source Code & Screenshots
 
