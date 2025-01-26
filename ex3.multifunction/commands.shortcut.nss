@@ -1,0 +1,2 @@
+item(title='Create shortcut@if(sel.count>1, 's')' mode=multiple type='file|dir' image=icon.create_shortcut
+	cmd=for(i=0, i<sel.count) { path.lnk.create(path.removeextension(sel.get(i))+' - Shortcut.lnk', sel.get(i)) } & command.refresh)
