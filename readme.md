@@ -24,6 +24,9 @@ However
 - [`Terminal`](/ex4.terminal/all.terminal.md)
 
 - [`Fast Renamer`](/ex3.multifunction/commands.renamer.md)
+- [`Create NTFS Links`](/ex3.multifunction/commands.links.md)
+- [`Create shortcuts`](/ex3.multifunction/commands.shortcut.nss)
+
 
 ## Group: Object Related ("Not-File-Folder-Drive")
 
