@@ -7,19 +7,40 @@ menu(title='Cleaning / Recycling' image=icon.empty_recycle_bin where=sel.raw==':
 		cmd='cleanmgr.exe' keys=all)
 	item(title=str.res('cleanmgr.exe', -19) keys=sys.root where=path.exists('@sys.bin\cleanmgr.exe') image
 		cmd='cleanmgr.exe' args='/d @sys.root')
-	item(title='Clean Temporary Files' tip='This command deletes temporary files from the system.' image=\uE0CE commands {
-		/* Temp folders to clean
-			“$env:windir\Temp\*” // Windows 8, 8.1, 10, 11 (Windows 7) - C:\Windows\Temp
-			“$env:windir\Prefetch\*” // Windows 8, 8.1, 10, 11 (Windows 7) - C:\Windows\Prefetch
-			“$env:systemdrive\Documents and Settings\*\Local Settings\temp\*” // Windows XP 
-			“$env:systemdrive\Users\*\Appdata\Local\Temp\*” // Windows 8, 8.1, 10, 11 (Windows 7) */
-		// The following command will delete all files in the Temp folder, the Windows Temp folder, the Prefetch folder, and the Temp folder of all users
-		// admin cmd-ps=`Remove-Item -Path "$env:TEMP\*", "$env:windir\Temp\*", "$env:windir\Prefetch\*", "$env:systemdrive\Users\*\AppData\Local\Temp\*" -Recurse -Force -ErrorAction SilentlyContinue`
-		// The following command will delete all files in the Temp folder on windows 11 without admin rights
-		cmd-ps=`Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue`
-			window='hidden' wait=1, 
+	item(title='Clean Temporary Files' keys='SHIFT all' tip='This command deletes all files in the Temp folder, Press SHIFT to clean all files in the Temp folder, the Windows Temp folder and the Temp folder of all users.' image=\uE0CE commands {
+		/* Description of Temp Folders
+			$env:TEMP\*
+				Path:				%TEMP%
+				Description:		Contains temporary files created by applications and the system during runtime. Commonly includes logs, caches, and incomplete file downloads.
+				Good to Delete:		Yes, usually safe to delete these files to free up space.
+				OS:					Windows (all versions).
+				Admin Privileges:	No, unless accessing system-level temporary files.
+			$env:windir\Temp\*		
+				Path:				C:\Windows\Temp
+				Description:		System-wide temporary folder. Used by Windows services and applications for temporary data storage.
+				Good to Delete:		Yes, but avoid deleting files in use.
+				OS:					Windows (all versions).
+				Admin Privileges:	Yes, required for access and deletion.
+			$env:windir\Prefetch\*
+				Path:				C:\Windows\Prefetch
+				Description:		Stores prefetch data to speed up application launches by caching commonly used files.
+				Good to Delete:		Yes, but it may slightly slow down app startups initially.
+				OS:					Windows XP and later.
+				Admin Privileges:	Yes, required for access and deletion.
+			$env:systemdrive\Documents and Settings\*\Local Settings\Temp\*
+				Path:				%USERPROFILE%\Local Settings\Temp
+				Description:		Legacy user-specific temporary files (used in Windows XP and earlier).
+				Good to Delete:		Yes, if on older systems still using this path.
+				OS:					Windows XP or earlier.
+				Admin Privileges:	Yes, for accessing another user’s folder.
+			$env:systemdrive\Users\*\Appdata\Local\Temp\*
+				Path:				%USERPROFILE%\AppData\Local\Temp
+				Description:		Current user’s temporary files, including logs, caches, and installer remnants.
+				Good to Delete:		Yes, safe to clear this folder.
+				OS:					Windows Vista and later.
+				Admin Privileges:	No, unless accessing another user’s folder. */
+		admin=keys.shift() cmd-ps=`Remove-Item -Path "$env:TEMP\*" @if(key.shift(), '"$env:windir\Temp\*", "$env:systemdrive\Users\*\AppData\Local\Temp\*"') -Recurse -Force -ErrorAction SilentlyContinue` window='hidden' wait=1, 
 		cmd=msg.beep })
-
 	separator()
 	item(title=title.empty_recycle_bin keys='@sys.root' image=icon.empty_recycle_bin(auto, #ffff00) commands{
 		admin cmd-line='/c rd /s /q %systemdrive%\$Recycle.bin' window='hidden' wait=1,
