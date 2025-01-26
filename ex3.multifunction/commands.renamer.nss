@@ -1,5 +1,4 @@
 // Author: Rubic / RubicBG
-// Based on: jorn's idea (Discord)
 // https://github.com/RubicBG/Nilesoft-Shell-Snippets/
 
 $svg_renamer=image.svg('<svg width="100" height="100" viewBox="0 0 100 100">
@@ -93,8 +92,9 @@ menu(title='Fast Renamer' mode='multiple' type='dir|file' image=svg_renamer) {
 		item(title='Replace... with...') */
 	separator()
 	menu(mode='single' type='file' title='Media: mp3' where=sel.file.ext=='.mp3') {
+		// Bonus: This is a simple example of how you can rename your music files based on their metadata.
 		item(title=io.meta(sel,"System.Music.Artist") + ' - ' + io.meta(sel,"System.Title") + path.file.ext(sel.path)
-			cmd=io.rename(sel.path, path.combine(path.location(sel.path), this.title)) invoke=0)
+			cmd=io.rename(sel.path, path.combine(path.location(sel.path), io.meta(sel,"System.Music.Artist") + ' - ' + io.meta(sel,"System.Title") + path.file.ext(sel.path))) invoke=0)
 		item(title=io.meta(sel,"System.Music.AlbumTitle") + ' - ' + io.meta(sel,"System.Music.Artist") + ' - ' + io.meta(sel,"System.Title") + path.file.ext(sel.path)
-			cmd=io.rename(sel.path, path.combine(path.location(sel.path), this.title)) invoke=0) }
+			cmd=io.rename(sel.path, path.combine(path.location(sel.path), io.meta(sel,"System.Music.AlbumTitle") + ' - ' + io.meta(sel,"System.Music.Artist") + ' - ' + io.meta(sel,"System.Title") + path.file.ext(sel.path))) invoke=0) }
 }

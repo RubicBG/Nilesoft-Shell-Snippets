@@ -1,3 +1,6 @@
+// Author: Rubic / RubicBG
+// https://github.com/RubicBG/Nilesoft-Shell-Snippets/
+
 menu(title='Create NTFS link' where=!sel.namespaces mode='single' image=\uE17F expanded=0) {
 	// Symbolic links can technically exist on other filesystems (not just NTFS), but Windows native support is NTFS-specific
 	$path_clip =str.trim(str.trim(clipboard.get, '"'), '\')
