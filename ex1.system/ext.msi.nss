@@ -1,3 +1,6 @@
+// Author: Rubic / RubicBG
+// https://github.com/RubicBG/Nilesoft-Shell-Snippets/
+
 menu(title='MSI Commands' where=sel.file.ext=='.msi' image=\uE0F8 pos=1) {
 	item(title='Open' 
 		cmd='msiexec' args='/i @sel.path(true)')
