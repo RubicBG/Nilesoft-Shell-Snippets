@@ -51,7 +51,7 @@ However
 
 - [`Nilesoft Shell Windows Icon Path Extractor`](/dev.helpers/nss.icons.win.md)<br>
 ![Screenshot](/dev.helpers/nss.icons.win.png)
-- [`Nilesoft Shell Windows Properties Meta Copy Tool`](/dev.helpers/nss.meta.nss)<br>
+- [`Nilesoft Shell Windows Properties Meta Copy Tool`](/dev.helpers/nss.meta.md)<br>
 ![Screenshot](/dev.helpers/nss.meta.1.png)
 
 
