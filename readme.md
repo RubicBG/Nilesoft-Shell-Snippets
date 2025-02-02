@@ -16,7 +16,6 @@ However
 - [`Shortcut Path Copy Tool`](/ex3.multifunction/all.copy.path.lnk.md)
 - [`URL Path Copy Tool`](/ex3.multifunction/all.copy.path.url.md)
 - [`Copy Tool (Powershell)`](/ex3.multifunction/all.copy.path.ps.md)
-- [`Nilesoft Shell Path Copy Tool`](/dev.helpers/nss.paths.md)
 - [`Copy List Tool (Nilesoft Shell)`](/ex3.multifunction/all.copy.list.ns.md)
 - [`Copy List Tool (CMD and Powershell)`](/ex3.multifunction/all.copy.list.cp.md)
 
@@ -27,28 +26,26 @@ However
 - [`Create NTFS Links`](/ex3.multifunction/commands.links.md)
 - [`Create shortcuts`](/ex3.multifunction/commands.shortcut.nss)
 
-
 ## Group: Object Related ("Not-File-Folder-Drive")
 
 - [`Windows Spotlight Enhancement`](/ext.desktop/sys.spotlight.md))<br>
 ![Screenshot 1](/ext.desktop/sys.spotlight.1.png)
-
 - [`Title Bar Menu`](/ext.others/bar.title.md)<br>
 ![Screenshot](/ext.others/bar.title.1.png)
-
 - [`Title Bar Menu`](/ext.others/bar.address.md)<br>
 ![Screenshot](/ext.others/bar.address.1.png)
-
 - [`Address Bar Menu`](/ext.others/bar.scroll.md)<br>
 ![Screenshot](/ext.others/bar.scroll.1.png)
 ![Screenshot](/ext.others/bar.scroll.2.png)
-
 - [`Editor Menu`](/ext.others/edit.md)<br>
 ![Screenshot](/ext.others/edit.1.png)
-
 - [`Recycle Bin and System Cleaning`](/ext.others/recycle.bin.md)<br>
 ![Screenshot](/ext.others/recycle.bin.1.png)
 
+## Group: Nilesoft Shell Helper Tools
+
+- [`Nilesoft Shell Path Copy Tool`](/dev.helpers/nss.paths.md)<br>
+![Screenshot](/dev.helpers/nss.paths.1.png)
 - [`Nilesoft Shell Windows Icon Path Extractor`](/dev.helpers/nss.icons.win.md)<br>
 ![Screenshot](/dev.helpers/nss.icons.win.png)
 - [`Nilesoft Shell Windows Properties Meta Copy Tool`](/dev.helpers/nss.meta.md)<br>
