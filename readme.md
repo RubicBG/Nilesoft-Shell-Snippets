@@ -49,6 +49,13 @@ However
 - [`Recycle Bin and System Cleaning`](/ext.others/recycle.bin.md)<br>
 ![Screenshot](/ext.others/recycle.bin.1.png)
 
+- [`Nilesoft Shell Windows Icon Path Extractor`](/dev.helpers/nss.icons.win.md)<br>
+![Screenshot](/dev.helpers/nss.icons.win.png)
+- [`Nilesoft Shell Windows Properties Meta Copy Tool`](/dev.helpers/nss.meta.nss)<br>
+![Screenshot](/dev.helpers/nss.meta.1.png)
+
+
+
 ## OLD Preview
 | Screenshot | File Name | Lang | Remarks |
 |------------|-----------|----------|---------|
