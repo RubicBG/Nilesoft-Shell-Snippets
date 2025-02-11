@@ -25,3 +25,9 @@ item(title='Extract files...' keys='single' mode='single'  type='file' find=str.
 // or
 item(title=title.extract_to keys='single' mode='single'  type='file' find=str.replace('."'+se7zP+'|'+se7zU+'"', '|', '"|."')
     image=icon.extract_to cmd=cmd_NanaW args='x @sel(true) -o@sel.path.title\ -ad')
+
+
+
+// Extra
+item(title='NanaZip in Microsoft Store Mini' cmd='ms-windows-store://pdp/?mode=mini&ProductId=9N8G7TSCL18R')
+item(title='NanaZip in Microsoft Store' cmd='ms-windows-store://pdp/?ProductId=9N8G7TSCL18R')

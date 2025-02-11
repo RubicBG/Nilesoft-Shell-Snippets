@@ -2,31 +2,30 @@ menu(title='PowerShell Archivator' mode='multiple' type='file|dir' image=[\uE0AA
 	//> https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/?view=powershell-7.4
 	//+ https://www.elevenforum.com/t/unzip-extract-files-from-zip-folder-in-windows-11.8261/
 	
-	$ps_have = str.contains(sel.path, '[') or str.contains(sel.path, ']')
-	$ps_dest = path.combine(sel.parent, if(key.shift(), str.guid, sel.path.title))
-	item(title='Extract to "@sel.path.title\"' keys='SHIFT to guid' image=inherit
-		mode='single'	type='file' where=sel.file.ext=='.zip' and (keys.shift() or ps_have)
+	$ps_have_double_space = str.contains(sel.path, '  ')
+	$ps_have_quare_brackets = str.contains(sel.path, '[') or str.contains(sel.path, ']')
+	$ps_dest = str.replace(path.combine(sel.parent, if(key.shift(), str.guid, sel.path.title)), '[', '`[').replace(']', '`]')
+	item(title='Extract to "@sel.path.title\"' keys='SHIFT to guid' image=inherit vis=if(ps_have_double_space or ps_have_quare_brackets, 'disable')
+		mode='single' type='file' where=sel.file.ext=='.zip'
 		cmd-ps=`Expand-Archive -LiteralPath '@sel.path(true)' -DestinationPath '@ps_dest' -Force`)
-	item(title='Extract to "@sel.path.title\"' keys='SHIFT to guid' image=inherit vis=if(ps_have, 'disable')
+	item(title='Extract to "@sel.path.title\"' keys='SHIFT to guid' image=inherit vis=if(ps_have_double_space or ps_have_quare_brackets, 'disable')
 		mode='multiple'	type='file' where=sel.file.ext=='.zip'
 		cmd-ps=`Get-Item -LiteralPath '@sel(0,"','")' | ForEach-Object { Expand-Archive -LiteralPath $_ -DestinationPath '@ps_dest' -Force }`)
-	item(title='Extract each archive to separate folder' image=inherit vis=if(ps_have, 'disable')
+	item(title='Extract each archive to separate folder' image=inherit vis=if(ps_have_double_space or ps_have_quare_brackets, 'disable')
 		mode='multiple'	type='file' where=sel.file.ext=='.zip' and sel.count>1 
 		cmd-ps=`Get-Item -LiteralPath '@sel(0,"','")' | ForEach-Object { Expand-Archive -LiteralPath $_ -DestinationPath ".\$($_.BaseName)" -Force }`)
+	item(title='Extract to "@sel.path.title\"' keys='silent single' image=[\uE0AA,#ff0000] vis=if(ps_have_double_space, 'disable')
+		mode='single' type='file' where=sel.file.ext=='.zip'
+		cmd-ps=`Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory('@sel.path', '@sel.path.title')` window='hidden')
 	separator()
 	$ps_zipn = str.replace(path.combine(sel.parent, if(key.shift(), str.guid, sel.path.title)+'.zip'), '[', '`[').replace(']', '`]')
-	item(title='Create "@(sel.path.title).zip" with selected item@if(sel.count>1,'s')' keys='SHIFT guid.zip' image=inherit
+	item(title='Create "@(sel.path.title).zip" with selected item@if(sel.count>1,'s')' keys='SHIFT guid.zip' image=inherit vis=if(ps_have_double_space, 'disable')
 		cmd-ps=`Get-Item -LiteralPath '@sel(0,"','")' | Compress-Archive -DestinationPath '@ps_zipn' -Force`)
-	item(title='Create "@(sel.path.title).zip" with item@if(sel.count>1,'s') contents' keys='SHIFT guid.zip' image=inherit
+	item(title='Create "@(sel.path.title).zip" with item@if(sel.count>1,'s') contents' keys='SHIFT guid.zip' image=inherit vis=if(ps_have_double_space, 'disable')
 		cmd-ps=`Get-ChildItem -LiteralPath '@sel(0,"','")' | Compress-Archive -DestinationPath '@ps_zipn' -Force`)
-	separator()
-	menu(where=keys.shift() expanded='true') {
-		item(title='Extract to "@sel.path.title\"'  keys='silent single'
-			image=[\uE0AA,#ff0000] mode='single' type='file' where=sel.file.ext=='.zip'
-			cmd-ps=`Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory('@sel.path', 'sel.path.title')` window='hidden')
-		item(title='Create "@(sel.path.title).zip"' keys='silent single'
-			image=[\uE0AA,#ff0000] mode='single' type='file|dir' where=sel.file.ext!='.zip'
-			cmd-ps=`Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::CreateFromDirectory('@sel.path', '@(sel.path).zip')` window='hidden') }
+	item(title='Create "@(sel.path.title).zip"' keys='silent single' image=[\uE0AA,#ff0000] vis=if(ps_have_double_space, 'disable')
+		mode='single' type='file|dir' where=sel.file.ext!='.zip'
+		cmd-ps=`Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::CreateFromDirectory('@sel.path', '@(sel.path).zip')` window='hidden')
 	separator()
 	/* create ISO
 		// with bootable
