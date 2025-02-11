@@ -8,6 +8,7 @@
 ### Screenshot:
 ![Screenshot 1)](/dev.helpers/nss.paths.1.png)
 ![Screenshot 2)](/dev.helpers/nss.paths.2.png)
+![Screenshot 3)](/dev.helpers/nss.paths.3.png)
 
 ## Overview
 Extension for converting Windows paths to Nilesoft Shell variable paths, offering path conversion for app, user, and system directories.
