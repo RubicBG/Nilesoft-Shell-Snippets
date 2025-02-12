@@ -26,6 +26,19 @@ However
 - [`Create NTFS Links`](/ex3.multifunction/commands.links.md)
 - [`Create shortcuts`](/ex3.multifunction/commands.shortcut.nss)
 
+## Group: Archivators
+- [`WinRAR Context Menu`](/ex3.archiver/app.WinRAR.md)<br>
+![Screenshot](/ex3.archiver/app.WinRAR.1.png)
+- [`7-Zip Context Menu`](/ex3.archiver/app.SevenZip.md)<br>
+![Screenshot](/ex3.archiver/app.SevenZip.1.png)
+- [`UniExtract Context Menu`](/ex3.archiver/app.UniExtract.nss)<br>
+![Screenshot](/ex3.archiver/app.UniExtract.png)
+- [`PowerShell Archivator`](/ex3.archiver/sys.compress.ps.md)<br>
+![Screenshot](/ex3.archiver/sys.compress.ps.1.png)
+- [`Compress and Extract Context Menu`](/ex3.archiver/sys.compress.extract.md)<br>
+![Screenshot](/ex3.archiver/sys.compress.extract.1.png)
+
+
 ## Group: Object Related ("Not-File-Folder-Drive")
 
 - [`Windows Spotlight Enhancement`](/ext.desktop/sys.spotlight.md))<br>
@@ -53,11 +66,3 @@ However
 
 
 
-## OLD Preview
-| Screenshot | File Name | Lang | Remarks |
-|------------|-----------|----------|---------|
-| ![screenshot1](/ex3.archiver/app.WinRAR.png) | [app.WinRAR](/ex3.archiver/app.WinRAR.nss) | EN | This menu replace the original WinRar menu. It only works with an installed version of WinRAR (reads the registry) Never tested for 32bit installation.<br><br>- command to register the trial version (manual filling of the information in the source code is required, it won't work with the example I left.)<br>- command to download and install a theme (not all themes work because of the graphic files, only some look good)<br>- WinRar auto update command<br>- The archive profiles are created in the Winrar program, the menu uses them. Reordering the profiles is also reflected dynamically.<br>- ... and more<br><br>Тhe menu was created much earlier than the one for 7-zip. The menu commands used command switches that were not documented anywhere during the creation of the menu. |
-| ![screenshot1](/ex3.archiver/app.SevenZip.png) | [app.SevenZip](/ex3.archiver/app.SevenZip.nss) | EN | This menu replace the original 7-Zip menu.<br><br>In theory the menu should also work with NanaZip (if someone modifies the code, please share)<br><br>The presentation of the menu and other user versions of it on [discord](https://discord.com/channels/1106387012707168318/1142552812740423770) |
-| ![screenshot1](/ex3.archiver/app.UniExtract.png) | [app.SevenZip](/ex3.archiver/app.UniExtract.nss) | EN | "Universal Extractor 2 is a tool designed to extract files from any type of extractable file." [formats](https://github.com/Bioruebe/UniExtract2/blob/master/docs/FORMATS.md) |
-| ![screenshot1](/ex3.archiver/sys.compress.extract.png) | [FILE](/ex3.archiver/sys.compress.extract.nss) | ML<br>80% | The menu checks and clones commands from windows modern context menu into a legacy one, modifying the names and icons.<br>-Explanation of commands on [ElevenForum](https://www.elevenforum.com/t/zip-compress-files-and-folders-in-windows-11.8235/)<br>-It is highly recommended not to edit it if you are not sure what you are doing - it changes the registry!|
-| | [theme-manager](/theme-manager.nss) | EN | still alpha version<br>more info on [discord](https://discord.com/channels/1106387012707168318/1139275510506082336)<br>Preview on [github](https://github.com/moudey/Shell/issues/462#issuecomment-2094207347) |
