@@ -1,4 +1,4 @@
-# PowerShell Archivator
+# Compress and Extract Context Menu
 
 ## Source Code & Screenshots
 
