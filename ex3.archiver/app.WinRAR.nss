@@ -129,7 +129,7 @@ menu(title='WinRar' mode='multiple' type='file|drive|dir|back.drive|back.dir|Des
 		item(title='Web support...'
 			mode='multiple' image=image.res(img_winrar_info)
 			cmd='https://www.win-rar.com/support.html')
-		// If you have a license key, open rarreg.key with text editor and copy the license information to the following variables
+		// If you have a license key, open rarreg.key with text editor and copy the license information to the following variables (it won't work with this example)
 		$EULA_user		= 'Shell'
 		$EULA_license	= 'Unlimited Company License' 
 		$EULA_key		= '4ae132ea6ff589ae3e17@"\n"64122122503e17f4ed244955149fd14d9dcc0b423cb56ad4b5009d@"\n"a9cdf27113a976d04d0d60fce6cb5ffde62890079861be57638717@"\n"7131ced835ed65cc743d9777f2ea71a8e32c7e593cf66794343565@"\n"b41bcf56929486b8bcdac33d50ecf7739960d2d3ae1e72adee2b40@"\n"97b1f3ba9d57e81ea3224b06dadeef1f6c5f544a489986e6102d8e@"\n"f770005bb7cd8058d56fa5aa3fe4e828e196feb99c8fd48e6021aa@"\n"cb5350dbc77a49be7f004ffc705a52cc7f7195d26ca42546815861'

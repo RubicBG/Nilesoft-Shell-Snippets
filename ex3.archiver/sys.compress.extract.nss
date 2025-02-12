@@ -4,16 +4,18 @@
 // modify(find='Extract All*' menu=title.more_options sep pos=0)
 // remove(clsid='{b8cdcb65-b1bf-4b42-9428-1dfdb7ee92af}' where=!this.isuwp)
 
-//> https://www.elevenforum.com/t/zip-compress-files-and-folders-in-windows-11.8235/
+
 $menu_archiver = ''
 menu(title='Compress and Extract' type='file|dir' image=icon.res('zipfldr.dll,-101')) {
+	//> https://www.elevenforum.com/t/zip-compress-files-and-folders-in-windows-11.8235/
+
+	// move 'Extract All' to the middle of the menu
 	modify(find=str.res('shell32.dll', -37514) pos='middle' menu=menu_archiver+'/Compress and Extract')
-	menu(title='NS Modern Commands' image=icon.settings sep pos=bottom tip='Clone commands from modern to legacy context menu') {
-		// $reg_path	= 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell'
+	menu(title='NS Modern Commands' image=icon.settings sep pos=bottom tip='Clone commands from modern to legacy context menu' vis=if(!sys.is11, 'disable')) {
 		$rk	= null // registry keyword name
 		$rt	= null // registry target name
-		$re	= null // registry extension name
-		$reg_modify = 'reg query "HKEY_CLASSES_ROOT\@re\shell\@rk" >nul 2>&1 && reg delete "HKEY_CLASSES_ROOT\@re\shell\@rk" /f || reg copy "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\@rk" "HKEY_CLASSES_ROOT\@re\shell\@rk" /f'
+		$re	= null // registry file extension
+		$reg_modify = 'reg query "HKEY_CLASSES_ROOT\@re\shell\@rk" >nul 2>&1 && reg delete "HKEY_CLASSES_ROOT\@re\shell\@rk" /f || reg copy "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\@rk" "HKEY_CLASSES_ROOT\@re\shell\@rk" /f'
 		
 		// Windows.CompressTo
 		item(title=str.res('windows.UI.FileExplorer.dll,-51797') checked=reg.exists('HKCR\*\shell\Windows.CompressTo') and reg.exists('HKCR\Folder\shell\Windows.CompressTo') keys='menu'
