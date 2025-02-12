@@ -31,7 +31,7 @@ However
 ![Screenshot](/ex3.archiver/app.WinRAR.1.png)
 - [`7-Zip Context Menu`](/ex3.archiver/app.SevenZip.md)<br>
 ![Screenshot](/ex3.archiver/app.SevenZip.1.png)
-- [`UniExtract Context Menu`](/ex3.archiver/app.UniExtract.nss)<br>
+- [`UniExtract Context Menu`](/ex3.archiver/app.UniExtract.md)<br>
 ![Screenshot](/ex3.archiver/app.UniExtract.png)
 - [`PowerShell Archivator`](/ex3.archiver/sys.compress.ps.md)<br>
 ![Screenshot](/ex3.archiver/sys.compress.ps.1.png)
