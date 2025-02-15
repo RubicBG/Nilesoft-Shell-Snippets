@@ -43,8 +43,8 @@ However
 ## Group: Navigation
 - [`Go To Menu`](/ex5.goto/goto.temp.md)<br>
 ![Screenshot](/ex5.goto/goto.temp.png)
-- [`Go To Menu`](/ex5.goto/goto.temp.md)<br>
-![Screenshot](/ex5.goto/goto.temp.png)
+- [`Go To Menu`](/ex5.goto/goto.reg.md)<br>
+![Screenshot](/ex5.goto/goto.reg.png)
 - [`Go To Run Menu`](/ex5.goto/goto.run.md)<br>
 ![Screenshot](/ex5.goto/goto.run.png)
 - [`Go To Address Bar Menu`](/ex5.goto/goto.address.md)<br>
