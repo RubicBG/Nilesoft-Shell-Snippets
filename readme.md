@@ -10,6 +10,8 @@ However
 - If anyone has questions about the NS code itself (not about the program) you can ask - I will answer
 
 ## New
+- [`Environment Path Menu`](/ex3.multifunction/all.security.env.md)
+
 - [`File Hash Tool (CMD)`](/ex3.multifunction/all.copy.hash.cmd.md)
 - [`File Hash Tool (Powershell)`](/ex3.multifunction/all.copy.hash.ps.md)
 
