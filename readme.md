@@ -1,4 +1,6 @@
-Nilesoft Shell is an amazing program, and I use it as a hobby to create new menus with commands (at last review there were more than 100 nss files with more than 1000 menus and more than 10000 commands in them. Now the commands are probably more than 20000 - a complete arsenal)
+[`Nilesoft Shell`](https://nilesoft.org/) is an amazing program - it has become a hobby
+![Screenshot](/docs/VSCode-menu.png)<br>
+![Screenshot](/docs/VSCode-item.png)<br>
 
 The idea is to start uploading my nss files one by one, making a description and screenshot. The truth is that I prefer to create new menus with commands than to make descriptions, so it won't happen soon. (I don't think anyone wants to do this "paperwork" anyway)
 
