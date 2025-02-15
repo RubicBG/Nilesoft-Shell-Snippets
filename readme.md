@@ -51,7 +51,7 @@ However
 ![Screenshot](/ex5.goto/goto.address.png)
 - [`Go To v2`](/ex5.goto/goto.v2.md)<br>
 ![Screenshot](/ex5.goto/goto.v2.png)
-- [`All "Go To" Menus `](/goto.aio.nss)<br>
+- [`All "Go To" Menus `](/ex5.goto/goto.aio.nss)<br>
 ![Screenshot](/ex5.goto/goto.aio.png)
 
 ## Group: Object Related ("Not-File-Folder-Drive")
