@@ -6,12 +6,12 @@
 [`app.SevenZip.nss`](/ex3.archiver/app.SevenZip.nss)
 
 ### Screenshot:
-![Screenshot 1)](/ex3.archiver/app.SevenZip.1.png)
-![Screenshot 2)](/ex3.archiver/app.SevenZip.2.png)
-![Screenshot 3)](/ex3.archiver/app.SevenZip.3.png)
-![Screenshot 4)](/ex3.archiver/app.SevenZip.4.png)
-![Screenshot 5)](/ex3.archiver/app.SevenZip.5.png)
-![Screenshot 6)](/ex3.archiver/app.SevenZip.6.png)
+![Screenshot 1](/ex3.archiver/app.SevenZip.1.png)
+![Screenshot 2](/ex3.archiver/app.SevenZip.2.png)
+![Screenshot 3](/ex3.archiver/app.SevenZip.3.png)
+![Screenshot 4](/ex3.archiver/app.SevenZip.4.png)
+![Screenshot 5](/ex3.archiver/app.SevenZip.5.png)
+![Screenshot 6](/ex3.archiver/app.SevenZip.6.png)
 
 ## Overview
 Enhanced context menu integration for 7-Zip, providing comprehensive archive management capabilities directly in Windows Explorer.

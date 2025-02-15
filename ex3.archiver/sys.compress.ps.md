@@ -6,8 +6,8 @@
 [`sys.compress.ps.nss`](/ex3.archiver/sys.compress.ps.nss)
 
 ### Screenshot:
-![Screenshot 1)](/ex3.archiver/sys.compress.ps.1.png)
-![Screenshot 2)](/ex3.archiver/sys.compress.ps.2.png)
+![Screenshot 1](/ex3.archiver/sys.compress.ps.1.png)
+![Screenshot 2](/ex3.archiver/sys.compress.ps.2.png)
 
 ## Overview
 PowerShell Archivator is a shell extension menu that provides archive management capabilities through PowerShell commands. It enables users to create and extract ZIP files and create ISO images directly from the context menu.

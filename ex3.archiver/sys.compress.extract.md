@@ -6,8 +6,8 @@
 [`sys.compress.extract.nss`](/ex3.archiver/sys.compress.extract.nss)
 
 ### Screenshot:
-![Screenshot 1)](/ex3.archiver/sys.compress.extract.1.png)
-![Screenshot 2)](/ex3.archiver/sys.compress.extract.2.png)
+![Screenshot 1](/ex3.archiver/sys.compress.extract.1.png)
+![Screenshot 2](/ex3.archiver/sys.compress.extract.2.png)
 
 ## Overview
 A shell extension menu that enhances Windows' built-in compression functionality by providing modernized compression commands in the legacy context menu.

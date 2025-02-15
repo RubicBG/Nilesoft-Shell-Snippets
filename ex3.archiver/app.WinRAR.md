@@ -6,9 +6,9 @@
 [`app.WinRAR.nss`](/ex3.archiver/app.WinRAR.nss)
 
 ### Screenshot:
-![Screenshot 1)](/ex3.archiver/app.WinRAR.1.png)
-![Screenshot 2)](/ex3.archiver/app.WinRAR.2.png)
-![Screenshot 3)](/ex3.archiver/app.WinRAR.3.png)
+![Screenshot 1](/ex3.archiver/app.WinRAR.1.png)
+![Screenshot 2](/ex3.archiver/app.WinRAR.2.png)
+![Screenshot 3](/ex3.archiver/app.WinRAR.3.png)
 
 ## Overview 
 A comprehensive context menu replacement for WinRAR that extends and customizes archiving functionality in Windows File Explorer. Designed to provide advanced options and seamless integration with WinRAR's features.
