@@ -34,7 +34,7 @@ item(title='@name_menu Setup...'	 type='taskbar' menu=if(!is_tm_set1, '', name_m
 			// set path
 			cmd='"@app.cfg"',
 			cmd=clipboard.set(path.separator(str.right(path_nst, str.len(path_nst)-str.len(app.directory)-1))),
-			cmd=msg("For Theme Manager to work replace 'imports/theme.nss' with 'themes/@path.name(path_nst)' (from clipboard) and reload app", "NileSoft Shell", msg.info | msg.ok) 
+			cmd=msg('For Theme Manager to work replace "imports/theme.nss" with "themes/@path.name(path_nst)" (from clipboard) and reload app', "NileSoft Shell", msg.info | msg.ok) 
 		} )
 menu(title=name_menu		 type='taskbar' pos=0 sep='after' where=(is_tm_set1 and is_tm_set2) image=\uE117) {
 	$svg_templates='<svg width="100" height="100" viewBox="0 0 256 256">
