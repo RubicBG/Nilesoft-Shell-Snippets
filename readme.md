@@ -10,6 +10,13 @@ However
 - If anyone has questions about the NS code itself (not about the program) you can ask - I will answer
 
 ## Group: Nilesoft Shell & Taskbar
+- [`Nilesoft Shell About Menu`](/ext.nilesoft/nss.about.md)<br>
+![Screenshot](/ext.nilesoft/nss.about.png)
+- [`Theme Manager (Alpha version)`](/ext.nilesoft/theme-manager.nss)<br>
+more info about the current version on  [`Discord`](https://discord.com/channels/1106387012707168318/1139275510506082336)<br>
+a completed and improved version of Theme Manager is being developed
+- [`Nilesoft Shell Windows Version Menu`](/ext.managers/nss.winver.md)<br>
+![Screenshot](/ext.managers/nss.winver.png)
 
 ## Group: System Related 
 
@@ -80,6 +87,8 @@ However
 ![Screenshot](/ext.others/recycle.bin.1.png)
 
 ## Group: Managers
+- [`Windows Power Menu`](/ext.managers/all.power.md)<br>
+![Screenshot](/ext.managers/all.power.1.png)
 
 ## Group: Develop
 - [`Windows Sandbox`](/dev.develop/app.sandbox.md)<br>
