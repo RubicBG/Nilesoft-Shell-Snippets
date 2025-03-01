@@ -9,28 +9,6 @@ However
 - If anyone has a working cmd or ps code that needs to be adapted to NS commands, I will help
 - If anyone has questions about the NS code itself (not about the program) you can ask - I will answer
 
-## New
-- [`Environment Path Menu`](/ex3.multifunction/all.security.env.md)
-
-- [`File Hash Tool (CMD)`](/ex3.multifunction/all.copy.hash.cmd.md)
-- [`File Hash Tool (Powershell)`](/ex3.multifunction/all.copy.hash.ps.md)
-
-- [`Windows Path Copy Tool`](/ex3.multifunction/all.copy.path.all.md)
-- [`Windows Environment Path Copy Tool`](/ex3.multifunction/all.copy.path.env.md)
-- [`Shortcut Path Copy Tool`](/ex3.multifunction/all.copy.path.lnk.md)
-- [`URL Path Copy Tool`](/ex3.multifunction/all.copy.path.url.md)
-- [`Copy Tool (Powershell)`](/ex3.multifunction/all.copy.path.ps.md)
-- [`Copy List Tool (Nilesoft Shell)`](/ex3.multifunction/all.copy.list.ns.md)
-- [`Copy List Tool (CMD and Powershell)`](/ex3.multifunction/all.copy.list.cp.md)
-
-- [`Windows Sandbox`](/dev.develop/app.sandbox.md)
-- [`Terminal`](/ex4.terminal/all.terminal.md)
-
-- [`Fast Renamer`](/ex3.multifunction/commands.renamer.md)
-- [`Create NTFS Links`](/ex3.multifunction/commands.links.md)
-- [`Create shortcuts`](/ex3.multifunction/commands.shortcut.nss)
-
-
 ## Group: Nilesoft Shell & Taskbar
 
 ## Group: System Related 
@@ -54,8 +32,23 @@ However
 ## Group: Styler
 
 ## Group: Multifunction
+- [`File Hash Tool (CMD)`](/ex3.multifunction/all.copy.hash.cmd.md)
+- [`File Hash Tool (Powershell)`](/ex3.multifunction/all.copy.hash.ps.md)
+- [`Windows Path Copy Tool`](/ex3.multifunction/all.copy.path.all.md)
+- [`Windows Environment Path Copy Tool`](/ex3.multifunction/all.copy.path.env.md)
+- [`Shortcut Path Copy Tool`](/ex3.multifunction/all.copy.path.lnk.md)
+- [`URL Path Copy Tool`](/ex3.multifunction/all.copy.path.url.md)
+- [`Copy Tool (Powershell)`](/ex3.multifunction/all.copy.path.ps.md)
+- [`Copy List Tool (Nilesoft Shell)`](/ex3.multifunction/all.copy.list.ns.md)
+- [`Copy List Tool (CMD and Powershell)`](/ex3.multifunction/all.copy.list.cp.md)
+- [`Fast Renamer`](/ex3.multifunction/commands.renamer.md)
+- [`Create NTFS Links`](/ex3.multifunction/commands.links.md)
+- [`Create shortcuts`](/ex3.multifunction/commands.shortcut.nss)
+- [`Environment Path Menu`](/ex3.multifunction/all.security.env.md)
 
 ## Group: Terminal
+- [`Terminal`](/ex4.terminal/all.terminal.md)<br>
+![Screenshot](/ex4.terminal/all.terminal.png)
 
 ## Group: Navigation
 - [`Go To Menu`](/ex5.goto/goto.temp.md)<br>
@@ -73,7 +66,7 @@ However
 
 ## Group: Object Related ("Not-File-Folder-Drive")
 - [`Windows Spotlight Enhancement`](/ext.desktop/sys.spotlight.md))<br>
-![Screenshot 1](/ext.desktop/sys.spotlight.1.png)
+![Screenshot](/ext.desktop/sys.spotlight.1.png)
 - [`Address Bar Menu`](/ext.others/bar.address.md)<br>
 ![Screenshot](/ext.others/bar.address.1.png)
 - [`Title Bar Menu`](/ext.others/bar.title.md)<br>
@@ -89,6 +82,8 @@ However
 ## Group: Managers
 
 ## Group: Develop
+- [`Windows Sandbox`](/dev.develop/app.sandbox.md)<br>
+![Screenshot](/dev.develop/app.sandbox.png)
 
 ## Group: Nilesoft Shell Helper Tools
 
