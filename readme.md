@@ -18,7 +18,9 @@ a completed and improved version of Theme Manager is being developed
 - [`Nilesoft Shell Windows Version Menu`](/ext.managers/nss.winver.md)<br>
 ![Screenshot](/ext.managers/nss.winver.png)
 
-## Group: System Related 
+## Group: System Related
+- [`Open With Menu`](/ex1.system/all.openwith.md)<br>
+![Screenshot](/ex1.system/all.openwith.simple.png)
 
 ## Group: Cloud and Share
 
