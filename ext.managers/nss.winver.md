@@ -3,10 +3,10 @@
 ## Source Code & Screenshots
 
 ### Snippet:
-[`winver.nss`](/ext.managers/winver.nss)
+[`winver.nss`](/ext.managers/nss.winver.nss)
 
 ### Screenshot:
-![Screenshot 1](/ext.managers/winver.png)
+![Screenshot 1](/ext.managers/nss.winver.png)
 
 ## Overview
 
