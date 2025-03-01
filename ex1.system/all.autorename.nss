@@ -1,3 +1,6 @@
+// Author: Rubic / RubicBG
+// https://github.com/RubicBG/Nilesoft-Shell-Snippets/
+
 // This code creates two menu items for renaming files and directories when their names exceed the maximum allowed length on Windows (259 characters for files and 248 characters for directories). When clicked, these menu items will automatically shorten the name to fit within the allowed length.
 
 //> https://learn.microsoft.com/en-gb/windows/win32/fileio/naming-a-file#maximum-path-length-limitation
