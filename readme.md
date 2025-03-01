@@ -30,6 +30,15 @@ However
 - [`Create NTFS Links`](/ex3.multifunction/commands.links.md)
 - [`Create shortcuts`](/ex3.multifunction/commands.shortcut.nss)
 
+
+## Group: Nilesoft Shell & Taskbar
+
+## Group: System Related 
+
+## Group: Cloud and Share
+
+## Group: Convert & Managing "MY" files
+
 ## Group: Archivators
 - [`WinRAR Context Menu`](/ex3.archiver/app.WinRAR.md)<br>
 ![Screenshot](/ex3.archiver/app.WinRAR.1.png)
@@ -41,6 +50,12 @@ However
 ![Screenshot](/ex3.archiver/sys.compress.ps.1.png)
 - [`Compress and Extract Context Menu`](/ex3.archiver/sys.compress.extract.md)<br>
 ![Screenshot](/ex3.archiver/sys.compress.extract.1.png)
+
+## Group: Styler
+
+## Group: Multifunction
+
+## Group: Terminal
 
 ## Group: Navigation
 - [`Go To Menu`](/ex5.goto/goto.temp.md)<br>
@@ -70,6 +85,8 @@ However
 ![Screenshot](/ext.others/edit.1.png)
 - [`Recycle Bin and System Cleaning`](/ext.others/recycle.bin.md)<br>
 ![Screenshot](/ext.others/recycle.bin.1.png)
+
+## Group: Managers
 
 ## Group: Nilesoft Shell Helper Tools
 
