@@ -1,4 +1,4 @@
-# Windows Power Menu Documentation
+# Windows Power Menu
 
 ## Source Code & Screenshots
 
@@ -41,3 +41,5 @@ A comprehensive Windows context menu extension for power management operations, 
   - shutdown.exe
   - rundll32.exe
   - powercfg.exe
+
+No additional software installation is required beyond the Nilesoft Shell framework and standard Windows components.
