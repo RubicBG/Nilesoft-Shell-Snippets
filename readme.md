@@ -19,8 +19,10 @@ a completed and improved version of Theme Manager is being developed
 ![Screenshot](/ext.managers/nss.winver.png)
 
 ## Group: System Related
-- [`Open With Menu`](/ex1.system/all.openwith.md)<br>
+- [`Open With Menu Replacement`](/ex1.system/all.openwith.md)<br>
 ![Screenshot](/ex1.system/all.openwith.simple.png)
+- [`Send To Menu Enhancement`](/ex1.system/all.sendto.md)<br>
+![Screenshot](/ex1.system/all.sendto.png)
 
 ## Group: Cloud and Share
 
