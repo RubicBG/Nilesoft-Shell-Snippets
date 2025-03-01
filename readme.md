@@ -88,6 +88,8 @@ However
 
 ## Group: Managers
 
+## Group: Develop
+
 ## Group: Nilesoft Shell Helper Tools
 
 - [`Nilesoft Shell Path Copy Tool`](/dev.helpers/nss.paths.md)<br>
