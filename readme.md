@@ -9,6 +9,8 @@ However
 - If anyone has a working cmd or ps code that needs to be adapted to NS commands, I will help
 - If anyone has questions about the NS code itself (not about the program) you can ask - I will answer
 
+---
+
 ## Group: Nilesoft Shell & Taskbar
 - [`Nilesoft Shell About Menu`](/ext.nilesoft/nss.about.md)<br>
 ![Screenshot](/ext.nilesoft/nss.about.png)
