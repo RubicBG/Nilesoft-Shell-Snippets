@@ -19,6 +19,9 @@ a completed and improved version of Theme Manager is being developed
 ![Screenshot](/ext.managers/nss.winver.png)
 
 ## Group: System Related
+- [`Windows Keyboard Shortcuts Menu Enhancement`](/ex1.system/all.keyboard.shortcuts.md)<br>
+![Screenshot](/ex1.system/all.keyboard.shortcuts.1.png)
+![Screenshot](/ex1.system/all.keyboard.shortcuts.2.png)
 - [`Clipboard Save Image`](/ex1.system/all.clipboard.save.md)<br>
 ![Screenshot](/ex1.system/all.clipboard.save.png)
 - [`Auto Rename Long Names`](/ex1.system/all.autorename.md)<br>
