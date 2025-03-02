@@ -19,6 +19,10 @@ a completed and improved version of Theme Manager is being developed
 ![Screenshot](/ext.managers/nss.winver.png)
 
 ## Group: System Related
+- [`Clipboard Save Image`](/ex1.system/all.clipboard.save.md)<br>
+![Screenshot](/ex1.system/all.clipboard.save.png)
+- [`Auto Rename Long Names`](/ex1.system/all.autorename.md)<br>
+![Screenshot](/ex1.system/all.autorename.png)
 - [`Open With Menu Replacement`](/ex1.system/all.openwith.md)<br>
 ![Screenshot](/ex1.system/all.openwith.simple.png)
 - [`Send To Menu Enhancement`](/ex1.system/all.sendto.md)<br>
