@@ -9,6 +9,8 @@ However
 - If anyone has a working cmd or ps code that needs to be adapted to NS commands, I will help
 - If anyone has questions about the NS code itself (not about the program) you can ask - I will answer
 
+---
+
 ## Group: Nilesoft Shell & Taskbar
 - [`Nilesoft Shell About Menu`](/ext.nilesoft/nss.about.md)<br>
 ![Screenshot](/ext.nilesoft/nss.about.png)
@@ -19,6 +21,9 @@ a completed and improved version of Theme Manager is being developed
 ![Screenshot](/ext.managers/nss.winver.png)
 
 ## Group: System Related
+- [`Windows Keyboard Shortcuts Menu Enhancement`](/ex1.system/all.keyboard.shortcuts.md)<br>
+![Screenshot](/ex1.system/all.keyboard.shortcuts.1.png)
+![Screenshot](/ex1.system/all.keyboard.shortcuts.2.png)
 - [`Clipboard Save Image`](/ex1.system/all.clipboard.save.md)<br>
 ![Screenshot](/ex1.system/all.clipboard.save.png)
 - [`Auto Rename Long Names`](/ex1.system/all.autorename.md)<br>
