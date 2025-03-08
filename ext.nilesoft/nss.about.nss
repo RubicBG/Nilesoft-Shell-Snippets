@@ -1,3 +1,7 @@
+// Author: Rubic / RubicBG
+// Based on: Nilesoft Shell original snippet
+// https://github.com/RubicBG/Nilesoft-Shell-Snippets/
+
 menu(type="taskbar" vis=key.shift() or key.lbutton() pos=0 title=app.name image=\uE249)
 {
 	item(title="manager" tip='Open Nilesoft Shell Manager'
@@ -6,25 +10,31 @@ menu(type="taskbar" vis=key.shift() or key.lbutton() pos=0 title=app.name image=
 	item(title="directory" tip='Open Nilesoft Shell directory'
 		image=\uE0E8
 		cmd=app.dir)
-	item(title="config" tip='Open Nilesoft Shell main configuration file'
-		image=\uE10A
-		cmd=app.cfg)
+	item(title="config" tip='Open Nilesoft Shell main configuration file. Hold SHIFT to select and set a custom config file. Not choosing a file will reset to default.'
+		image=[\uE10A, #7DD8F3]
+		cmd=if(keys.shift(), {
+				reg_path = reg.get('HKCU\Software\Nilesoft\Shell', 'config')
+				new_path = path.file.box('nss file|*.nss|All|*.*', if(len(reg_path)>0, reg_path, app.directory))
+				if(len(new_path)>0,
+					reg.set('HKCU\Software\Nilesoft\Shell', 'config', new_path),
+					reg.delete('HKCU\Software\Nilesoft\Shell', 'config') & msg('Restored default configuration', 'NileSoft Shell', msg.info)) app.reload },
+			app.cfg))
 	item(title="nss preview" tip='Show .nss file preview in Preview Pane in File Explorer for a better user experience'
 		image=\uE142
 		vis=if(reg.exists('HKEY_CLASSES_ROOT\.nss\shellex\{8895b1c6-b41f-4c1c-a562-0d564250836f}'), 'disable')
 		// admin cmd=reg.set('HKEY_CLASSES_ROOT\.nss\shellex\{8895b1c6-b41f-4c1c-a562-0d564250836f}', '', '{1531d583-8375-4d3f-b5fb-d23bbd169f22}', reg.sz))
-		admin cmd args='/c reg.exe add "HKEY_CLASSES_ROOT\.nss\shellex\{8895b1c6-b41f-4c1c-a562-0d564250836f}" /ve /t REG_SZ /d "{1531d583-8375-4d3f-b5fb-d23bbd169f22}" /f' window=cmd.hidden)	
+		admin cmd args='/c reg.exe add "HKEY_CLASSES_ROOT\.nss\shellex\{8895b1c6-b41f-4c1c-a562-0d564250836f}" /ve /t REG_SZ /d "{1531d583-8375-4d3f-b5fb-d23bbd169f22}" /f' window=cmd.hidden)
 	item(title="updates" tip='Check for updates. If a new version is available, a download link will be provided. Click or Ctrl+Click to open the link and get the latest version.'
 		image=\uE1AB
-		cmd-ps=`try { 
-				$response = Invoke-WebRequest -Uri 'https://nilesoft.org/download' -UseBasicParsing -TimeoutSec 5; 
+		cmd-ps=`try {
+				$response = Invoke-WebRequest -Uri 'https://nilesoft.org/download' -UseBasicParsing -TimeoutSec 5;
 				if ($response.StatusCode -eq 200) {
 					if ($response.Content -match 'Shell version ([\d\.]+)') {
 						$newVer = $matches[1];
 						Write-Host "Latest available version: $($newVer)";
 						Write-Host "$([System.Environment]::NewLine)"
 						if ([version]$newVer -gt [version]'@app.ver') {
-							$arch = (Get-CimInstance Win32_OperatingSystem).OSArchitecture; 
+							$arch = (Get-CimInstance Win32_OperatingSystem).OSArchitecture;
 							$type = if ($arch -match '64-bit') {'x64'} elseif ($arch -match '32-bit') {'x86'} else {'arm64'};
 							Write-Host "Installation Options:" -ForegroundColor Cyan
 							Write-Host "------------------------" -ForegroundColor DarkGray
@@ -42,7 +52,7 @@ menu(type="taskbar" vis=key.shift() or key.lbutton() pos=0 title=app.name image=
 							Write-Host "Winget: winget install nilesoft.shell" -ForegroundColor Yellow
 							Write-Host "Scoop:  scoop install nilesoft-shell" -ForegroundColor Yellow
 							Write-Host "Choco:  choco install nilesoft-shell" -ForegroundColor Yellow
-						} else { 
+						} else {
 							Write-Host "Nilesoft Shell framework is up to date" -ForegroundColor Cyan
 						}
 					} else {
@@ -51,12 +61,12 @@ menu(type="taskbar" vis=key.shift() or key.lbutton() pos=0 title=app.name image=
 				} else {
 					Write-Host "Website returned error status: $($response.StatusCode)"
 				}
-			} catch { 
+			} catch {
 				Write-Host "Error accessing website. Please check your internet connection or try again later."
 			};
 			Write-Host "$([System.Environment]::NewLine)"
 			Read-Host -Prompt '[Enter] to close'`)
-			// Write-Host "Press any key to exit..." -NoNewline; 
+			// Write-Host "Press any key to exit..." -NoNewline;
 			// $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');`)
 	item(title="GitHub" tip='Open Nilesoft Shell GitHub page. Contributions and bug reports are welcome.'
 		image=image.glyph(\uE22C, #4078C0) col=1
@@ -77,7 +87,7 @@ menu(type="taskbar" vis=key.shift() or key.lbutton() pos=0 title=app.name image=
 		cmd='https://web.archive.org/web/20240101000000*/https://nilesoft.org/forum/')
 	item(title="version\t"+@app.ver vis=label col=1)
 	item(title="docs" tip='If the site is not available, please visit the archive.'
-		image=image.glyph(\uE1C4, #1E90FF) 
+		image=image.glyph(\uE1C4, #1E90FF)
 		cmd-ps=`try {
 			if ((Invoke-WebRequest -Uri "https://nilesoft.org/docs" -UseBasicParsing -ErrorAction Stop).StatusCode -eq 200) {
 				Start-Process "https://nilesoft.org/docs"
@@ -92,6 +102,6 @@ menu(type="taskbar" vis=key.shift() or key.lbutton() pos=0 title=app.name image=
 		image=image.glyph(\uE1A7, #FF9900)
 		cmd='https://nilesoft.org/donate')
 	item(title="mail me" tip='Send me an email.'
-		image=image.glyph(\uE15F, #FF4500) 
+		image=image.glyph(\uE15F, #FF4500)
 		cmd='mailto:support@"@"nilesoft.org?subject=Nilesoft Shell&body=Huge thanks for Nilesoft Shell')
 }
