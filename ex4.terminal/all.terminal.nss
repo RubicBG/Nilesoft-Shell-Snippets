@@ -6,7 +6,7 @@ menu(type='*' where=(sel.count or wnd.is_taskbar or wnd.is_edit) and !str.end(se
 	{
 		$tip_run_admin=["\xE1A7 Press SHIFT key or right mouse button to run " + this.title + " as administrator", tip.warning, 1.0]
 		$has_admin=key.shift() or key.rbutton()
-		
+
 		item(admin=has_admin tip=tip_run_admin title=title.command_prompt
 			image cmd='cmd.exe' args='/k TITLE Command Prompt &ver& PUSHD "@sel.dir"')
 		item(admin=has_admin tip=tip_run_admin title=title.command_prompt +' (Green-Black)'
@@ -24,13 +24,13 @@ menu(type='*' where=(sel.count or wnd.is_taskbar or wnd.is_edit) and !str.end(se
 		item(admin=has_admin tip=tip_run_admin title='Windows PowerShell 7 Preview' where=path.exists(path.combine(sys.prog, '\PowerShell\7-preview\pwsh.exe'))
 			image cmd=path.combine(sys.prog, 'PowerShell\7-preview\pwsh.exe') args=`-noexit -command "Set-Location -LiteralPath '@sel.dir\.'"`)
 		separator()
-		
+
 		$wt_escape_have=str.contains(sel.path, '[') or str.contains(sel.path, ']')
-		item(admin=has_admin tip=tip_run_admin title=title.Windows_Terminal where=package.exists("Microsoft.WindowsTerminal_") 
+		item(admin=has_admin tip=tip_run_admin title=title.Windows_Terminal where=package.exists("Microsoft.WindowsTerminal_")
 			image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-d "@sel.path\."' vis=if(wt_escape_have, 'disabled'))
 		item(admin=has_admin tip=tip_run_admin title='Windows Terminal Preview' where=package.exists("Microsoft.WindowsTerminalPreview_")
 			image cmd='@package.path("Microsoft.WindowsTerminalPreview_")\WindowsTerminal.exe' arg='-d "@sel.path\."' vis=if(wt_escape_have, 'disabled'))
-		
+
 		separator()
 		$exe_wsl = path.combine(sys.bin, 'wsl.exe')
 		$reg_wsl = 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Lxss'
@@ -40,7 +40,7 @@ menu(type='*' where=(sel.count or wnd.is_taskbar or wnd.is_edit) and !str.end(se
 			item(admin=has_admin tip=tip_run_admin title=str.res(exe_wsl, 2) keys='default WSL shell' vis=if(len(distro_guids)==0, 'disabled')
 				image cmd=exe_wsl args='--cd "@sel.dir"')
 			item(admin=has_admin tip=tip_run_admin title=str.res(exe_wsl, 2) keys='clean bash shell' vis=if(len(distro_guids)==0, 'disabled')
-				image cmd=exe_wsl args='--cd "@sel.dir" -e bash --noprofile --norc')			
+				image cmd=exe_wsl args='--cd "@sel.dir" -e bash --noprofile --norc')
 		}
 		menu(title=for(i=0, i<len(distro_guids)) { distro += reg.get(reg_wsl+ '\' + distro_guids[i], 'DistributionName') + "\n" { distro_names = str.split(distro, "\n") } } expanded='true') {
 			item(title='Open in ' + distro_names[0] where=len(distro_guids)>1
@@ -56,11 +56,11 @@ menu(type='*' where=(sel.count or wnd.is_taskbar or wnd.is_edit) and !str.end(se
 			item(title='Open in ' + distro_names[5] where=len(distro_guids)>5
 				image cmd=exe_wsl args='-d "@distro_guids[5]" --cd "@sel.dir"')
 		}
-		
+
 		separator()
 		item(title='Git CMD' where=path.exists(path.combine(sys.prog, 'Git', 'git-cmd.exe'))
 			image cmd=path.combine(sys.prog, 'Git', 'git-cmd.exe') args='--cd-to-home & title Git CMD')
-		
+
 		separator()
 	}
 

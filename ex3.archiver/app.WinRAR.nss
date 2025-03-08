@@ -92,12 +92,12 @@ menu(title='WinRar' mode='multiple' type='file|drive|dir|back.drive|back.dir|Des
 	menu(title='Add to unique archives...' type='file|dir|back.dir' image=image.res(img_winrar_add) sep=sep.after)
 	{
 		item(title='Convert Folder to "@sel.path.title'+'.rar"' keys='SHIFT to .zip' tip='Press SHIFT key to add to "@sel.path'+'.zip"'
-			mode='single' type='dir' where=len(path.files(sel.dir))>0 image=image.res(img_winrar_delete) 
+			mode='single' type='dir' where=len(path.files(sel.dir))>0 image=image.res(img_winrar_delete)
 			cmd=cmd_winrar args='a -ep1 -scul -r0 -iext -imon1 -dr "@sel.path@if(key.shift(),".zip",".rar")" "@sel.path.title\*"')
 		item(title='Move all to "@sel.title'+'.rar"' keys='SHIFT to .zip' tip='Press SHIFT key to add to "@sel.title'+'zip"'
 			mode='single' type='back.dir' image=image.res(img_winrar_delete)
 			cmd=cmd_winrar args='a -ep1 -scul -r0 -iext -imon1 -dr ".\@sel.title@if(key.shift(),".zip",".rar")" *')
-		
+
 		item(title='Create a SFX "@sel.title'+'.sfx.exe"'
 			mode='multiple' type='file|dir' sep='before' image=image.res(img_winrar_sfx)
 			cmd=cmd_winrar args='a -ep1 -scul -r0 -iext -imon1 -sfx "@sel.parent\@sel.title'+'.sfx.exe" @sel(true)')
@@ -131,7 +131,7 @@ menu(title='WinRar' mode='multiple' type='file|drive|dir|back.drive|back.dir|Des
 			cmd='https://www.win-rar.com/support.html')
 		// If you have a license key, open rarreg.key with text editor and copy the license information to the following variables (it won't work with this example)
 		$EULA_user		= 'Shell'
-		$EULA_license	= 'Unlimited Company License' 
+		$EULA_license	= 'Unlimited Company License'
 		$EULA_key		= '4ae132ea6ff589ae3e17@"\n"64122122503e17f4ed244955149fd14d9dcc0b423cb56ad4b5009d@"\n"a9cdf27113a976d04d0d60fce6cb5ffde62890079861be57638717@"\n"7131ced835ed65cc743d9777f2ea71a8e32c7e593cf66794343565@"\n"b41bcf56929486b8bcdac33d50ecf7739960d2d3ae1e72adee2b40@"\n"97b1f3ba9d57e81ea3224b06dadeef1f6c5f544a489986e6102d8e@"\n"f770005bb7cd8058d56fa5aa3fe4e828e196feb99c8fd48e6021aa@"\n"cb5350dbc77a49be7f004ffc705a52cc7f7195d26ca42546815861'
 		// $EULA_full		= 'RAR registration data' + "\n" + EULA_user + "\n" + EULA_license + "\n" + 'UID=' + EULA_key
 		item(title='Registration'

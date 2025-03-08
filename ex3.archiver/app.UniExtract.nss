@@ -5,7 +5,7 @@ menu(title='UniExtract' type='file' image=cmd_UniExtract)
 {
 	$vis_UE = if(!path.exists(cmd_UniExtract), 'disable')
 	$tip_UE = if(!path.exists(cmd_UniExtract), 'Requires UniExtract to be installed')
-	
+
 	item(vis=vis_UE tip=tip_UE title ='Extract Files...'		image cmd=cmd_UniExtract args='@sel.path(true)')
 	item(vis=vis_UE tip=tip_UE title ='Extract to Subdir...'	image cmd=cmd_UniExtract args='@sel.path(true) "/sub"')
 	item(vis=vis_UE tip=tip_UE title ='Extract Here'			image cmd=cmd_UniExtract args='@sel.path(true) "."')
@@ -22,7 +22,7 @@ menu(title='UniExtract' type='file' image=cmd_UniExtract)
 
 /*
 	https://github.com/Bioruebe/UniExtract2/blob/master/UniExtract.au3
-	
+
 	; Define context menu commands
 	; On top to make remove via command line parameter possible
 	; Shell	| Commandline Parameter | Translation | MultiSelectModel

@@ -16,7 +16,7 @@ menu(title='Compress and Extract' type='file|dir' image=icon.res('zipfldr.dll,-1
 		$rt	= null // registry target name
 		$re	= null // registry file extension
 		$reg_modify = 'reg query "HKEY_CLASSES_ROOT\@re\shell\@rk" >nul 2>&1 && reg delete "HKEY_CLASSES_ROOT\@re\shell\@rk" /f || reg copy "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\@rk" "HKEY_CLASSES_ROOT\@re\shell\@rk" /f'
-		
+
 		// Windows.CompressTo
 		item(title=str.res('windows.UI.FileExplorer.dll,-51797') checked=reg.exists('HKCR\*\shell\Windows.CompressTo') and reg.exists('HKCR\Folder\shell\Windows.CompressTo') keys='menu'
 			admin cmd-line='/c @{rk = 'Windows.CompressTo' rt = rk } @{re = '*'} @reg_modify & @{re = 'Folder'} @reg_modify' window='hidden')

@@ -10,7 +10,7 @@
 ![Screenshot 2](/ex3.archiver/app.WinRAR.2.png)
 ![Screenshot 3](/ex3.archiver/app.WinRAR.3.png)
 
-## Overview 
+## Overview
 A comprehensive context menu replacement for WinRAR that extends and customizes archiving functionality in Windows File Explorer. Designed to provide advanced options and seamless integration with WinRAR's features.
 
 ## Key Features

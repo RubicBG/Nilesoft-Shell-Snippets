@@ -8,7 +8,7 @@ remove(find='NanaZip')
 // ? HKEY_LOCAL_MACHINE\SOFTWARE\Classes\PackagedCom\Package\40174MouriNaruto.NanaZip_3.1.1080.0_x64__gnj4mf6z9tkrc
 // ? HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\Repository\Packages\40174MouriNaruto.NanaZip_3.1.1080.0_x64__gnj4mf6z9tkrc\NanaZip.Modern\Capabilities\FileAssociations
 
-// supported formats by 7-zip 
+// supported formats by 7-zip
 $se7zP = '7z|xz|bz2|gz|tar|zip|wim'
 $se7zU = 'apfs|ar|arj|cab|chm|cpio|cramfs|dmg|ext|fat|gpt|hfs|ihex|iso|lzh|lzma|mbr|msi|nsis|ntfs|qcow2|rar|rpm|squashfs|udf|uefi|vdi|vhd|vhdx|vmdk|xar|z'
 
