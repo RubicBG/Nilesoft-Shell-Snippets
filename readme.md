@@ -34,6 +34,12 @@ a completed and improved version of Theme Manager is being developed
 ![Screenshot](/ex1.system/all.sendto.png)
 
 ## Group: Cloud and Share
+- [`OneDrive Integration`](/ex2.user.cloud.share/cloud.onedrive.md)<br>
+![Screenshot](/ex2.user.cloud.share/cloud.onedrive.png)
+- [`Dropbox Integration`](/ex2.user.cloud.share/cloud.dropbox.md)<br>
+![Screenshot](/ex2.user.cloud.share/cloud.dropbox.enhanced.png)
+- [`Google Drive Integration`](/ex2.user.cloud.share/cloud.google.md)<br>
+- [`ODrive Integration`](/ex2.user.cloud.share/cloud.odrive.md)<br>
 
 ## Group: Convert & Managing "MY" files
 
