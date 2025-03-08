@@ -7,7 +7,7 @@
 
 ### Screenshot:
 ![Screenshot 1](/ext.others/recycle.bin.1.png)
-
+![Screenshot 2](/ext.others/recycle.bin.2.png)
 
 ## Overview
 Configuration for enhanced Recycle Bin context menu with system cleaning utilities and component store management.
