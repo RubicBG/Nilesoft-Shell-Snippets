@@ -1,4 +1,5 @@
 // Author: Rubic / RubicBG
+// https://github.com/RubicBG/Nilesoft-Shell-Snippets/
 
 // Hide default menu: NS can not recognize drag&drop paths, so use:
 remove(find='Winrar')

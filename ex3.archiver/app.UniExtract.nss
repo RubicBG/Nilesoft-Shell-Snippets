@@ -1,4 +1,5 @@
-//  Author: Rubic / RubicBG
+// Author: Rubic / RubicBG
+// https://github.com/RubicBG/Nilesoft-Shell-Snippets/
 
 $cmd_UniExtract = eval(sys.prog32+'\UniExtract\UniExtract.exe')
 menu(title='UniExtract' type='file' image=cmd_UniExtract)

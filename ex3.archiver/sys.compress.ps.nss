@@ -1,3 +1,6 @@
+// Author: Rubic / RubicBG
+// https://github.com/RubicBG/Nilesoft-Shell-Snippets/
+
 menu(title='PowerShell Archivator' mode='multiple' type='file|dir' image=[\uE0AA, image.color2]) {
 	//> https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/?view=powershell-7.4
 	//+ https://www.elevenforum.com/t/unzip-extract-files-from-zip-folder-in-windows-11.8261/

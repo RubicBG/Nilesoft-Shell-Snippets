@@ -1,9 +1,9 @@
 // Author: Rubic / RubicBG
+// https://github.com/RubicBG/Nilesoft-Shell-Snippets/
 
 //> https://www.tenforums.com/tutorials/3233-add-remove-extract-all-context-menu-windows.html
 // modify(find='Extract All*' menu=title.more_options sep pos=0)
 // remove(clsid='{b8cdcb65-b1bf-4b42-9428-1dfdb7ee92af}' where=!this.isuwp)
-
 
 $menu_archiver = ''
 menu(title='Compress and Extract' type='file|dir' image=icon.res('zipfldr.dll,-101')) {

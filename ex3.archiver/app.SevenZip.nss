@@ -1,4 +1,5 @@
 // Author: Rubic / RubicBG
+// https://github.com/RubicBG/Nilesoft-Shell-Snippets/
 
 // Hide default menu: NS can not recognize drag&drop paths, so use:
 remove(find='7-Zip')
@@ -94,7 +95,7 @@ menu(title='7-Zip' mode='multiple' type='file|dir|drive|back' image=cmd_7zipA vi
 			separator()
 			item(title='Add to...' keys='SHIFT to mail' image=inherit
 				cmd=cmd_7zipG args='a "@sel.title" -ad @if(keys.shift(), '-seml.') -sae -- @sel(true)')
-			item( title='Add to "@(sel.title).7z"' keys='SHIFT to mail' image=inherit
+			item(title='Add to "@(sel.title).7z"' keys='SHIFT to mail' image=inherit
 				cmd=cmd_7zipG args='a @(sel.title).7z -t7z @if(keys.shift(), '-seml.') -sae -- @sel(true)')
 			item(title='Add to "@(sel.title).zip"' keys='SHIFT to mail' image=inherit
 				cmd=cmd_7zipG args='a @(sel.title).zip -tzip @if(keys.shift(), '-seml.') -sae -- @sel(true)') }
