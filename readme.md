@@ -58,19 +58,46 @@ a completed and improved version of Theme Manager is being developed
 ## Group: Styler
 
 ## Group: Multifunction
-- [`File Hash Tool (CMD)`](/ex3.multifunction/all.copy.hash.cmd.md)
-- [`File Hash Tool (Powershell)`](/ex3.multifunction/all.copy.hash.ps.md)
-- [`Windows Path Copy Tool`](/ex3.multifunction/all.copy.path.all.md)
-- [`Windows Environment Path Copy Tool`](/ex3.multifunction/all.copy.path.env.md)
-- [`Shortcut Path Copy Tool`](/ex3.multifunction/all.copy.path.lnk.md)
-- [`URL Path Copy Tool`](/ex3.multifunction/all.copy.path.url.md)
-- [`Copy Tool (Powershell)`](/ex3.multifunction/all.copy.path.ps.md)
-- [`Copy List Tool (Nilesoft Shell)`](/ex3.multifunction/all.copy.list.ns.md)
-- [`Copy List Tool (CMD and Powershell)`](/ex3.multifunction/all.copy.list.cp.md)
-- [`Fast Renamer`](/ex3.multifunction/commands.renamer.md)
-- [`Create NTFS Links`](/ex3.multifunction/commands.links.md)
+- [`File Hash Tool (CMD)`](/ex3.multifunction/all.copy.hash.cmd.md)<br>
+![Screenshot](/ex3.multifunction/all.copy.hash.cmd.1.png)
+- [`File Hash Tool (Powershell)`](/ex3.multifunction/all.copy.hash.ps.md)<br>
+![Screenshot](/ex3.multifunction/all.copy.hash.ps.1.png)
+- [`Windows Path Copy Tool`](/ex3.multifunction/all.copy.path.all.md)<br>
+![Screenshot](/ex3.multifunction/all.copy.path.all.1.png)
+- [`Windows Environment Path Copy Tool`](/ex3.multifunction/all.copy.path.env.md)<br>
+![Screenshot](/ex3.multifunction/all.copy.path.env.1.png)
+- [`Shortcut Path Copy Tool`](/ex3.multifunction/all.copy.path.lnk.md)<br>
+![Screenshot](/ex3.multifunction/all.copy.path.lnk.1.png)
+- [`URL Path Copy Tool`](/ex3.multifunction/all.copy.path.url.md)<br>
+![Screenshot](/ex3.multifunction/all.copy.path.url.1.png)
+- [`Copy Tool (Powershell)`](/ex3.multifunction/all.copy.path.ps.md)<br>
+![Screenshot](/ex3.multifunction/all.copy.path.ps.1.png)
+- [`Copy List Tool (Nilesoft Shell)`](/ex3.multifunction/all.copy.list.ns.md)<br>
+![Screenshot](/ex3.multifunction/all.copy.list.ns.1.png)
+- [`Copy List Tool (CMD and Powershell)`](/ex3.multifunction/all.copy.list.cp.md)<br>
+![Screenshot](/ex3.multifunction/all.copy.list.cp.1.png)
+
+- Swap Drive Letter (coming soon) <br>
+![Screenshot](/ex3.multifunction/all.drive.swap.1.png)
+- Manage Drive (coming soon) <br>
+![Screenshot](/ex3.multifunction/all.drive.manage.1.png)
+- Manage "File" Drive (coming soon) <br>
+![Screenshot](/ex3.multifunction/all.drive.file.1.png)
+- Manage "Folder" Drive (coming soon) <br>
+![Screenshot](/ex3.multifunction/all.drive.folder.1.png)
+
+- [`Environment Path Menu`](/ex3.multifunction/all.security.env.md)<br>
+![Screenshot](/ex3.multifunction/all.security.env.1.png)
+- Firewall Menu (coming soon) <br>
+![Screenshot](/ex3.multifunction/all.security.firewall.1.png)<br>
+Encrypt Files  (coming soon) <br>
+![Screenshot](/ex3.multifunction/all.security.encrypt.1.png)
+
+- [`Fast Renamer`](/ex3.multifunction/commands.renamer.md)<br>
+![Screenshot](/ex3.multifunction/commands.renamer.1.png)
+- [`Create NTFS Links`](/ex3.multifunction/commands.links.md)<br>
+![Screenshot](/ex3.multifunction/commands.links.0.png)
 - [`Create shortcuts`](/ex3.multifunction/commands.shortcut.nss)
-- [`Environment Path Menu`](/ex3.multifunction/all.security.env.md)
 
 ## Group: Terminal
 - [`Terminal`](/ex4.terminal/all.terminal.md)<br>
