@@ -6,7 +6,8 @@
 [`all.copy.path.lnk.nss`](/ex3.multifunction/all.copy.path.lnk.nss)
 
 ### Screenshot:
-![Screenshot 1)](/ex3.multifunction/all.copy.path.lnk.png)
+![Screenshot 1](/ex3.multifunction/all.copy.path.lnk.1.png)
+![Screenshot 2](/ex3.multifunction/all.copy.path.lnk.2.png)
 
 ## Overview
 A Nilesoft Shell extension adding enhanced shortcut (.lnk) path management capabilities to Windows context menu.

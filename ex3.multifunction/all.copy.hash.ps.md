@@ -6,7 +6,8 @@
 [`all.copy.hash.ps.nss`](/ex3.multifunction/all.copy.hash.ps.nss)
 
 ### Screenshot:
-![Screenshot 1)](/ex3.multifunction/all.copy.hash.ps.png)
+![Screenshot 1](/ex3.multifunction/all.copy.hash.ps.1.png)
+![Screenshot 1](/ex3.multifunction/all.copy.hash.ps.2.png)
 
 ## Overview
 A powerful context menu extension for Windows that allows you to calculate, verify, copy, and save various hash checksums of files directly from the right-click menu.

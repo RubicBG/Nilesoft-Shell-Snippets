@@ -6,7 +6,7 @@
 [`all.copy.list.ns.nss`](/ex3.multifunction/all.copy.list.ns.nss)
 
 ### Screenshot:
-![Screenshot 1)](/ex3.multifunction/all.copy.list.ns.png)
+![Screenshot 1](/ex3.multifunction/all.copy.list.ns.1.png)
 
 ## Overview
 Nilesoft Shell extension for copying lists of files and folders with flexible formatting options.

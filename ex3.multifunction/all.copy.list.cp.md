@@ -6,7 +6,7 @@
 [`all.copy.list.cp.nss`](/ex3.multifunction/all.copy.list.cp.nss)
 
 ### Screenshot:
-![Screenshot 1)](/ex3.multifunction/all.copy.list.cp.png)
+![Screenshot 1](/ex3.multifunction/all.copy.list.cp.1.png)
 
 ## Overview
 Advanced directory listing extension using both Command Prompt and PowerShell commands to generate formatted file/folder lists with sizes and stats.

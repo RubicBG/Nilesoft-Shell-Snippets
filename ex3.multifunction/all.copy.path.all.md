@@ -6,10 +6,10 @@
 [`all.copy.path.all.nss`](/ex3.multifunction/all.copy.path.all.nss)
 
 ### Screenshot:
-![Screenshot 1)](/ex3.multifunction/all.copy.path.all.1.png)
-![Screenshot 2)](/ex3.multifunction/all.copy.path.all.2.png)
-![Screenshot 3)](/ex3.multifunction/all.copy.path.all.3.png)
-![Screenshot 4)](/ex3.multifunction/all.copy.path.all.4.png)
+![Screenshot 1](/ex3.multifunction/all.copy.path.all.1.png)
+![Screenshot 2](/ex3.multifunction/all.copy.path.all.2.png)
+![Screenshot 3](/ex3.multifunction/all.copy.path.all.3.png)
+![Screenshot 4](/ex3.multifunction/all.copy.path.all.4.png)
 
 ## Overview
 Comprehensive Nilesoft Shell extension for copying various path formats and file information.

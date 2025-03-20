@@ -6,7 +6,8 @@
 [`all.copy.hash.cmd.nss`](/ex3.multifunction/all.copy.hash.cmd.nss)
 
 ### Screenshot:
-![Screenshot 1)](/ex3.multifunction/all.copy.hash.cmd.png)
+![Screenshot 1](/ex3.multifunction/all.copy.hash.cmd.1.png)
+![Screenshot 2](/ex3.multifunction/all.copy.hash.cmd.2.png)
 
 ## Overview
 A powerful context menu extension for Windows that allows you to calculate, verify, copy, and save various hash checksums of files directly from the right-click menu.
@@ -45,7 +46,6 @@ A powerful context menu extension for Windows that allows you to calculate, veri
 - View hash in terminal
 
 ## Technical Details
-
 - Uses Windows `certutil` for hash calculations
 - Supports both single and multiple file selections
 

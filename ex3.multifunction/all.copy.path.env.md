@@ -6,8 +6,8 @@
 [`all.copy.path.env.nss`](/ex3.multifunction/all.copy.path.env.nss)
 
 ### Screenshot:
-![Screenshot 1)](/ex3.multifunction/all.copy.path.env.1.png)
-![Screenshot 2)](/ex3.multifunction/all.copy.path.env.2.png)
+![Screenshot 1](/ex3.multifunction/all.copy.path.env.1.png)
+![Screenshot 2](/ex3.multifunction/all.copy.path.env.2.png)
 
 ## Overview
 A Nilesoft Shell extension that converts file paths to use Windows environment variables and copies them to clipboard.

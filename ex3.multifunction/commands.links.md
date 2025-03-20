@@ -8,7 +8,7 @@ or
 [`commands.links.cmd.nss (unfinished)`](/ex3.multifunction/commands.links.cmd.nss)
 
 ### Screenshot:
-![Screenshot 1](/ex3.multifunction/commands.links.png)
+![Screenshot 1](/ex3.multifunction/commands.links.0.png)
 
 ## Overview
 

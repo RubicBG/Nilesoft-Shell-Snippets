@@ -6,8 +6,8 @@
 [`all.copy.path.url.nss`](/ex3.multifunction/all.copy.path.url.nss)
 
 ### Screenshot:
-![Screenshot 1)](/ex3.multifunction/all.copy.path.url.1.png)
-![Screenshot 2)](/ex3.multifunction/all.copy.path.url.2.png)
+![Screenshot 1](/ex3.multifunction/all.copy.path.url.1.png)
+![Screenshot 2](/ex3.multifunction/all.copy.path.url.2.png)
 
 ## Overview
 A Nilesoft Shell extension for managing and copying URL components from .url shortcut files.
