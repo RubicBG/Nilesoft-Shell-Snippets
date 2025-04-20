@@ -18,16 +18,18 @@ $se7zU = 'apfs|ar|arj|cab|chm|cpio|cramfs|dmg|ext|fat|gpt|hfs|ihex|iso|lzh|lzma|
 // path to NanaZip
 $cmd_NanaM = path.combine(package('NanaZip'),'NanaZip.Modern.exe')
 $cmd_NanaW = path.combine(package('NanaZip'),'NanaZip.Windows.exe')
+$cmd_NanaM_alias = 'NanaZip.exe'
+$cmd_NanaW_alias = 'NanaZipG.exe'
 
 item(title='Browse with NanaZip...' mode='single' type='dir|drive|back'
-	image cmd=cmd_NanaM args=sel(true))
+	image=cmd_NanaM cmd=cmd_NanaM_alias args=sel(true))
 item(title='Open with NanaZip...' mode='single' type='file' find=str.replace('."'+se7zP+'|'+se7zU+'"', '|', '"|."')
-	image cmd=cmd_NanaM args=sel(true))
+	image=cmd_NanaM cmd=cmd_NanaM_alias args=sel(true))
 item(title='Extract files...' keys='single' mode='single'  type='file' find=str.replace('."'+se7zP+'|'+se7zU+'"', '|', '"|."')
-	image cmd=cmd_NanaW args='x @sel(true) -o@sel.path.title\ -ad')
+	image=cmd_NanaW cmd=cmd_NanaW_alias args='x @sel(true) -o@sel.path.title\ -ad')
 // or
 item(title=title.extract_to keys='single' mode='single'  type='file' find=str.replace('."'+se7zP+'|'+se7zU+'"', '|', '"|."')
-    image=icon.extract_to cmd=cmd_NanaW args='x @sel(true) -o@sel.path.title\ -ad')
+    image=icon.extract_to cmd=cmd_NanaW_alias args='x @sel(true) -o@sel.path.title\ -ad')
 
 
 
