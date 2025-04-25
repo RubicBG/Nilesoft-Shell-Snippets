@@ -77,20 +77,20 @@ a completed and improved version of Theme Manager is being developed
 - [`Copy List Tool (CMD and Powershell)`](/ex3.multifunction/all.copy.list.cp.md)<br>
 ![Screenshot](/ex3.multifunction/all.copy.list.cp.1.png)
 
-- Swap Drive Letter (coming soon) <br>
+- [`Swap Drive Letter`](/ex3.multifunction/all.drive.swap.md)<br>
 ![Screenshot](/ex3.multifunction/all.drive.swap.1.png)
-- Manage Drive (coming soon) <br>
+- [`Manage Drive`](/ex3.multifunction/all.drive.manage.md)<br>
 ![Screenshot](/ex3.multifunction/all.drive.manage.1.png)
-- Manage "File" Drive (coming soon) <br>
+- [`Manage "File" Drive`](/ex3.multifunction/all.drive.file.md)<br>
 ![Screenshot](/ex3.multifunction/all.drive.file.1.png)
-- Manage "Folder" Drive (coming soon) <br>
+- [`Manage "Folder" Drive`](/ex3.multifunction/all.drive.folder.md)<br>
 ![Screenshot](/ex3.multifunction/all.drive.folder.1.png)
 
 - [`Environment Path Menu`](/ex3.multifunction/all.security.env.md)<br>
 ![Screenshot](/ex3.multifunction/all.security.env.1.png)
-- Firewall Menu (coming soon) <br>
+- [`Firewall Menu`](/ex3.multifunction/all.security.firewall.md)<br>
 ![Screenshot](/ex3.multifunction/all.security.firewall.1.png)<br>
-Encrypt Files  (coming soon) <br>
+- [`Encrypt Files`](/ex3.multifunction/all.security.encrypt.md)<br>
 ![Screenshot](/ex3.multifunction/all.security.encrypt.1.png)
 
 - [`Fast Renamer`](/ex3.multifunction/commands.renamer.md)<br>
