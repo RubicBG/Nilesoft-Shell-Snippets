@@ -66,5 +66,5 @@ menu(type='*' where=(sel.count or wnd.is_taskbar or wnd.is_edit) and !str.end(se
 
 modify(where=this.id==id.open_powershell_window_here pos='bottom' menu='Terminal' vis=keys.shift())
 modify(where=this.name=='open linux shell here' image='wsl.exe' pos='bottom' menu='Terminal' vis=keys.shift())
-remove(clsid='{9F156763-7844-4DC4-B2B1-901F640F5155}') // Open in Windows Terminal; Open in Terminal
+remove(clsid='{9F156763-7844-4DC4-B2B1-901F640F5155}|{02DB545A-3E20-46DE-83A5-1329B1E88B6B}') // Open in Windows Terminal; Open in Terminal
 modify(where=this.name=='open in terminal' || this.name=='open in terminal preview' pos='bottom' menu='Terminal' vis=if(str.contains(sel.path, '[') or str.contains(sel.path, ']'), 'disabled') vis=keys.shift())
