@@ -28,6 +28,31 @@ menu(type='*' where=(sel.count or wnd.is_taskbar or wnd.is_edit) and !str.end(se
 		$wt_escape_have=str.contains(sel.path, '[') or str.contains(sel.path, ']')
 		item(admin=has_admin tip=tip_run_admin title=title.Windows_Terminal where=package.exists("Microsoft.WindowsTerminal_")
 			image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-d "@sel.path\."' vis=if(wt_escape_have, 'disabled'))
+		menu(title='Windows Terminal (Mods)' image='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' where=package.exists("Microsoft.WindowsTerminal_") vis=if(wt_escape_have, 'disabled')) {
+			// https://learn.microsoft.com/en-us/windows/terminal/command-line-arguments?tabs=windows
+			item(admin=has_admin title='Windows Terminal (tabs: CMD CMD)'
+				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Command Prompt" -d "@sel.path\."; new-tab -p "Command Prompt" -d "@sel.path\."; focus-tab -t 0')
+			item(admin=has_admin title='Windows Terminal (tabs: CMD PS)'
+				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Command Prompt" -d "@sel.path\."; new-tab -p "Windows PowerShell" -d "@sel.path\."; focus-tab -t 0')
+			item(admin=has_admin title='Windows Terminal (tabs: PS PS)'
+				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Windows PowerShell" -d "@sel.path\."; new-tab -p "Windows PowerShell" -d "@sel.path\."; focus-tab -t 0')
+			item(admin=has_admin title='Windows Terminal (colored tabs: PS PS)'
+				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='--tabColor #009999 -p "Windows PowerShell" -d "@sel.path\."; new-tab --tabColor #f59218 -p "Windows PowerShell" -d "@sel.path\."; focus-tab -t 0')
+			separator()
+			item(admin=has_admin title='Windows Terminal (panes: CMD CMD)'
+				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Command Prompt" -d "@sel.path\."; split-pane -p "Command Prompt" -d "@sel.path\."')
+			item(admin=has_admin title='Windows Terminal (panes: CMD PS)'
+				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Command Prompt" -d "@sel.path\."; split-pane -p "Windows PowerShell" -d "@sel.path\."')
+			item(admin=has_admin title='Windows Terminal (panes: PS PS)'
+				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Windows PowerShell" -d "@sel.path\."; split-pane -p "Windows PowerShell" -d "@sel.path\."')
+			separator()
+			item(admin=has_admin title='Windows Terminal (horizontal panes: CMD CMD)'
+				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Command Prompt" -d "@sel.path\."; split-pane -H -p "Command Prompt" -d "@sel.path\."')
+			item(admin=has_admin title='Windows Terminal (horizontal panes: CMD PS)'
+				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Command Prompt" -d "@sel.path\."; split-pane -H -p "Windows PowerShell" -d "@sel.path\."')
+			item(admin=has_admin title='Windows Terminal (horizontal panes: PS PS)'
+				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Windows PowerShell" -d "@sel.path\."; split-pane -H -p "Windows PowerShell" -d "@sel.path\."')
+		}
 		item(admin=has_admin tip=tip_run_admin title='Windows Terminal Preview' where=package.exists("Microsoft.WindowsTerminalPreview_")
 			image cmd='@package.path("Microsoft.WindowsTerminalPreview_")\WindowsTerminal.exe' arg='-d "@sel.path\."' vis=if(wt_escape_have, 'disabled'))
 
@@ -64,7 +89,7 @@ menu(type='*' where=(sel.count or wnd.is_taskbar or wnd.is_edit) and !str.end(se
 		separator()
 	}
 
-modify(where=this.id==id.open_powershell_window_here pos='bottom' menu='Terminal' vis=keys.shift())
-modify(where=this.name=='open linux shell here' image='wsl.exe' pos='bottom' menu='Terminal' vis=keys.shift())
-remove(clsid='{9F156763-7844-4DC4-B2B1-901F640F5155}|{02DB545A-3E20-46DE-83A5-1329B1E88B6B}') // Open in Windows Terminal; Open in Terminal
-modify(where=this.name=='open in terminal' || this.name=='open in terminal preview' pos='bottom' menu='Terminal' vis=if(str.contains(sel.path, '[') or str.contains(sel.path, ']'), 'disabled') vis=keys.shift())
+modify(menu='Terminal' pos='bottom' where=this.id==id.open_powershell_window_here vis=keys.shift())
+modify(menu='Terminal' pos='bottom' where=this.name=='open linux shell here' image='wsl.exe' vis=keys.shift())
+// remove(clsid='{9F156763-7844-4DC4-B2B1-901F640F5155}|{02DB545A-3E20-46DE-83A5-1329B1E88B6B}') // Open in Windows Terminal; Open in Terminal
+modify(menu='Terminal' pos='bottom' where=this.name=='open in terminal' || this.name=='open in terminal preview' vis=if(wt_escape_have, 'disabled') vis=keys.shift())

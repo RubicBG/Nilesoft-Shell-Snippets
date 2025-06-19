@@ -50,6 +50,8 @@ modify(menu=menu_db_name image=icon.res(path_db_dll, 0) where=this.title(
 ))
 
 /* information for further use
+	https://gist.github.com/midrare/f10f230c4c78d15fec120741d1def8fa
+
 	remove(clsid='
 		{ECD97DE5-3C8F-4ACB-AEEE-CCAB78F7711C}| // ContextMenuHandler
 		{FBC9D74C-AF55-4309-9FB2-C426E071637F}| // DropboxCopyHook

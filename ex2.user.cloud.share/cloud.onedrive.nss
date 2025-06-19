@@ -48,6 +48,8 @@ modify(menu=menu_od_name image=svg_od_win where= is_obp && this.title(
 	eval(str.res(path_od_dll, -9650)),
 	// "Manage OneDrive backup"
 	eval(str.res(path_od_dll, -9645)),
+	// "View sync &problems"
+	eval(str.res(path_od_dll, -9619)),
 	// "Settings"
 	eval(str.res(path_od_dll, -9638)),
 	// "Folder color"
@@ -62,7 +64,7 @@ modify(menu=menu_od_name image=svg_od_win where= is_obv find='@str.replace(eval(
 /* information for further use
 	o	9617, 	"&More OneDrive sharing options" (OneDrive Business)
 	o	9618, 	"&View online"
-		9619, 	"View sync &problems"
+	+	9619, 	"View sync &problems"
 	+	9622, 	"&Share"
 		9623, 	"Sync anyway"
 	o	9630, 	"Share a OneDrive link"
