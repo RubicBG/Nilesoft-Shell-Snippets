@@ -1,4 +1,4 @@
-# paste.rs Text File Upload - Nilesoft Shell Integration
+# Text File Upload - Nilesoft Shell Integration
 
 ## Source Code & Screenshots
 
