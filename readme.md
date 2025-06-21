@@ -113,6 +113,8 @@ a completed and improved version of Theme Manager is being developed
 
 - [`Register Server`](/ex3.multifunction/ext.regsvr.md)<br>
 ![Screenshot](/ex3.multifunction/ext.regsvr.1.png)
+- [`Windows Compatibility Extension`](/ex3.multifunction/ext.compatibility.md)<br>
+![Screenshot](/ex3.multifunction/ext.compatibility.1.png)
 
 ## Group: Terminal
 - [`Terminal`](/ex4.terminal/all.terminal.md)<br>
