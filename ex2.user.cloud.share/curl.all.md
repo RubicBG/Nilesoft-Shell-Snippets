@@ -1,4 +1,4 @@
-# cURL File Upload Services - Nilesoft Shell Integration
+# File Upload Services - Nilesoft Shell Integration
 
 ## Source Code & Screenshots
 
