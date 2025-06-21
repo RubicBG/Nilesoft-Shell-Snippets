@@ -6,7 +6,7 @@
 [`sys.compress.ntsf.nss`](/ex3.archiver/sys.compress.ntsf.nss)
 
 ### Screenshot:
-![Screenshot](/ex3.archiver/sys.compress.ntsf.png)
+![Screenshot](/ex3.archiver/sys.compress.ntsf.1.png)
 
 ## What is NTFS Compression?
 
