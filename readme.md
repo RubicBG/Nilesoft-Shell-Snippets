@@ -41,11 +41,15 @@ a completed and improved version of Theme Manager is being developed
 - [`Google Drive Integration`](/ex2.user.cloud.share/cloud.google.md)<br>
 - [`ODrive Integration`](/ex2.user.cloud.share/cloud.odrive.md)<br>
 
-- [`File Upload Services `](/ex2.user.cloud.share/curl.all.md)<br>
+- [`File Upload Services`](/ex2.user.cloud.share/curl.all.md)<br>
 ![Screenshot](/ex2.user.cloud.share/curl.transfer.sh.1.png)
 ![Screenshot](/ex2.user.cloud.share/curl.bashupload.com.1.png)
 - [`Text File Upload`](/ex2.user.cloud.share/curl.paste.rs.md)<br>
 ![Screenshot](/ex2.user.cloud.share/curl.paste.rs.1.png)
+
+- [`Share via Tailscale`](/ex2.user.cloud.share/app.tailscale.nss)<br>
+- [`Share with viber`](/ex2.user.cloud.share/app.viber.nss)<br>
+
 
 ## Group: Convert & Managing "MY" files
 
