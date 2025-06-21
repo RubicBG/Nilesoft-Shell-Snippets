@@ -99,6 +99,9 @@ a completed and improved version of Theme Manager is being developed
 ![Screenshot](/ex3.multifunction/commands.links.0.png)
 - [`Create shortcuts`](/ex3.multifunction/commands.shortcut.nss)
 
+- [`Register Server`](/ex3.multifunction/ext.regsvr.md)<br>
+![Screenshot](/ex3.multifunction/ext.regsvr.1.png)
+
 ## Group: Terminal
 - [`Terminal`](/ex4.terminal/all.terminal.md)<br>
 ![Screenshot](/ex4.terminal/all.terminal.png)
