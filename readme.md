@@ -109,12 +109,16 @@ a completed and improved version of Theme Manager is being developed
 ![Screenshot](/ex3.multifunction/commands.renamer.1.png)
 - [`Create NTFS Links`](/ex3.multifunction/commands.links.md)<br>
 ![Screenshot](/ex3.multifunction/commands.links.0.png)
-- [`Create shortcuts`](/ex3.multifunction/commands.shortcut.nss)
+- [`Create shortcuts`](/ex3.multifunction/commands.shortcut.nss)<br>
 
 - [`Register Server`](/ex3.multifunction/ext.regsvr.md)<br>
 ![Screenshot](/ex3.multifunction/ext.regsvr.1.png)
 - [`Windows Compatibility Extension`](/ex3.multifunction/ext.compatibility.md)<br>
 ![Screenshot](/ex3.multifunction/ext.compatibility.1.png)
+
+- [`Select Menu`](/ex3.multifunction/sys.select.nss)<br>
+![Screenshot](/ex3.multifunction/sys.select.1.png)
+
 
 ## Group: Terminal
 - [`Terminal`](/ex4.terminal/all.terminal.md)<br>
