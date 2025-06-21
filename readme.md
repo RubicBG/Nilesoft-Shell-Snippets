@@ -64,6 +64,8 @@ a completed and improved version of Theme Manager is being developed
 ![Screenshot](/ex3.archiver/sys.compress.ps.1.png)
 - [`Compress and Extract Context Menu`](/ex3.archiver/sys.compress.extract.md)<br>
 ![Screenshot](/ex3.archiver/sys.compress.extract.1.png)
+- [`NTFS Compression System`](/ex3.archiver/sys.compress.ntsf.md)<br>
+![Screenshot](/ex3.archiver/sys.compress.ntsf.1.png)
 
 ## Group: Styler
 
