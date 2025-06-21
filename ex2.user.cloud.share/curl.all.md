@@ -9,10 +9,10 @@
 [`curl.uguu.se.nss`](/ex2.user.cloud.share/curl.uguu.se.nss)
 
 ### Screenshot:
-![Screenshot 4](/ex2.user.cloud.share/curl.transfer.sh.1.png)
+![Screenshot 1](/ex2.user.cloud.share/curl.transfer.sh.1.png)
 ![Screenshot 2](/ex2.user.cloud.share/curl.bashupload.com.1.png)
 ![Screenshot 3](/ex2.user.cloud.share/curl.temp.sh.1.png)
-![Screenshot 1](/ex2.user.cloud.share/curl.uguu.se.1.png)
+![Screenshot 4](/ex2.user.cloud.share/curl.uguu.se.1.png)
 
 ## Overview
 
