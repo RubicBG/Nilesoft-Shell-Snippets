@@ -6,7 +6,7 @@
 [`nss.about.nss`](/ext.nilesoft/nss.about.nss)
 
 ### Screenshot:
-![Screenshot 1](/ext.nilesoft/nss.about.png)
+![Screenshot 1](/ext.nilesoft/nss.about.1.png)
 
 ## Overview
 
