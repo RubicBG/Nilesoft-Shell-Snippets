@@ -13,7 +13,9 @@ However
 
 ## Group: Nilesoft Shell & Taskbar
 - [`Nilesoft Shell About Menu`](/ext.nilesoft/nss.about.md)<br>
-![Screenshot](/ext.nilesoft/nss.about.png)
+![Screenshot](/ext.nilesoft/nss.about.1.png)
+- [`Context Menu Mode`](/ext.nilesoft/nss.mode.md)<br>
+![Screenshot](/ext.nilesoft/nss.mode.1.png)
 - [`Theme Manager (Alpha version)`](/ext.nilesoft/theme-manager.nss)<br>
 more info about the current version on  [`Discord`](https://discord.com/channels/1106387012707168318/1139275510506082336)<br>
 a completed and improved version of Theme Manager is being developed
