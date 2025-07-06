@@ -118,9 +118,10 @@ a completed and improved version of Theme Manager is being developed
 - [`Windows Compatibility Extension`](/ex3.multifunction/ext.compatibility.md)<br>
 ![Screenshot](/ex3.multifunction/ext.compatibility.1.png)
 
-- [`Select Menu`](/ex3.multifunction/sys.select.nss)<br>
-![Screenshot](/ex3.multifunction/sys.select.1.png)
-
+- [`Simple Selection Menu`](/ex3.multifunction/sys.select.simple.nss)<br>
+![Screenshot](/ex3.multifunction/sys.select.simple.1.png)
+- [`Advanced Selection Menu`](/ex3.multifunction/sys.select.mega.md)<br>
+![Screenshot](/ex3.multifunction/sys.select.mega.3.png)
 
 ## Group: Terminal
 - [`Terminal`](/ex4.terminal/all.terminal.md)<br>
