@@ -18,7 +18,7 @@ menu(title='Windows Sandbox' mode='single' type='file|dir|back.dir|drive|back.dr
 		cmd-ps=`$wsbConfig='@str.replace(template_b, 'SOURCE', app.dir).replace('TARGET', app.dir).replace('CMD', '@app.exe -s -r')'; @ps_command` window='hidden')
 	item(image=\uE249 keys='SHIFT writable' title='Run Sandbox with NS Shell only'
 		tip='Synchronizes the Nilesoft Shell directory with Windows Sandbox. Only the Nilesoft Shell context menu is enabled. Hold SHIFT to enable writable access.'
-		cmd-ps=`$wsbConfig='@str.replace(template_b, 'SOURCE', app.dir).replace('TARGET', app.dir).replace('CMD', '@app.exe -s -r -t')'; @ps_command` window='hidden')
+		cmd-ps=`$wsbConfig='@str.replace(template_b, 'SOURCE', app.dir).replace('TARGET', app.dir).replace('CMD', '@app.exe -s -u -t -restart ; @app.exe -s -r -t')'; @ps_command` window='hidden')
 	item(image=\uE0E9 keys='SHIFT writable' title='Sync Desktop with Sandbox'
 		tip='Maps your desktop folder into the Windows Sandbox. Hold SHIFT to enable writable access.' 
 		cmd-ps=`$wsbConfig='@str.replace(template_m, 'SOURCE', user.desktop).replace('TARGET', 'C:\Users\WDAGUtilityAccount\Desktop')'; @ps_command` window='hidden')
