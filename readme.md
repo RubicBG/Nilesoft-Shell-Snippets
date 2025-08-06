@@ -11,6 +11,7 @@ However
 
 ---
 Coming soon:<br>
+![Screenshot](/ex5.goto/goto2.settings.1.png)
 ![Screenshot](/ex3.multifunction/all.drive.hide.1.png)
 ![Screenshot](/ex3.multifunction/all.security.antithreats.1.png)
 ![Screenshot](/ex3.multifunction/all.security.permissions.1.png)
