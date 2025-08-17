@@ -10,7 +10,10 @@ menu(title=menu_db_name mode='multiple' where=!menu_db_external_mod image=\uE09C
 $path_db_dll = reg.get('HKCR\CLSID\{ECD97DE5-3C8F-4ACB-AEEE-CCAB78F7711C}\InprocServer32')
 $path_db_exe = path.combine(path.parent(path_db_dll), 'dropbox.exe')
 $path_db_dir = reg.get('HKCR\CLSID\{E31EA727-12ED-4702-820C-4B6445F28E1A}\Instance\InitPropertyBag','TargetFolderPath')
-$is_db_path	 = str.contains(sel, path_db_dir)
+// TargetFolderPath does not exist in the registry anymore with the last version of Dropbox, so set it manual 
+$path_db_manual = 'C:\Dropbox'
+// if both paths are empty, then skip the check
+$is_db_path	 = if(path_db_dir != '', str.contains(sel, path_db_dir), if(path.exists(path_db_manual), str.contains(sel, path_db_manual), true))
 
 $svg_db_win = '<svg width="100" height="100" viewBox="0 -19 256 256" fill="#200200">
   <g fill="#0061FF">
