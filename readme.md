@@ -146,6 +146,7 @@ a completed and improved version of Theme Manager is being developed
 - [`Go To v2`](/ex5.goto/goto.v2.md)<br>
 ![Screenshot](/ex5.goto/goto.v2.png)
 - [`All "Go To" Menus `](/ex5.goto/goto.aio.nss)<br>
+![Screenshot](/ex5.goto/goto.aio.png)
 <br>
 > [Everything](https://www.voidtools.com/downloads/) is a third-party software required to use the tool below.  
 > **Everything** is an instant file search tool for Windows, allowing you to quickly find any file or folder on your computer.
