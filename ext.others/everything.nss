@@ -21,7 +21,7 @@ menu(title='Everything' image=\uE28C)
 // Folders, drives, folder background
   item(
     image =\uE28C
-    type='dir|back.dir|drive|file'
+    type='dir|back.dir|drive'
     title='Search by content'
     cmd=@if(
       path.exists('C:\Program Files\Everything\Everything.exe'),
