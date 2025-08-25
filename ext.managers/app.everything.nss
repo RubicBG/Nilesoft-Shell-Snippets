@@ -3,99 +3,109 @@
 // https://github.com/RubicBG/Nilesoft-Shell-Snippets/
 
 // https://www.voidtools.com/support/everything/command_line_options/
-$path_Everything = '@sys.prog\Everything\Everything.exe'
-menu(title='Search Everything ...' where=path.exists(path_Everything) image=[\uE187, image.color2] image-sel=path_Everything
-	tip=if(!path.exists(path_Everything), 'Requires Everything to be installed') vis=if(!path.exists(path_Everything), 'disable')) {
-	item(title='Search in parent folder' type='file' 
-		tip='Search within the folder containing this file'
-		image cmd=path_Everything arg='-p @sel.parent(true)')
-	item(title='Search in selected folder' type='~file' 
-		tip='Search recursively within the selected folder and all subfolders'
-		image cmd=path_Everything arg='-p @sel.path(true)')
-	item(title='Search entire drive'
-		tip='Search the entire drive where this item is located'
-		image cmd=path_Everything arg='-p @quote(sel.root)' where=sel.path!=sel.root)
-	item(title='Search folder contents only' type='~file' keys='flat'
-		tip='Search only direct contents of folder, not subfolders'
-		image cmd=path_Everything arg='-parent @sel.path(true)' where=len(path.files(sel, '*', 2))>0)
-	item(title='Find files with same extension' type='file'
-		tip='Find all files in parent folder with the same file extension'
-		image cmd=path_Everything arg='-p @sel.parent(true) -search ext:@str.trim(sel.file.ext, '.')')
-	separator()
-	item(image=[\uE187, image.color2] title='Search file(s) contents...' keys='querying' type='~file'
-		tip='Search inside files for specific text content'
-		cmd=path_Everything arg='-p @sel.path(true) -search content:')
-	item(image=[\uE187, image.color2] title='Recently accessed files' keys='querying' type='~file' 
-		tip='Find files accessed within the last 24 hours'
-		cmd=path_Everything arg='-p @sel.path(true) -search da:today')
-	menu(image=[\uE187, image.color2] title='Filter by attributes' type='dir|back.dir|drive|back.drive|desktop') {
-		item(title='Find read-only files' keys='querying'
-			tip='Search for files with read-only attribute set'
-			image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search attrib:r')
-		item(title='Find hidden files' keys='querying'
-			tip='Search for files and folders with hidden attribute'
-			image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search attrib:h')
-		item(title='Find system files' keys='querying'
-			tip='Search for files with system attribute set'
-			image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search attrib:s') }
-	menu(image=[\uE187, image.color2] title='Filter by file type' type='dir|back.dir|drive|back.drive|desktop') {
-		item(title='Folders only'
-			tip='Show only folders and directories'
-			image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search folder:')
-		item(title='Documents only'
-			tip='Filter for document files (PDF, DOC, TXT, etc.)'
-			image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search doc:')
-		item(title='Pictures only'
-			tip='Filter for image files (JPG, PNG, GIF, etc.)'
-			image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search pic:')
-		item(title='Audio files only'
-			tip='Filter for audio files (MP3, WAV, FLAC, etc.)'
-			image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search audio:')
-		item(title='Videos only'
-			tip='Filter for video files (MP4, AVI, MKV, etc.)'
-			image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search video:')
-		item(title='Archives only'
-			tip='Filter for compressed files (ZIP, RAR, 7Z, etc.)'
-			image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search zip:')
-		item(title='Executables only'
-			tip='Filter for executable files (EXE, COM, BAT, etc.)'
-			image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search exe:') }
-	separator()
-	item(image=\uE186 title='Find duplicate title' 
-		tip='Search for files with the same name (excluding extension)'
-		cmd=path_Everything arg='-search dupe:"@sel.title"')
-	item(image=\uE186 title='Find duplicate filenames' where=sel.file.ext!=''
-		tip='Search for files with the same name (including extension)'
-		cmd=path_Everything arg='-search dupe:"@sel.name"')
-	menu(image=\uE186 title='Search by date') {
-		item(title='Modified today'
-			tip='Find files modified or created today'
-			image=\uE186 cmd=path_Everything arg='-search dm:today')
-		item(title='Modified this week'
-			tip='Find files modified or created within the current week'
-			image=\uE186 cmd=path_Everything arg='-search dm:thisweek')
-		item(title='Modified in last 7 days'
-			tip='Find files modified or created in the past week'
-			image=\uE186 cmd=path_Everything arg='-search dm:last7days')
-		item(title='Modified this month'
-			tip='Find files modified or created within the current month'
-			image=\uE186 cmd=path_Everything arg='-search dm:thismonth')
-		item(title='Modified this year'
-			tip='Find files modified or created within the current year'
-			image=\uE186 cmd=path_Everything arg='-search dm:thisyear') }
-	menu(image=\uE186 title='Advanced searches') {
-		item(title='Large files (>100MB)'
-			tip='Find files larger than 100 megabytes'
-			image=\uE186 cmd=path_Everything arg='-search size:>100mb')
-		item(title='Very large files (>1GB)'
-			tip='Find files larger than 1 gigabyte'
-			image=\uE186 cmd=path_Everything arg='-search size:>1gb')
-		item(title='Old files (>1 year)'
-			tip='Find files not modified for over a year'
-			image=\uE186 cmd=path_Everything arg='-search dm:<1year')
-		item(title='Temporary files'
-			tip='Find temporary and backup files (TMP, BAK, etc.)'
-			image=\uE186 cmd=path_Everything arg='-search ext:tmp;temp;bak;~*') }
+menu(title='Container' expanded='true') {
+	// if Everything is not installed Set the manual
+	$exe_standalone = ''
+	// default path if Everything is installed with 32bit setup
+	$exe_instaled_86 = '@sys.prog32\Everything\Everything.exe'
+	// default path if Everything is installed with 64bit setup
+	$exe_instaled_64 = '@sys.prog\Everything\Everything.exe'
+	// check and Set
+	$path_Everything = eval(if(path.exists(exe_instaled_64), exe_instaled_64, if(path.exists(exe_instaled_86), exe_instaled_86, exe_standalone)))
+	menu(title='Search Everything...' image=if(path.exists(path_Everything), path_Everything, [\uE187, image.color2])
+		tip=if(!path.exists(path_Everything), 'Requires Everything to be installed') vis=if(!path.exists(path_Everything), 'disable')) {
+
+		item(title='Search in parent folder' type='file' 
+			tip='Search within the folder containing this file'
+			image cmd=path_Everything arg='-p @sel.parent(true)')
+		item(title='Search in selected folder' type='~file' 
+			tip='Search recursively within the selected folder and all subfolders'
+			image cmd=path_Everything arg='-p @sel.path(true)')
+		item(title='Search entire drive'
+			tip='Search the entire drive where this item is located'
+			image cmd=path_Everything arg='-p @quote(sel.root)' where=sel.path!=sel.root)
+		item(title='Search folder contents only' type='~file' keys='flat'
+			tip='Search only direct contents of folder, not subfolders'
+			image cmd=path_Everything arg='-parent @sel.path(true)' where=len(path.files(sel, '*', 2))>0)
+		item(title='Find files with same extension' type='file'
+			tip='Find all files in parent folder with the same file extension'
+			image cmd=path_Everything arg='-p @sel.parent(true) -search ext:@str.trim(sel.file.ext, '.')')
+		separator()
+		item(image=[\uE187, image.color2] title='Search file(s) contents...' keys='querying' type='~file'
+			tip='Search inside files for specific text content'
+			cmd=path_Everything arg='-p @sel.path(true) -search content:')
+		item(image=[\uE187, image.color2] title='Recently accessed files' keys='querying' type='~file' 
+			tip='Find files accessed within the last 24 hours'
+			cmd=path_Everything arg='-p @sel.path(true) -search da:today')
+		menu(image=[\uE187, image.color2] title='Filter by attributes' type='dir|back.dir|drive|back.drive|desktop') {
+			item(title='Find read-only files' keys='querying'
+				tip='Search for files with read-only attribute set'
+				image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search attrib:r')
+			item(title='Find hidden files' keys='querying'
+				tip='Search for files and folders with hidden attribute'
+				image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search attrib:h')
+			item(title='Find system files' keys='querying'
+				tip='Search for files with system attribute set'
+				image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search attrib:s') }
+		menu(image=[\uE187, image.color2] title='Filter by file type' type='dir|back.dir|drive|back.drive|desktop') {
+			item(title='Folders only'
+				tip='Show only folders and directories'
+				image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search folder:')
+			item(title='Documents only'
+				tip='Filter for document files (PDF, DOC, TXT, etc.)'
+				image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search doc:')
+			item(title='Pictures only'
+				tip='Filter for image files (JPG, PNG, GIF, etc.)'
+				image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search pic:')
+			item(title='Audio files only'
+				tip='Filter for audio files (MP3, WAV, FLAC, etc.)'
+				image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search audio:')
+			item(title='Videos only'
+				tip='Filter for video files (MP4, AVI, MKV, etc.)'
+				image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search video:')
+			item(title='Archives only'
+				tip='Filter for compressed files (ZIP, RAR, 7Z, etc.)'
+				image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search zip:')
+			item(title='Executables only'
+				tip='Filter for executable files (EXE, COM, BAT, etc.)'
+				image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search exe:') }
+		separator()
+		item(image=\uE186 title='Find duplicate title' 
+			tip='Search for files with the same name (excluding extension)'
+			cmd=path_Everything arg='-search dupe:"@sel.title"')
+		item(image=\uE186 title='Find duplicate filenames' where=sel.file.ext!=''
+			tip='Search for files with the same name (including extension)'
+			cmd=path_Everything arg='-search dupe:"@sel.name"')
+		menu(image=\uE186 title='Search by date') {
+			item(title='Modified today'
+				tip='Find files modified or created today'
+				image=\uE186 cmd=path_Everything arg='-search dm:today')
+			item(title='Modified this week'
+				tip='Find files modified or created within the current week'
+				image=\uE186 cmd=path_Everything arg='-search dm:thisweek')
+			item(title='Modified in last 7 days'
+				tip='Find files modified or created in the past week'
+				image=\uE186 cmd=path_Everything arg='-search dm:last7days')
+			item(title='Modified this month'
+				tip='Find files modified or created within the current month'
+				image=\uE186 cmd=path_Everything arg='-search dm:thismonth')
+			item(title='Modified this year'
+				tip='Find files modified or created within the current year'
+				image=\uE186 cmd=path_Everything arg='-search dm:thisyear') }
+		menu(image=\uE186 title='Advanced searches') {
+			item(title='Large files (>100MB)'
+				tip='Find files larger than 100 megabytes'
+				image=\uE186 cmd=path_Everything arg='-search size:>100mb')
+			item(title='Very large files (>1GB)'
+				tip='Find files larger than 1 gigabyte'
+				image=\uE186 cmd=path_Everything arg='-search size:>1gb')
+			item(title='Old files (>1 year)'
+				tip='Find files not modified for over a year'
+				image=\uE186 cmd=path_Everything arg='-search dm:<1year')
+			item(title='Temporary files'
+				tip='Find temporary and backup files (TMP, BAK, etc.)'
+				image=\uE186 cmd=path_Everything arg='-search ext:tmp;temp;bak;~*') }
+	}
 }
 
 /* Everything.exe [filename] [-options]
