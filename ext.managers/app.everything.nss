@@ -2,19 +2,19 @@
 // Еnhancer: Speedauge (GitHub)
 // https://github.com/RubicBG/Nilesoft-Shell-Snippets/
 
-// https://www.voidtools.com/support/everything/command_line_options/
 menu(title='Container' expanded='true') {
 	// if Everything is not installed Set the manual
 	$exe_standalone = ''
+	// https://www.voidtools.com/downloads/
 	// default path if Everything is installed with 32bit setup
-	$exe_instaled_86 = '@sys.prog32\Everything\Everything.exe'
+	$exe_instaled_32 = '@sys.prog32\Everything\Everything.exe'
 	// default path if Everything is installed with 64bit setup
 	$exe_instaled_64 = '@sys.prog\Everything\Everything.exe'
 	// check and Set
-	$path_Everything = eval(if(path.exists(exe_instaled_64), exe_instaled_64, if(path.exists(exe_instaled_86), exe_instaled_86, exe_standalone)))
+	$path_Everything = eval(if(path.exists(exe_instaled_64), exe_instaled_64, if(path.exists(exe_instaled_32), exe_instaled_32, exe_standalone)))
 	menu(title='Search Everything...' image=if(path.exists(path_Everything), path_Everything, [\uE187, image.color2])
 		tip=if(!path.exists(path_Everything), 'Requires Everything to be installed') vis=if(!path.exists(path_Everything), 'disable')) {
-
+		// main searches
 		item(title='Search in parent folder' type='file' 
 			tip='Search within the folder containing this file'
 			image cmd=path_Everything arg='-p @sel.parent(true)')
@@ -31,6 +31,8 @@ menu(title='Container' expanded='true') {
 			tip='Find all files in parent folder with the same file extension'
 			image cmd=path_Everything arg='-p @sel.parent(true) -search ext:@str.trim(sel.file.ext, '.')')
 		separator()
+		// specific searches
+		// https://www.voidtools.com/support/everything/searching/
 		item(image=[\uE187, image.color2] title='Search file(s) contents...' keys='querying' type='~file'
 			tip='Search inside files for specific text content'
 			cmd=path_Everything arg='-p @sel.path(true) -search content:')
@@ -70,6 +72,7 @@ menu(title='Container' expanded='true') {
 				tip='Filter for executable files (EXE, COM, BAT, etc.)'
 				image=[\uE187, image.color2] cmd=path_Everything arg='-p @sel.path(true) -search exe:') }
 		separator()
+		// global searches
 		item(image=\uE186 title='Find duplicate title' 
 			tip='Search for files with the same name (excluding extension)'
 			cmd=path_Everything arg='-search dupe:"@sel.title"')
@@ -108,7 +111,9 @@ menu(title='Container' expanded='true') {
 	}
 }
 
-/* Everything.exe [filename] [-options]
+/*  https://www.voidtools.com/support/everything/command_line_options/
+
+	Everything.exe [filename] [-options]
 
 	filename	Open the specified file list.
 
