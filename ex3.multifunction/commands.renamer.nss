@@ -1,6 +1,7 @@
 // Author: Rubic / RubicBG
 // https://github.com/RubicBG/Nilesoft-Shell-Snippets/
 
+// temporary replace: path.file.ext(sel[x]) with io.meta(sel[x], 'System.FileExtension')
 $svg_renamer=image.svg('<svg width="100" height="100" viewBox="0 0 100 100">
   <path fill="@image.color1" d="M34 48c-12 0-19 1-21 2-4.9 2-5 12-1 14 6 5 13 3 18-2 4-5 4-9 4-14m8-3v27h-8v-7c-7 8-21 11-28.4 4C0 63 1 50 6.7 46 14 40 24 42 34 42c-1-18-19-13-29.2-9v-7C17 22 27 20 37 28c4 4 5 9 5 17"/>
   <path fill="@image.color2" d="M63 50c1 18 21 20 35 12v8c-20 7-43 3-43-22 0-16 8-25 23-25 17 0 21 11 21 27H63m29-6c-1-7-4-15-13-15-10 0-15 8-16 15h29"/>
@@ -8,14 +9,14 @@ $svg_renamer=image.svg('<svg width="100" height="100" viewBox="0 0 100 100">
 menu(title='Fast Renamer' mode='multiple' type='dir|file' image=svg_renamer) {
 	item(title='Rename...' mode='single' image=icon.rename tip='Rename a single file or folder.'
 		cmd=if(input('Nilesoft Shell', 'New @if(sel.type==3, 'folder', 'file') for @(sel.name)') and len(input.result)>0 ,
-		io.rename(sel.path, path.combine(path.location(sel.path), input.result + path.file.ext(sel.path))), msg('no input')))
+		io.rename(sel.path, path.combine(path.location(sel.path), input.result + sel.file.ext)), msg('no input')))
 	item(title='Rename' + if(sel.count>1, ' @sel.count Selected') + '...' mode='multiple' image=icon.rename tip='Rename multiple files or folders one by one. The process can not be stopped once started.'
 		cmd=if(input('Nilesoft Shell', 'New @if(sel.type==3, 'folder', 'file') name for @(sel.name)') and len(input.result)>0,
-		io.rename(sel.path, path.combine(path.location(sel.path), input.result + path.file.ext(sel.path))), msg('no input')) invoke=1)
+		io.rename(sel.path, path.combine(path.location(sel.path), input.result + sel.file.ext)), msg('no input')) invoke=1)
 	item(title='Rename with Counter...' image=icon.rename tip='Initiate counting from the first file by pressing the SHIFT key.'
 		cmd=for(x=0, x<sel.count) {
 			if(x==0, if(input('Nilesoft Shell', 'New file/folder name...')==0 or len(input.result)==0, msg('no input') & break ))
-			io.rename(sel[x], path.combine(path.location(sel[x]), input.result + if(x>0 or keys.shift(), ' ('+ if(keys.shift(), 1+x, x) +')') + path.file.ext(sel[x]))) })
+			io.rename(sel[x], path.combine(path.location(sel[x]), input.result + if(x>0 or keys.shift(), ' ('+ if(keys.shift(), 1+x, x) +')') + io.meta(sel[x], 'System.FileExtension'))) })
 	separator()
 	item(mode='single' type='file' mode='multi_unique' title='Change Extension' image=\uE0B5
 		cmd=if(cmd.invoked || (input('Nilesoft Shell', 'Type extension') and len(input.result)>0),
@@ -35,7 +36,7 @@ menu(title='Fast Renamer' mode='multiple' type='dir|file' image=svg_renamer) {
 	item(title='Uppercase' image=svg_ucase
 		cmd=io.rename(sel.path, str.upper(sel.path)) invoke=1)
 	item(title='Mixed-Case' image=svg_mcase
-		cmd=if(path.type(sel.path) == 3, io.rename(sel.path, str.capitalize(sel.path)),  io.rename(sel.path, str.capitalize(path.removeextension(sel.path)) + str.lower(path.file.ext(sel.path)))) invoke=1)
+		cmd=if(path.type(sel.path) == 3, io.rename(sel.path, str.capitalize(sel.path)),  io.rename(sel.path, str.capitalize(path.removeextension(sel.path)) + str.lower(sel.file.ext))) invoke=1)
 	separator()
 	item(title='Strip a Double Space'
 		cmd=io.rename(sel.path, str.replace(sel, '  ', ' ')) invoke=1)
@@ -66,23 +67,31 @@ menu(title='Fast Renamer' mode='multiple' type='dir|file' image=svg_renamer) {
 		<path fill="@image.color1" d="M 19 1 c 0 -0.6 -0.4 -1 -1 -1 s -1 0.4 -1 1 v 2 c 0 0.6 -0.4 1 -1 1 H 4 c -0.6 0 -1 -0.4 -1 -1 v -2 c 0 -0.6 -0.4 -1 -1 -1 s -1 0.4 -1 1 v 2 c 0 1.7 1.3 3 3 3 h 12 c 1.7 0 3 -1.3 3 -3 V 1 z"/>
 		<path fill="@image.color1" d="M 13 17 h 8 v 2 h -8 v -1.875 z" /></svg>')
 	item(title='Dots to Spaces' image=svg_dotsspaces
-		cmd=io.rename(sel.path, path.combine(path.location(sel.path), str.replace(path.title(sel.path), '.', ' ') + path.file.ext(sel.path))) invoke=1)
+		cmd=io.rename(sel.path, path.combine(path.location(sel.path), str.replace(path.title(sel.path), '.', ' ') + sel.file.ext)) invoke=1)
 	item(title='Spaces to Dots' image=svg_spacesdots
-		cmd=io.rename(sel.path, path.combine(path.location(sel.path), str.replace(path.title(sel.path), ' ', '.') + path.file.ext(sel.path))) invoke=1)
+		cmd=io.rename(sel.path, path.combine(path.location(sel.path), str.replace(path.title(sel.path), ' ', '.') + sel.file.ext)) invoke=1)
 	item(title='Underscores to Spaces' image=svg_underscoresspaces
-		cmd=io.rename(sel.path, path.combine(path.location(sel.path), str.replace(path.title(sel.path), '_', ' ') + path.file.ext(sel.path))) invoke=1)
+		cmd=io.rename(sel.path, path.combine(path.location(sel.path), str.replace(path.title(sel.path), '_', ' ') + sel.file.ext)) invoke=1)
 	item(title='Spaces to Underscores' image=svg_spacesunderscores
-		cmd=io.rename(sel.path, path.combine(path.location(sel.path), str.replace(path.title(sel.path), ' ', '_') + path.file.ext(sel.path))) invoke=1)
+		cmd=io.rename(sel.path, path.combine(path.location(sel.path), str.replace(path.title(sel.path), ' ', '_') + sel.file.ext)) invoke=1)
 	separator()
-	item(title='Find and Replace...' image=\uE8AC tip='Replace text in filename (format: find|replace); Case sensitive.'
+	item(title='Find and Replace...' keys='counter' image=\uE8AC tip='Replace text in filename (format: find|replace); Case sensitive.'
 		cmd=if(input('Find and Replace', 'Enter: find_text|replace_text') and len(input.result)>0, {
 			$array = str.split(input.result, '|')
 			if(len(array) == 2, {
 				$success_count = 0
 				for(x=0, x<sel.count) {
-					$new_path = path.combine(path.location(sel[x]), str.replace(path.title(sel[x]), array[0], array[1]) + path.file.ext(sel[x]))
+					$new_path = path.combine(path.location(sel[x]), str.replace(path.title(sel[x]), array[0], array[1]) + io.meta(sel[x], 'System.FileExtension'))
 					success_count += io.rename(sel[x], new_path) }
 				msg('Renamed: ' + success_count + ' files. Errors: ' + (sel.count - success_count)) }, msg('Use format: find|replace . The strings can not be empty')) }, msg('No input')))
+	item(title='Find and Replace...' image=\uE8AC tip='Find and replace text in file names' where=keys.shift()
+		invoke=1 cmd={
+		scs1 = if(cmd.invoked==0, input('Nilesoft Shell', 'Select a string to replace:') and len(input.result)>0, scs1)
+		str1 = if(cmd.invoked==0, input.result, str1)
+		scs2 = if(cmd.invoked==0, scs1 and input('Nilesoft Shell', 'Select a string to replace with:') and len(input.result)>0, scs2)
+		str2 = if(cmd.invoked==0, input.result, str2)
+		if(scs1 and scs2, io.rename(sel.path, path.combine(sel.location, str.replace(sel.title, str1, str2) + sel.file.ext))) })
+	
 	$svg_prefix=image.svg('<svg width="24" height="24" fill="none" viewBox="0 0 24 24">
 		<path fill="@image.color2" d="M 6 9 V 6 H 9 V 4 H 6 V 1 H 4 V 4 H 1 V 6 H 4 V 9 H 6 Z" />
 		<path fill="@image.color1" d="M 11 4 V 2 H 20 C 21.1 2 22 2.89 22 4 V 7 H 21 C 19 7 17 8 16.999 10.563 S 19 14 21 14 H 22 V 17 C 22 18.1 21.1 19 20 19 H 16.96 H 7 C 5.89 19 5 18.1 5 17 V 11 H 7 V 17 H 12 H 20 V 16 C 16 16 15 13 15.021 10.444 S 16 5 20 5 V 4 H 16"/></svg>')
@@ -92,7 +101,7 @@ menu(title='Fast Renamer' mode='multiple' type='dir|file' image=svg_renamer) {
 	item(title='Add prefix...' image=svg_prefix
 		cmd=if(cmd.invoked || (input('Nilesoft Shell', 'prefix...') and len(input.result)>0), io.rename(sel.path, path.combine(path.location(sel.path), input.result + sel.name)), msg('no input') & break) invoke=1)
 	item(title='Add suffix...' image=svg_suffix
-		cmd=if(cmd.invoked || (input('Nilesoft Shell', 'suffix...') and len(input.result)>0), io.rename(sel.path, path.combine(path.location(sel.path), path.title(sel.path) + input.result + path.file.ext(sel.path))), msg('no input') & break) invoke=1)
+		cmd=if(cmd.invoked || (input('Nilesoft Shell', 'suffix...') and len(input.result)>0), io.rename(sel.path, path.combine(path.location(sel.path), path.title(sel.path) + input.result + sel.file.ext)), msg('no input') & break) invoke=1)
 	/* those are not implemented yet, because I dont't itend to use them. If you want them, let me know.
 		item(title='Remove number of characters from front')
 		item(title='Remove number of characters from end')
@@ -102,8 +111,8 @@ menu(title='Fast Renamer' mode='multiple' type='dir|file' image=svg_renamer) {
 	separator()
 	menu(mode='single' type='file' title='Media: mp3' where=sel.file.ext=='.mp3') {
 		// Bonus: This is a simple example of how you can rename your music files based on their metadata.
-		item(title=io.meta(sel,"System.Music.Artist") + ' - ' + io.meta(sel,"System.Title") + path.file.ext(sel.path)
-			cmd=io.rename(sel.path, path.combine(path.location(sel.path), io.meta(sel,"System.Music.Artist") + ' - ' + io.meta(sel,"System.Title") + path.file.ext(sel.path))) invoke=0)
-		item(title=io.meta(sel,"System.Music.AlbumTitle") + ' - ' + io.meta(sel,"System.Music.Artist") + ' - ' + io.meta(sel,"System.Title") + path.file.ext(sel.path)
-			cmd=io.rename(sel.path, path.combine(path.location(sel.path), io.meta(sel,"System.Music.AlbumTitle") + ' - ' + io.meta(sel,"System.Music.Artist") + ' - ' + io.meta(sel,"System.Title") + path.file.ext(sel.path))) invoke=0) }
+		item(title=io.meta(sel,"System.Music.Artist") + ' - ' + io.meta(sel,"System.Title") + sel.file.ext
+			cmd=io.rename(sel.path, path.combine(path.location(sel.path), io.meta(sel,"System.Music.Artist") + ' - ' + io.meta(sel,"System.Title") + sel.file.ext)) invoke=0)
+		item(title=io.meta(sel,"System.Music.AlbumTitle") + ' - ' + io.meta(sel,"System.Music.Artist") + ' - ' + io.meta(sel,"System.Title") + sel.file.ext
+			cmd=io.rename(sel.path, path.combine(path.location(sel.path), io.meta(sel,"System.Music.AlbumTitle") + ' - ' + io.meta(sel,"System.Music.Artist") + ' - ' + io.meta(sel,"System.Title") + sel.file.ext)) invoke=0) }
 }
