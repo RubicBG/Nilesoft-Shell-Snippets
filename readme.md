@@ -10,13 +10,6 @@ However
 - If anyone has questions about the NS code itself (not about the program) you can ask - I will answer
 
 ---
-Coming soon:<br>
-![Screenshot](/ex5.goto/goto2.settings.1.png)
-![Screenshot](/ex3.multifunction/all.drive.hide.1.png)
-![Screenshot](/ex3.multifunction/all.security.antithreats.1.png)
-![Screenshot](/ex3.multifunction/all.security.permissions.1.png)
-
----
 
 ## Group: Nilesoft Shell & Taskbar
 - [`Nilesoft Shell About Menu`](/ext.nilesoft/nss.about.md)<br>
@@ -100,12 +93,19 @@ a completed and improved version of Theme Manager is being developed
 
 - [`Swap Drive Letter`](/ex3.multifunction/all.drive.swap.md)<br>
 ![Screenshot](/ex3.multifunction/all.drive.swap.1.png)
+- [`Hide Drive Letter`](/ex3.multifunction/all.drive.hide.md)<br>
+![Screenshot](/ex3.multifunction/all.drive.hide.1.png)
 - [`Manage Drive`](/ex3.multifunction/all.drive.manage.md)<br>
 ![Screenshot](/ex3.multifunction/all.drive.manage.1.png)
 - [`Manage "File" Drive`](/ex3.multifunction/all.drive.file.md)<br>
 ![Screenshot](/ex3.multifunction/all.drive.file.1.png)
 - [`Manage "Folder" Drive`](/ex3.multifunction/all.drive.folder.md)<br>
 ![Screenshot](/ex3.multifunction/all.drive.folder.1.png)
+
+- [`Antithreats Security`](/ex3.multifunction/all.security.antithreats.md)<br>
+![Screenshot](/ex3.multifunction/all.security.antithreats.1.png)
+- [`Security and Permissions`](/ex3.multifunction/all.security.permissions.md)<br>
+![Screenshot](/ex3.multifunction/all.security.permissions.1.png)
 
 - [`Environment Path Menu`](/ex3.multifunction/all.security.env.md)<br>
 ![Screenshot](/ex3.multifunction/all.security.env.1.png)
@@ -135,6 +135,9 @@ a completed and improved version of Theme Manager is being developed
 ![Screenshot](/ex4.terminal/all.terminal.png)
 
 ## Group: Navigation
+- [`Settings`](/ex5.goto/goto2.settings.md)<br>
+![Screenshot](/ex5.goto/goto2.settings.1.png)
+
 - [`Go To Menu`](/ex5.goto/goto.temp.md)<br>
 ![Screenshot](/ex5.goto/goto.temp.png)
 - [`Go To Menu`](/ex5.goto/goto.reg.md)<br>
