@@ -16,9 +16,8 @@ However
 ![Screenshot](/ext.nilesoft/nss.about.1.png)
 - [`Context Menu Mode`](/ext.nilesoft/nss.mode.md)<br>
 ![Screenshot](/ext.nilesoft/nss.mode.1.png)
-- [`Theme Manager (Alpha version)`](/ext.nilesoft/theme-manager.nss)<br>
-more info about the current version on  [`Discord`](https://discord.com/channels/1106387012707168318/1139275510506082336)<br>
-a completed and improved version of Theme Manager is being developed
+- `Shell Manager (Coming soon)`<br>
+![Screenshot](/ext.nilesoft/nss.manager.1.png)
 - [`Nilesoft Shell Windows Version Menu`](/ext.managers/nss.winver.md)<br>
 ![Screenshot](/ext.managers/nss.winver.png)
 
