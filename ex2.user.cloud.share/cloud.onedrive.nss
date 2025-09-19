@@ -7,7 +7,10 @@ $menu_od_name = 'OneDrive'
 $menu_od_external_mod = false
 menu(title=menu_od_name mode='multiple' where=!menu_od_external_mod image=\uE09C) { }
 
+// "FileSync.LocalizedResources.dll" can be in different locations, use for path_od_dll one of the following
 $path_od_dll = reg.get('HKCU\Software\Microsoft\OneDrive', 'CurrentVersionPath') + '\FileSync.LocalizedResources.dll'
+//$path_od_dll = path.combine(user.localappdata, 'Microsoft\OneDrive', reg.get('HKCU\Software\Microsoft\OneDrive', 'Version'), 'FileSync.LocalizedResources.dll')
+//$path_od_dll = path.combine(sys.prog,'Microsoft OneDrive', reg.get('HKCU\Software\Microsoft\OneDrive', 'Version'), 'FileSync.LocalizedResources.dll')
 $path_od_exe = reg.get('HKCU\Software\Microsoft\OneDrive', 'OneDriveTrigger')
 $path_od_dir = reg.get('HKCU\Software\Microsoft\OneDrive', 'UserFolder')
 $path_od_vlt = reg.get('HKCU\Software\Microsoft\OneDrive\Accounts\Personal', 'VaultShortcutPath')
