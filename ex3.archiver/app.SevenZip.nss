@@ -12,7 +12,7 @@ $cmd_7zipA = path.combine(sys.prog,'7-Zip','7zFM.exe')
 // Supported formats:: Packing / unpacking: 7z, XZ, BZIP2, GZIP, TAR, ZIP and WIM
 $se7zP = '7z|xz|bz2|gz|tar|zip|wim'
 // Supported formats: Unpacking only: APFS, AR, ARJ, CAB, CHM, CPIO, CramFS, DMG, EXT, FAT, GPT, HFS, IHEX, ISO, LZH, LZMA, MBR, MSI, NSIS, NTFS, QCOW2, RAR, RPM, SquashFS, UDF, UEFI, VDI, VHD, VHDX, VMDK, XAR and Z.
-$se7zU = 'apfs|ar|arj|cab|chm|cpio|cramfs|dmg|ext|fat|gpt|hfs|ihex|iso|lzh|lzma|mbr|msi|nsis|ntfs|qcow2|rar|rpm|squashfs|udf|uefi|vdi|vhd|vhdx|vmdk|xar|z'
+$se7zU = 'apfs|ar|arj|cab|chm|cpio|cramfs|dmg|ext|fat|gpt|hfs|ihex|iso|lzh|lzma|mbr|msi|nsis|ntfs|qcow2|rar|rpm|squashfs|udf|uefi|vdi|vhd|vhdx|vmdk|xar|z' + '|docx|xlsx|pptx|odt|ods|odp|odg|odf|ott|ots|otp' // Office Open XML and OpenDocument formats
 // Supported extension: checksum:
 $se7zC = 'sha256|sha512|sha224|sha384|sha1|sha|md5|crc32|crc64|asc|cksum'
 // Supported extension: ppmd:
@@ -69,8 +69,9 @@ menu(title='7-Zip' mode='multiple' type='file|dir|drive|back' image=cmd_7zipA vi
 				cmd=cmd_7zipG args='x @sel(true) -o*\' wait = 1,
 				cmd=if(msg('Are you sure you want to delete the archive file?', 'NileSoft Shell', msg.warning | msg.yesno)==msg.idyes, io.delete(sel)) wait = 1,
 				cmd=command.refresh} ) }
-		item(title='Extract...' keys='Smart' mode='single' image=inherit
-			cmd-ps = `$ArchivePath='@sel(true)'; write-host $ArchivePath; $isExtractSmart = ((& '@cmd_7zipC' l $ArchivePath | Where-Object { $_ -match '^\d{4}-\d{2}-\d{2}' -and $_ -match 'D\.{4}' -and $_ -notmatch '\\' }).Count -eq 1); if ($isExtractSmart) { & '@cmd_7zipG' x $ArchivePath -spe } else { & '@cmd_7zipG' x $ArchivePath -o*\ -spe }` window='hidden')
+		item(title='Extract...' keys='Smart' mode='multiple' image=inherit
+			cmd-ps = `foreach ($file in @sel(2, ',')) { + $isExtractSmart = ((& '@cmd_7zipC' l $file | Where-Object { $_ -match '^\d{4}-\d{2}-\d{2}' -and $_ -match 'D\.{4}' -and $_ -notmatch '\\' }).Count -eq 1); if ($isExtractSmart) { & '@cmd_7zipG' x $file -spe } else { & '@cmd_7zipG' x $file -o*\ -spe } }`
+			window=0)
 		item(title='Extract Here' image=inherit
 			cmd=cmd_7zipG args='x @sel_air -spe')
 		item(title='Extract'+if(sel.count==1, ' to "@sel.title\"', ' each archive to separate folder') image=inherit
@@ -101,11 +102,21 @@ menu(title='7-Zip' mode='multiple' type='file|dir|drive|back' image=cmd_7zipA vi
 				cmd=cmd_7zipG args='a @(sel.title).zip -tzip @if(keys.shift(), '-seml.') -sae -- @sel(true)') }
 		item(title='Add to "@(sel.title).7z"' keys='SHIFT to .zip' image=inherit
 			cmd=cmd_7zipG args='a "@(sel.title)@if(!keys.shift(), '.7z" -t7z', '.zip" -tzip') -sae -- @sel(true)')
+		item(title='Add to "@(sel.dir.title).7z"' keys='SHIFT to .zip' image=inherit
+			cmd=cmd_7zipG args='a "@(sel.dir.title)@if(!keys.shift(), '.7z" -t7z', '.zip" -tzip') -sae -- @sel(true)')
+		item(title='Compress each item to separate archive' keys='SHIFT to .zip' where=sel.count>1 image=inherit 
+			tip='Creates individual archives for each selected file and folder'
+			window=0 cmd-line='/c for %f in (@(sel(true," "))) do call "@cmd_7zipG" a "%~nf@if(!keys.shift(), '.7z" -t7z', '.zip" -tzip') -sae -- "%~f"')
 		item(title='Add to "@(sel.title).ppmd.7z" ' keys='SHIFT to .zip' find=is_se7z3
 			tip='PPMd compression is particularly effective for compressing text files that have a lot of repetitive patterns and structured content' image=inherit
 			cmd=cmd_7zipG args='a @(sel.title).ppmd@if(!keys.shift(), '.7z -t7z', '.zip -tzip') -m0=PPMd -sae -- @sel(true)')
-		item( title='Add to "@(sel.title).sfx.exe"' keys='SHIFT no GUI' image=inherit
+		item(title='Add to "@(sel.dir.title).ppmd.7z" ' keys='SHIFT to .zip' find=is_se7z3
+			tip='PPMd compression is particularly effective for compressing text files that have a lot of repetitive patterns and structured content' image=inherit
+			cmd=cmd_7zipG args='a @(sel.dir.title).ppmd@if(!keys.shift(), '.7z -t7z', '.zip -tzip') -m0=PPMd -sae -- @sel(true)')
+		item(title='Add to "@(sel.title).sfx.exe"' keys='SHIFT no GUI' image=inherit
 			cmd=cmd_7zipG args='a @(sel.title).sfx.exe @if(!keys.shift(), '-sfx7z.sfx', '-sfx7zCon.sfx') -sae -- @sel(true)')
+		item(title='Add to "@(sel.dir.title).sfx.exe"' keys='SHIFT no GUI' image=inherit
+			cmd=cmd_7zipG args='a @(sel.dir.title).sfx.exe @if(!keys.shift(), '-sfx7z.sfx', '-sfx7zCon.sfx') -sae -- @sel(true)')
 		item(title='Generate a file checksum ' image=inherit
 			cmd=cmd_7zipG args='a @(sel.name).sha256 -thash -sae -- @sel(true)') }
 	menu(title='Test...' type='file' image=svg_7z_test expanded=1) {
@@ -133,6 +144,15 @@ menu(title='7-Zip' mode='multiple' type='file|dir|drive|back' image=cmd_7zipA vi
 		item(title='Documentation.help'							image=\uE11E cmd='https://documentation.help/7-Zip/')
 	}
 }
+menu(title='7-Zip Test' mode='single' type='dir|back.dir') {
+	item(title='Compress each item in selected folder to separate archives' where=len(path.files(sel, "*", 2|8|16))>0 and len(path.files(sel, "*", 3|8|16))>0
+		window=0 cmd-line='/c for %f in (@str.join(path.files(sel, "*", 8|16), " ")) do call "@cmd_7zipG" a "%~nf.7z" -t7z -sae -- "%~f"' )
+	item(title='Compress each file in selected folder to separate archives' where=len(path.files(sel, "*", 3|8|16))>0
+		window=0 cmd-line='/c for %f in (@str.join(path.files(sel, "*", 3|8|16), " ")) do call "@cmd_7zipG" a "%~nf.7z" -t7z -sae -- "%~f"')
+	item(title='Compress each folder in selected folder to separate archives' where=len(path.files(sel, "*", 2|8|16))>0
+		window=0 cmd-line='/c for %f in (@str.join(path.files(sel, "*", 2|8|16), " ")) do call "@cmd_7zipG" a "%~nf.7z" -t7z -sae -- "%~f"')
+}
+
 
 /*
 	PPMd compression is particularly effective for compressing text files that have a lot of repetitive patterns and structured content. Some common file types and extensions for which PPMd compression can be beneficial include:
