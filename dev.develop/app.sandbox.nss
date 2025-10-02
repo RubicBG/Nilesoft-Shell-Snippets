@@ -4,8 +4,9 @@
 
 menu(title='Windows Sandbox' mode='single' type='file|dir|back.dir|drive|back.drive|desktop' where=sys.ver.build>=1903 and user.name!='WDAGUtilityAccount'
 	image='@appx('WindowsSandbox')\Assets\Logo-256.ico'
-	vis=if(process.is_started("WindowsSandboxRemoteSession.exe") or !appx.exists('WindowsSandbox'), 'disable') 
-	tip=if(process.is_started("WindowsSandboxRemoteSession.exe"), 'Windows Sandbox is running. Close it to use this feature.', if(!appx.exists('WindowsSandbox'), 'Requires Windows Sandbox to be installed', 'The profile remains preserved even after restarting the Windows Sandbox.'))) {
+	// base on internet the existence of the WindowsSandbox.exe in \System32\ folder does not mean that it is enabled - need better check
+	vis=if(process.is_started("WindowsSandboxRemoteSession.exe") or not(appx.exists('WindowsSandbox') or path.exists(path.combine(sys.bin, 'WindowsSandbox.exe'))), 'disable')
+	tip=if(process.is_started("WindowsSandboxRemoteSession.exe"), 'Windows Sandbox is running. Close it to use this feature.', if(not(appx.exists('WindowsSandbox') or path.exists(path.combine(sys.bin, 'WindowsSandbox.exe'))), 'Requires Windows Sandbox to be installed', 'The profile remains preserved even after restarting the Windows Sandbox.'))) {
 	//> https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-configure-using-wsb-file
 	// $special_char 'é|è|à|â|ê|û|î|ä|ë|ü|ï|ö|ù|ò|~|!|@|#|$|%|^|&|+|=|}|{|||<|>|;' // Windows Sandbox does not support these characters in the path
 	$template_b = '<Configuration><VGPU>Disable</VGPU><Networking>Enable</Networking><MappedFolders><MappedFolder><HostFolder>SOURCE</HostFolder><SandboxFolder>TARGET</SandboxFolder><ReadOnly>@if(keys.shift(), 'false', 'true')</ReadOnly></MappedFolder></MappedFolders><LogonCommand><Command>CMD</Command></LogonCommand></Configuration>'
@@ -20,7 +21,7 @@ menu(title='Windows Sandbox' mode='single' type='file|dir|back.dir|drive|back.dr
 		tip='Synchronizes the Nilesoft Shell directory with Windows Sandbox. Only the Nilesoft Shell context menu is enabled. Hold SHIFT to enable writable access.'
 		cmd-ps=`$wsbConfig='@str.replace(template_b, 'SOURCE', app.dir).replace('TARGET', app.dir).replace('CMD', '@app.exe -s -r -t')'; @ps_command` window='hidden')
 	item(image=\uE0E9 keys='SHIFT writable' title='Sync Desktop with Sandbox'
-		tip='Maps your desktop folder into the Windows Sandbox. Hold SHIFT to enable writable access.' 
+		tip='Maps your desktop folder into the Windows Sandbox. Hold SHIFT to enable writable access.'
 		cmd-ps=`$wsbConfig='@str.replace(template_m, 'SOURCE', user.desktop).replace('TARGET', 'C:\Users\WDAGUtilityAccount\Desktop')'; @ps_command` window='hidden')
 	separator()
 
@@ -33,13 +34,13 @@ menu(title='Windows Sandbox' mode='single' type='file|dir|back.dir|drive|back.dr
 		= 'C:\Users\WDAGUtilityAccount\Desktop\@sel.dir.name' */
 	$dir_map = 'C:\Sandbox@if(keys.shift(), 'Writable', 'ReadOnly')Folder'
 	item(image=\uE0E7 keys='SHIFT writable' title='Share Selected Folder in Sandbox' type='dir|back.dir|drive|back.drive|desktop'
-		tip='Maps the selected folder into the Windows Sandbox at @dir_map. Hold SHIFT for writable access.' 
+		tip='Maps the selected folder into the Windows Sandbox at @dir_map. Hold SHIFT for writable access.'
 		cmd-ps=`$wsbConfig='@str.replace(template_m, 'SOURCE', sel.dir).replace('TARGET', dir_map)'; @ps_command` window='hidden')
 	item(image=\uE0E7 keys='SHIFT writable' title='Share Selected Folder in Sandbox, Show in Explorer' type='dir|back.dir|drive|back.drive|desktop'
-		tip='Maps the selected folder into the Windows Sandbox at @dir_map and shows it in Explorer. Hold SHIFT for writable access.' 
+		tip='Maps the selected folder into the Windows Sandbox at @dir_map and shows it in Explorer. Hold SHIFT for writable access.'
 		cmd-ps=`$wsbConfig='@str.replace(template_b, 'SOURCE', sel.dir).replace('TARGET', dir_map).replace('CMD', 'explorer.exe /select, "@dir_map"')'; @ps_command` window='hidden')
 	item(image=\uE0E7 keys='SHIFT writable' title='Share Selected Folder in Sandbox, Open in Explorer' type='dir|back.dir|drive|back.drive|desktop'
-		tip='Maps the selected folder into the Windows Sandbox at @dir_map and opens it in Explorer. Hold SHIFT for writable access.' 
+		tip='Maps the selected folder into the Windows Sandbox at @dir_map and opens it in Explorer. Hold SHIFT for writable access.'
 		cmd-ps=`$wsbConfig='@str.replace(template_b, 'SOURCE', sel.dir).replace('TARGET', dir_map).replace('CMD', 'explorer.exe "@dir_map"')'; @ps_command` window='hidden')
 	separator()
 
@@ -56,7 +57,7 @@ menu(title='Windows Sandbox' mode='single' type='file|dir|back.dir|drive|back.dr
 	$se = sel.file.ext
 	$fl = path.combine(dir_app, sel.name)
 	$ps_run = 'powershell -ExecutionPolicy Bypass -Command'
-	item(image=\uE10E keys='SHIFT writable' title=if(!str.contains('.reg|.zip|.iso|', sel.file.ext+'|'), 'Try to ')+'Open File in Sandbox' type='file'
+	item(image=\uE10E keys='SHIFT writable' title=if(!str.contains('.reg|.zip|.iso|', sel.file.ext+'|'), 'Try to ')+'Open File in Sandbox' type='file' vis=if(sel.file.ext=='.lnk', 'disable')
 		tip='Launches the selected file in Windows Sandbox. Hold SHIFT for writable access.'
 		cmd-ps=`$wsbConfig='@str.replace(template_b, 'SOURCE', sel.parent).replace('TARGET', dir_app).replace('CMD', '@ps_run \"rundll32.exe "shell32.dll,OpenAs_RunDLL @fl\"')'; @ps_command` window='hidden')
 	item(image=\uE10E keys='SHIFT writable' title='Open Selected File in Sandbox with Edge' type='file' where=str.contains(eval(str.join(reg.values('HKLM\SOFTWARE\Clients\StartMenuInternet\Microsoft Edge\Capabilities\FileAssociations'), '|')+'|'), sel.file.ext+'|')
