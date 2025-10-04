@@ -1,0 +1,17 @@
+• Unique Identifier: code-nature.nilesoft-shell-file-formatter
+
+• Vsix File: nilesoft-shell-file-formatter-1.19.7_vsixhub.com.vsix
+
+• Extension Version: 1.19.7
+
+• Requires: VS Code 1.87.0 and up
+
+• File Size: 210.72 KB (215773 Bytes)
+
+• MD5: c262369d850100b0b23c8e3e46a9b118
+
+• SHA1: e45f5049fc44598da6ae5ffd96c2ce6f9f53f811
+
+• SHA256: 9f3a134558f8ece480fc121796d712f361c696b1e8f0634dfb3271bb99b683ae
+
+code --install-extension path/to/nilesoft-shell-file-formatter-1.19.7.vsix
