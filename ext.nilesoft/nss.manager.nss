@@ -260,7 +260,7 @@ menu(title=theme_menu_title type='taskbar|desktop' vis=if(this.level!=1, 'disabl
 			item(title=path.remove_extension(tm_nss[69]) tip=io.file.read(path.combine(tm_dir, tm_nss[69])) where=len(tm_nss)>69 vis=if(str.equals(tm_nss[69], main_file), 2) col=69%rows==0 cmd={ prf = path.combine(tm_dir, tm_nss[69]) pwt = main_path } & cmd_f)
 			item(title=path.remove_extension(tm_nss[70]) tip=io.file.read(path.combine(tm_dir, tm_nss[70])) where=len(tm_nss)>70 vis=if(str.equals(tm_nss[70], main_file), 2) col=70%rows==0 cmd={ prf = path.combine(tm_dir, tm_nss[70]) pwt = main_path } & cmd_f)
 			}
-		menu(image=\uE117 title='iMA-Menu@"\t"original' where=0 vis=path.exists(path.combine(tm_dir, 'iMA-Menu'))) {
+		menu(image=\uE117 title='iMA-Menu@"\t"original' where=1 vis=path.exists(path.combine(tm_dir, 'iMA-Menu'))) {
 			// https://github.com/iMAboud/iMA-Menu/tree/main/iMA%20Menu/theme
 			/* the icon color are get from background.color and item.text.normal */
 			// image=image.svg('<svg width="100" height="100" viewBox="0 0 200 200"><path fill="#5d2a13" d="M0 0h100v200H0z"/><path fill="#ffba08" d="M100 0h100v200H100z"/></svg>')
