@@ -1,5 +1,13 @@
 # Shell Manager - Documentation
 
+## Snippet:
+[`nss.manager.nss`](/ext.nilesoft/nss.manager.nss)
+
+## Screenshot:
+![Screenshot 1](/ext.nilesoft/nss.manager.01.png)
+![Screenshot 2](/ext.nilesoft/nss.manager.02.png)
+![Screenshot 3](/ext.nilesoft/nss.manager.03.png)
+
 ## Current Status
 
 The snippet is **not yet complete**, but all Nilesoft Shell settings can be edited from the menu and all visible commands are functional.
@@ -101,6 +109,8 @@ This snippet is not a "primitive solution" but far from a "good solution" — so
 ### 6. Why isn't the snippet finished?
 
 - **Gradient menus**: "linear angle" and "linear stops" still work with the old syntax (from NSTM). Can change values, but doesn't recognize them afterwards. I've adjusted it enough to have it for now.
+
+- **Opasity menus**: "opacity" is measured in percentages (0%-100%), all "opacity" menus show values ​​from 0 to 40, where 40 corresponds to 100% - I will replace them with a better once.
 
 - **Hidden incomplete commands**: All commands created only as empty items or that don't work for some reason are hidden for the time being.
 
