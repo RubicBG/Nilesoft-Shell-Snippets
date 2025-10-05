@@ -16,8 +16,8 @@ However
 ![Screenshot](/ext.nilesoft/nss.about.1.png)
 - [`Context Menu Mode`](/ext.nilesoft/nss.mode.md)<br>
 ![Screenshot](/ext.nilesoft/nss.mode.1.png)
-- `Shell Manager (Coming soon)`<br>
-![Screenshot](/ext.nilesoft/nss.manager.1.png)
+- [`Shell Manager`](/ext.nilesoft/nss.manager.md)<br>
+![Screenshot](/ext.nilesoft/nss.manager.02.png)
 - [`Nilesoft Shell Windows Version Menu`](/ext.managers/nss.winver.md)<br>
 ![Screenshot](/ext.managers/nss.winver.png)
 
