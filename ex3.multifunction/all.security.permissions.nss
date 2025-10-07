@@ -14,31 +14,29 @@ menu(title='Security and Permissions' type='file|dir|back.dir' image=[\uE194,#f0
 	//- https://codingfreaks.de/posh-acl/
 	
 	// Dynamic variables for better code reusability
-	$icacls_switch = if(sel.type!=1 and keys.shift(), ' /t') + ' /c /l /q'
-	// $icacls_switch_drrives = '@if(sel.type==1, ' /c /l')@if(sel.type==3, '@if(keys.shift(), ' /t') /c /l')@if(sel.type==5, '@if(keys.shift(), ' /t') /c /l')'
-	$rec_info = if(sel.type!=1, 'SHIFT recursive')
+	$icacls_switch = if(sel.type!=1, ' /t') + ' /c /l /q'
+	$takeown_switch = if(sel.type!=1, '/r /d y')
 	
 	menu(title='Quick Actions'  type='file|dir|back.dir|drive' expanded=1) {
 		/* Most common action - fixes 90% of permission issues
-		item(keys=rec_info title='Fix Access Issues (Recommended)' image=[\uE192, #ff0000]
+		item(title='Fix Access Issues (Recommended)' image=[\uE192, #ff0000]
 			tip='Complete fix: Takes ownership + grants admin access + enables inheritance@"\n"Solves most "Access Denied" problems'
-			admin cmd-line='/k echo [1/3] Taking ownership of "@sel.name"... & takeown /f @sel.path(true) @if(sel.type!=1, '/r /d y') & echo [2/3] Granting admin permissions... & icacls @sel.path(true) /grant *S-1-5-32-544:F @icacls_switch & echo [3/3] Enabling inheritance... & icacls @sel.path(true) /inheritance:e & echo ✓ All fixes completed successfully! & pause & exit')
+			admin cmd-line='/k echo [1/3] Taking ownership of "@sel.name"... & takeown /f @sel.path(true) @takeown_switch & echo [2/3] Granting admin permissions... & icacls @sel.path(true) /grant *S-1-5-32-544:F @icacls_switch & echo [3/3] Enabling inheritance... & icacls @sel.path(true) /inheritance:e & echo ✓ All fixes completed successfully! & pause & exit')
 		*/
 		// Quick ownership - simpler version
 		//- https://winaero.com/add-take-ownership-context-menu-windows-10/
 		//- https://www.majorgeeks.com/content/page/take_full_ownership_of_files_folders.html
 		// Uses SID S-1-5-32-544 (Administrators) for reliable cross-language support
-		item(keys=rec_info title='Grant Full Control' image=[\uE193, #ff0000]
+		item(title='Grant Full Control' image=[\uE193, #ff0000]
 			tip='Takes ownership and grants full control to Administrators group'
-			// admin cmd args='/k takeown /f "@sel.path" @if(sel.type==1,null,"/r /d y") && icacls "@sel.path" /grant *S-1-5-32-544:F @if(sel.type==1,"/c /l","/t /c /l /q")')
-			admin cmd-line='/k echo Taking ownership of "@sel.name"... && takeown /f @sel(true) @if(sel.type!=1, '/r /d y') && echo Granting permissions... && icacls @sel(true) /grant *S-1-5-32-544:F @if(sel.type!=1 and keys.shift(), '/t') /c /l /q && pause && exit')
+			admin cmd-line='/k echo Taking ownership of "@sel.name"... && takeown /f @sel(true) @takeown_switch && echo Granting permissions... && icacls @sel(true) /grant *S-1-5-32-544:F @icacls_switch && pause && exit')
 		// Just take ownership
 		item(title='Take Ownership Only' image=\uE100
 			tip='Just takes ownership without changing permissions@"\n"Use when you only need to become the owner'
-			admin cmd-line='/k echo Taking ownership of "@sel.name"... & takeown /f @sel.path(true) @if(sel.type!=1, '/r /d y') & echo ✓ Ownership transferred! & pause & exit')
+			admin cmd-line='/k echo Taking ownership of "@sel.name"... & takeown /f @sel.path(true) @takeown_switch & echo ✓ Ownership transferred! & pause & exit')
 		// Reset to Windows defaults
 		// https://winaero.com/add-reset-permissions-context-menu-windows-10/
-		item(keys=rec_info title='Reset to Windows Defaults' image=[[\uE094],[\uE002, color.red]]
+		item(title='Reset to Windows Defaults' image=[[\uE094],[\uE002, color.red]]
 			tip='Removes all custom permissions and restores Windows defaults@"\n"Use when permissions are completely broken'
 			admin cmd-line='/k echo Resetting "@sel.name" to Windows defaults... & icacls @sel.path(true) /reset @icacls_switch & echo ✓ Reset to defaults completed! & pause & exit')
 		// View permissions without changes
@@ -53,45 +51,45 @@ menu(title='Security and Permissions' type='file|dir|back.dir' image=[\uE194,#f0
 		// Safety check - prevent changing ownership of critical system folders
 		where=!str.contains('@sys.root\|@sys.users|@sys.prog|@sys.prog32|@sys.programdata|@sys.dir|@sys.bin|', sel.path+'|')) {
 		// Most common ownership changes
-		item(keys=rec_info title='Current User'
+		item(title='Current User'
 			tip='Makes you the owner of this item@"\n"Best choice for personal files and folders'
 			admin cmd-line='/k echo Changing owner to %USERNAME%... & icacls @sel.path(true) /setowner "%USERNAME%" @icacls_switch & echo ✓ You are now the owner! & pause & exit')
 		separator()
-		item(keys=rec_info title='Administrators Group'
+		item(title='Administrators Group'
 			tip='Makes the Administrators group the owner@"\n"Good for shared system files'
 			admin cmd-line='/k echo Changing owner to Administrators... & icacls @sel.path(true) /setowner *S-1-5-32-544 @icacls_switch & echo ✓ Administrators now own this item! & pause & exit')
-		item(keys=rec_info title='System Account'
+		item(title='System Account'
 			tip='NT AUTHORITY\SYSTEM - highest privilege account@"\n"Use for system-level files only'
 			admin cmd-line='/k echo Changing owner to System... & icacls @sel.path(true) /setowner "System" @icacls_switch & echo ✓ System account is now owner! & pause & exit')
-		item(keys=rec_info title='TrustedInstaller'
+		item(title='TrustedInstaller'
 			tip='Windows component installer account@"\n"Used for core Windows files - use with extreme caution'
 			admin cmd-line='/k echo Changing owner to TrustedInstaller... & icacls @sel.path(true) /setowner *S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464 @icacls_switch & echo ✓ TrustedInstaller is now owner! & pause & exit')
 		separator()
-		item(keys=rec_info title='Everyone Group'
+		item(title='Everyone Group'
 			tip='WARNING: Makes Everyone the owner@"\n"Rarely recommended - use with caution!'
 			admin cmd-line='/k echo WARNING: Setting owner to Everyone... & pause & icacls @sel.path(true) /setowner *S-1-1-0 @icacls_switch & echo ✓ Everyone group is now owner! & pause & exit')
-		item(keys=rec_info title='Network Service'
+		item(title='Network Service'
 			tip='For network-related services and applications'
 			admin cmd-line='/k echo Changing owner to Network Service... & icacls @sel.path(true) /setowner *S-1-5-20 @icacls_switch & echo ✓ Network Service is now owner! & pause & exit') }
 	menu(title='Manage Permissions' type='file|dir|back.dir' image=\uE195) {
-		item(keys=rec_info title='Full Control to Current User' image=[\uE1D2, image.color2]
+		item(title='Full Control to Current User' image=[\uE1D2, image.color2]
 			tip='Gives you complete control over this item@"\n"Recommended for your own files'
 			admin cmd-line='/k echo Granting full control to %USERNAME%... & icacls @sel.path(true) /grant "Users:F" @icacls_switch & echo ✓ Full control granted! & pause & exit')
-		item(keys=rec_info title='Modify Access to Users' image=[\uE1D2, image.color2]
+		item(title='Modify Access to Users' image=[\uE1D2, image.color2]
 			tip='Lets all users read, write, and delete but not change permissions@"\n"Good for shared folders'
 			admin cmd-line='/k echo Granting modify access to Users... & icacls @sel.path(true) /grant "Users:M" @icacls_switch & echo ✓ Modify access granted to Users! & pause & exit')
-		item(keys=rec_info title='Read-Only to Everyone' image=[\uE1D2, image.color2]
+		item(title='Read-Only to Everyone' image=[\uE1D2, image.color2]
 			tip='Everyone can read and open but cannot modify@"\n"Safe for sharing documents'
 			admin cmd-line='/k echo Granting read access to Everyone... & icacls @sel.path(true) /grant "Everyone:R" @icacls_switch & echo ✓ Read access granted to Everyone! & pause & exit')
 		separator()
-		item(keys=rec_info title='IIS Web Server Access' image=[\uE1D2, image.color1]
+		item(title='IIS Web Server Access' image=[\uE1D2, image.color1]
 			tip='For web server files and folders@"\n"Needed for websites and web applications'
 			admin cmd-line='/k echo Granting IIS access... & icacls @sel.path(true) /grant "IIS_IUSRS:M" @icacls_switch & echo ✓ IIS access granted! & pause & exit')
 		separator()
-		item(keys=rec_info title='Remove Users Access' image=[\uE1D3, #ff0000]
+		item(title='Remove Users Access' image=[\uE1D3, #ff0000]
 			tip='Removes all permissions for the Users group@"\n"Makes item accessible only to Administrators'
 			admin cmd-line='/k echo Removing Users access... & icacls @sel.path(true) /remove "Users" @icacls_switch & echo ✓ Users access removed! & pause & exit')
-		item(keys=rec_info title='Remove Everyone Access' image=[\uE1D3, #ff0000]
+		item(title='Remove Everyone Access' image=[\uE1D3, #ff0000]
 			tip='Removes access for Everyone group@"\n"Increases security by limiting access'
 			admin cmd-line='/k echo Removing Everyone access... & icacls @sel.path(true) /remove "Everyone" @icacls_switch & echo ✓ Everyone access removed! & pause & exit') }
 	menu(title='Inheritance Settings' image=\uE180) {
@@ -126,15 +124,15 @@ menu(title='Security and Permissions' type='file|dir|back.dir' image=[\uE194,#f0
 			tip='Restores permissions from a previously saved file@"\n"Use with caution - overwrites current permissions'
 			cmd-line='/c icacls @sel.path(true) /restore "@path.file.box('Text files|*.txt', user.desktop, '@(sel.name)_permissions_backup.txt')" & pause & exit') */ }
 	menu(title='Troubleshooting' image=\uE0F6) {	
-		item(keys=rec_info title='Complete Permission Repair'
+		item(title='Complete Permission Repair'
 			tip='Nuclear option: Fixes all common permission problems@"\n"Use when nothing else works'
-			admin cmd-line='/k echo COMPLETE PERMISSION REPAIR for "@sel.name" & echo ====================================== & echo Step 1: Taking ownership... & takeown /f @sel.path(true) @if(sel.type!=1, '/r /d y') & echo Step 2: Granting full access... & icacls @sel.path(true) /grant *S-1-5-32-544:F @icacls_switch & echo Step 3: Enabling inheritance... & icacls @sel.path(true) /inheritance:e & echo Step 4: Resetting to defaults... & icacls @sel.path(true) /reset @icacls_switch & echo ✓ COMPLETE REPAIR FINISHED! & pause & exit')
-		item(keys=rec_info title='Fix Broken Inheritance Chain'
+			admin cmd-line='/k echo COMPLETE PERMISSION REPAIR for "@sel.name" & echo ====================================== & echo Step 1: Taking ownership... & takeown /f @sel.path(true) @takeown_switch & echo Step 2: Granting full access... & icacls @sel.path(true) /grant *S-1-5-32-544:F @icacls_switch & echo Step 3: Enabling inheritance... & icacls @sel.path(true) /inheritance:e & echo Step 4: Resetting to defaults... & icacls @sel.path(true) /reset @icacls_switch & echo ✓ COMPLETE REPAIR FINISHED! & pause & exit')
+		item(title='Fix Broken Inheritance Chain'
 			tip='Repairs inheritance when child folders have wrong permissions@"\n"Fixes cascading permission problems'
 			admin cmd-line='/k echo Repairing inheritance chain... & icacls @sel.path(true) /reset @icacls_switch & icacls @sel.path(true) /inheritance:e & echo ✓ Inheritance chain repaired! & pause & exit')
-		item(keys=rec_info title='Emergency Access Restore'
+		item(title='Emergency Access Restore'
 			tip='Last resort: Grants you access when completely locked out@"\n"Breaks glass emergency option'
-			admin cmd-line='/k echo EMERGENCY ACCESS RESTORE & echo This will give you full control! & pause & takeown /f @sel.path(true) @if(sel.type!=1, '/r /d y') & icacls @sel.path(true) /grant "%USERNAME%:F" @icacls_switch & icacls @sel.path(true) /grant *S-1-5-32-544:F @icacls_switch & echo ✓ Emergency access granted! & pause & exit') }
+			admin cmd-line='/k echo EMERGENCY ACCESS RESTORE & echo This will give you full control! & pause & takeown /f @sel.path(true) @takeown_switch & icacls @sel.path(true) /grant "%USERNAME%:F" @icacls_switch & icacls @sel.path(true) /grant *S-1-5-32-544:F @icacls_switch & echo ✓ Emergency access granted! & pause & exit') }
 }
 
 // ===============================================================================
