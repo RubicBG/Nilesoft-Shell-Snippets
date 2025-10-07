@@ -14,15 +14,15 @@ menu(title='Security and Permissions' type='file|dir|back.dir' image=[\uE194,#f0
 	//- https://codingfreaks.de/posh-acl/
 	
 	// Dynamic variables for better code reusability
-	$icacls_switch = if(sel.type==3 and keys.shift(), ' /t') & ' /c /l /q'
-	$icacls_switch_drrives = '@if(sel.type==1, ' /c /l')@if(sel.type==3, '@if(keys.shift(), ' /t') /c /l')@if(sel.type==5, '@if(keys.shift(), ' /t') /c /l')'
-	$rec_info = if(sel.type==3 or sel.type==5, 'SHIFT recursive')
+	$icacls_switch = if(sel.type!=1 and keys.shift(), ' /t') + ' /c /l /q'
+	// $icacls_switch_drrives = '@if(sel.type==1, ' /c /l')@if(sel.type==3, '@if(keys.shift(), ' /t') /c /l')@if(sel.type==5, '@if(keys.shift(), ' /t') /c /l')'
+	$rec_info = if(sel.type!=1, 'SHIFT recursive')
 	
 	menu(title='Quick Actions'  type='file|dir|back.dir|drive' expanded=1) {
 		/* Most common action - fixes 90% of permission issues
 		item(keys=rec_info title='Fix Access Issues (Recommended)' image=[\uE192, #ff0000]
 			tip='Complete fix: Takes ownership + grants admin access + enables inheritance@"\n"Solves most "Access Denied" problems'
-			admin cmd-line='/k echo [1/3] Taking ownership of "@sel.name"... & takeown /f @sel.path(true) @if(sel.type==3, '/r /d y') & echo [2/3] Granting admin permissions... & icacls @sel.path(true) /grant *S-1-5-32-544:F @icacls_switch & echo [3/3] Enabling inheritance... & icacls @sel.path(true) /inheritance:e & echo ✓ All fixes completed successfully! & pause & exit')
+			admin cmd-line='/k echo [1/3] Taking ownership of "@sel.name"... & takeown /f @sel.path(true) @if(sel.type!=1, '/r /d y') & echo [2/3] Granting admin permissions... & icacls @sel.path(true) /grant *S-1-5-32-544:F @icacls_switch & echo [3/3] Enabling inheritance... & icacls @sel.path(true) /inheritance:e & echo ✓ All fixes completed successfully! & pause & exit')
 		*/
 		// Quick ownership - simpler version
 		//- https://winaero.com/add-take-ownership-context-menu-windows-10/
@@ -30,11 +30,12 @@ menu(title='Security and Permissions' type='file|dir|back.dir' image=[\uE194,#f0
 		// Uses SID S-1-5-32-544 (Administrators) for reliable cross-language support
 		item(keys=rec_info title='Grant Full Control' image=[\uE193, #ff0000]
 			tip='Takes ownership and grants full control to Administrators group'
-			admin cmd-line='/k echo Taking ownership of "@sel.name"... & takeown /f @sel.path(true) @if(sel.type==3, '/r /d y') & echo Granting permissions... & icacls @sel.path(true) /grant *S-1-5-32-544:F @icacls_switch & pause & exit')
+			// admin cmd args='/k takeown /f "@sel.path" @if(sel.type==1,null,"/r /d y") && icacls "@sel.path" /grant *S-1-5-32-544:F @if(sel.type==1,"/c /l","/t /c /l /q")')
+			admin cmd-line='/k echo Taking ownership of "@sel.name"... && takeown /f @sel(true) @if(sel.type!=1, '/r /d y') && echo Granting permissions... && icacls @sel(true) /grant *S-1-5-32-544:F @if(sel.type!=1 and keys.shift(), '/t') /c /l /q && pause && exit')
 		// Just take ownership
 		item(title='Take Ownership Only' image=\uE100
 			tip='Just takes ownership without changing permissions@"\n"Use when you only need to become the owner'
-			admin cmd-line='/k echo Taking ownership of "@sel.name"... & takeown /f @sel.path(true) @if(sel.type==3, '/r /d y') & echo ✓ Ownership transferred! & pause & exit')
+			admin cmd-line='/k echo Taking ownership of "@sel.name"... & takeown /f @sel.path(true) @if(sel.type!=1, '/r /d y') & echo ✓ Ownership transferred! & pause & exit')
 		// Reset to Windows defaults
 		// https://winaero.com/add-reset-permissions-context-menu-windows-10/
 		item(keys=rec_info title='Reset to Windows Defaults' image=[[\uE094],[\uE002, color.red]]
@@ -127,13 +128,13 @@ menu(title='Security and Permissions' type='file|dir|back.dir' image=[\uE194,#f0
 	menu(title='Troubleshooting' image=\uE0F6) {	
 		item(keys=rec_info title='Complete Permission Repair'
 			tip='Nuclear option: Fixes all common permission problems@"\n"Use when nothing else works'
-			admin cmd-line='/k echo COMPLETE PERMISSION REPAIR for "@sel.name" & echo ====================================== & echo Step 1: Taking ownership... & takeown /f @sel.path(true) @if(sel.type==3, '/r /d y') & echo Step 2: Granting full access... & icacls @sel.path(true) /grant *S-1-5-32-544:F @icacls_switch & echo Step 3: Enabling inheritance... & icacls @sel.path(true) /inheritance:e & echo Step 4: Resetting to defaults... & icacls @sel.path(true) /reset @icacls_switch & echo ✓ COMPLETE REPAIR FINISHED! & pause & exit')
+			admin cmd-line='/k echo COMPLETE PERMISSION REPAIR for "@sel.name" & echo ====================================== & echo Step 1: Taking ownership... & takeown /f @sel.path(true) @if(sel.type!=1, '/r /d y') & echo Step 2: Granting full access... & icacls @sel.path(true) /grant *S-1-5-32-544:F @icacls_switch & echo Step 3: Enabling inheritance... & icacls @sel.path(true) /inheritance:e & echo Step 4: Resetting to defaults... & icacls @sel.path(true) /reset @icacls_switch & echo ✓ COMPLETE REPAIR FINISHED! & pause & exit')
 		item(keys=rec_info title='Fix Broken Inheritance Chain'
 			tip='Repairs inheritance when child folders have wrong permissions@"\n"Fixes cascading permission problems'
 			admin cmd-line='/k echo Repairing inheritance chain... & icacls @sel.path(true) /reset @icacls_switch & icacls @sel.path(true) /inheritance:e & echo ✓ Inheritance chain repaired! & pause & exit')
 		item(keys=rec_info title='Emergency Access Restore'
 			tip='Last resort: Grants you access when completely locked out@"\n"Breaks glass emergency option'
-			admin cmd-line='/k echo EMERGENCY ACCESS RESTORE & echo This will give you full control! & pause & takeown /f @sel.path(true) @if(sel.type==3, '/r /d y') & icacls @sel.path(true) /grant "%USERNAME%:F" @icacls_switch & icacls @sel.path(true) /grant *S-1-5-32-544:F @icacls_switch & echo ✓ Emergency access granted! & pause & exit') }
+			admin cmd-line='/k echo EMERGENCY ACCESS RESTORE & echo This will give you full control! & pause & takeown /f @sel.path(true) @if(sel.type!=1, '/r /d y') & icacls @sel.path(true) /grant "%USERNAME%:F" @icacls_switch & icacls @sel.path(true) /grant *S-1-5-32-544:F @icacls_switch & echo ✓ Emergency access granted! & pause & exit') }
 }
 
 // ===============================================================================
