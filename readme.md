@@ -10,6 +10,8 @@ However
 - If anyone has questions about the NS code itself (not about the program) you can ask - I will answer
 
 ---
+important: all snippets work with the latest canary version: [Download](https://nilesoft.org/download#canary)
+---
 
 ## Group: Nilesoft Shell & Taskbar
 - [`Nilesoft Shell About Menu`](/ext.nilesoft/nss.about.md)<br>
