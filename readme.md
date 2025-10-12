@@ -11,6 +11,7 @@ However
 
 ---
 important: all snippets work with the latest canary version: [Download](https://nilesoft.org/download#canary)
+
 ---
 
 ## Group: Nilesoft Shell & Taskbar
