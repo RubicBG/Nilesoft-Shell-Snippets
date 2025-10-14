@@ -19,6 +19,8 @@ Have questions or ideas? Use the invitation link below to join the community Dis
 ![Screenshot](/ext.nilesoft/nss.mode.1.png)
 - [`Shell Manager`](/ext.nilesoft/nss.manager.md)<br>
 ![Screenshot](/ext.nilesoft/nss.manager.02.png)
+- [`Shell Disabler`](/ext.nilesoft/nss.disabler.md)<br>
+![Screenshot](/ext.nilesoft/nss.disabler.3.png)
 - [`Nilesoft Shell Windows Version Menu`](/ext.managers/nss.winver.md)<br>
 ![Screenshot](/ext.managers/nss.winver.png)
 
