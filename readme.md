@@ -1,13 +1,14 @@
 [`Nilesoft Shell`](https://nilesoft.org/) is an amazing program - it has become a hobby
-![Screenshot](/docs/VSCode-menu.png)<br>
-![Screenshot](/docs/VSCode-item.png)<br>
 
 The idea is to start uploading my nss files one by one, making a description and screenshot. The truth is that I prefer to create new menus with commands than to make descriptions, so it won't happen soon. (I don't think anyone wants to do this "paperwork" anyway)
 
-However
-- If anyone has an idea for a menu with commands, I am ready to participate in its creation
-- If anyone has a working cmd or ps code that needs to be adapted to NS commands, I will help
-- If anyone has questions about the NS code itself (not about the program) you can ask - I will answer
+---
+important: all snippets work with the latest canary version:<br>
+👉 [Download](https://nilesoft.org/download#canary)
+
+Have questions or ideas? Use the invitation link below to join the community Discord and chat about Shell!<br>
+👉 [Join via Discord invitation](https://discord.gg/Mg3tum2sd8)
+
 
 ---
 
