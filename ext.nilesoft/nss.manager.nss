@@ -1,3 +1,6 @@
+// Author: Rubic / RubicBG
+// https://github.com/RubicBG/Nilesoft-Shell-Snippets/
+
 // global variables that can be edited
 $theme_path_file = path.combine(path.parent(app.cfg), 'themes', 'default.nss')
 $theme_menu_title = 'Shell &Manager'

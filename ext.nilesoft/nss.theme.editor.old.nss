@@ -1,13 +1,13 @@
 /*
 	Author: Rubic / RubicBG
-	Version: Alpha 
+	Version: Alpha
 	Last Update: 15.9.2023
 	Compatible Version: 1.8.47 (debug version 47)
 */
 
 // Parameters that can be changed if necessary
-$path_nsi	= '@app.directory\themes\default.nsi'  // (.ini) .nsi = Nilesoft Shell Initialization file
-$path_nst	= '@app.directory\themes\default.nss'  // (.nss) .nst = Nilesoft Shell Theme file
+$path_nsi	= '@path.parent(app.cfg)\themes\default.nsi'  // (.ini) .nsi = Nilesoft Shell Initialization file
+$path_nst	= '@path.parent(app.cfg)\themes\default.nss'  // (.nss) .nst = Nilesoft Shell Theme file
 $name_sct	= 'Nilesoft'
 $name_menu	= 'Theme Manager'
 
@@ -18,14 +18,14 @@ $is_tm_set2 = path.exists(path.parent(path_nsi))
 //$cmd_crate = io.delete(path_nst) & command.sleep(100) & io.file.create(path_nst,str.trim(str.replace(str.replace(io.file.read(path_nsi), ' ', ''), '[@name_sct]',''))) & app.reload
 $cmd_crate = io.file.create(path_nst,str.trim(str.sub(str.replace(str.replace(io.file.read(path_nsi), ' ', ''), '`', ' '), str.len(name_sct)+2))) & app.reload
 
-item(title='@name_menu Auto Setup...'	 type='taskbar' where=(is_tm_set1 and !is_tm_set2) pos=0 sep='after' image=\uE116 commands 
+item(title='@name_menu Auto Setup...'	 type='taskbar' where=(is_tm_set1 and !is_tm_set2) pos=0 sep='after' image=\uE116 commands
 		{
 			// create folder and files
 			cmd=io.directory.create(path.parent(path_nsi)),
 			cmd=ini.set(path_nsi, name_sct, 'theme.name', '"modern"'),
 			cmd=cmd_crate,
 		} )
-item(title='@name_menu Setup...'	 type='taskbar' menu=if(!is_tm_set1, '', name_menu+'/manage') pos=0 sep='after' image=\uE116 commands 
+item(title='@name_menu Setup...'	 type='taskbar' menu=if(!is_tm_set1, '', name_menu+'/manage') pos=0 sep='after' image=\uE116 commands
 		{
 			// create folder and files
 			cmd=if(!path.exists(path.parent(path_nsi)), io.directory.create(path.parent(path_nsi))),
@@ -34,13 +34,13 @@ item(title='@name_menu Setup...'	 type='taskbar' menu=if(!is_tm_set1, '', name_m
 			// set path
 			cmd='"@app.cfg"',
 			cmd=clipboard.set(path.separator(str.right(path_nst, str.len(path_nst)-str.len(app.directory)-1))),
-			cmd=msg('For Theme Manager to work replace "imports/theme.nss" with "themes/@path.name(path_nst)" (from clipboard) and reload app', "NileSoft Shell", msg.info | msg.ok) 
+			cmd=msg('For Theme Manager to work replace "imports/theme.nss" with "themes/@path.name(path_nst)" (from clipboard) and reload app', "NileSoft Shell", msg.info | msg.ok)
 		} )
-menu(title=name_menu		 type='taskbar' pos=0 sep='after' where=(is_tm_set1 and is_tm_set2) image=\uE117) {
+menu(title=name_menu		 type='taskbar' pos=0 where=(is_tm_set1 and is_tm_set2) image=\uE117) {
 	$svg_templates='<svg width="100" height="100" viewBox="0 0 256 256">
 		<path fill="@image.color1" d="M71 251a29 29 0 0 1-14.53-4.11c-11.35-6.6-18.75-21-10.91-35.79 4.16-7.84 14.44-22.56 24.4-36.8 8-11.38 16.17-23.14 19.67-29.19 1.45-2.52-.56-5.42-9-12.94-5.46-4.88-10.62-9.5-11.12-15.82-.18-2.3-.66-8.4 27-57.53S129.49 7.1 131.73 6c4.74-2.35 13.89.38 20.73 3.08 3.73 1.47 6.62 3 8.29 5.53 2.49-.39 5.76.06 17.05 5.9 5.34 2.76 12.36 6.75 16.05 9.65a11.62 11.62 0 0 1 4.44 6c2.25-.25 6.87 0 19.84 11.15 6.69 5.73 9 9 9 12.75 0 2.14.06 3.55-9.13 21.05-5.36 10.22-12.27 22.77-18.94 34.44-28 49-34.26 52.77-37.88 54-5.06 2.12-10.92.67-17.65-1-5.59-1.39-14-3.48-15.63-.74-3.1 5.37-9.21 17.68-15.68 30.7-8.55 17.21-17.38 35-21.87 42.08A22.45 22.45 0 0 1 71 251zm14.86-136.06a63.64 63.64 0 0 0 5.51 5.31c7.68 6.87 20.54 18.36 12.16 32.87-3.84 6.65-11.89 18.17-20.41 30.36-9.22 13.19-19.68 28.15-23.37 35.12-4.5 8.49 3.22 13.54 4.81 14.47 2.94 1.71 9.29 3.66 12.33-1.13 4-6.37 13.08-24.57 21.05-40.63 6.58-13.26 12.8-25.78 16.15-31.59 7.6-13.16 23.71-9.17 33.33-6.79a56.59 56.59 0 0 0 7.76 1.58c3-2.92 12.08-15.51 30.24-47.3C197 86.89 206.53 68.88 210 61.47a97.1 97.1 0 0 0-9.54-7.65c-1.08 1.38-2.27 3-3.22 4.23-2.2 2.93-4.48 6-6.53 8.31s-7.1 8.11-13.61 5a8.77 8.77 0 0 1-4.54-5.13c-1.69-4.94.58-10.22 7-23l1.32-2.63a166.29 166.29 0 0 0-16.81-9l-1 1.32c-4 5.55-9.48 13.15-17.3 9.93a8.86 8.86 0 0 1-5-5.17c-1.7-4.6.52-9.27 3.23-14.63-2-.65-4.14-1.28-5.81-1.66-10.55 13.25-47.89 79.73-52.33 93.55z"/>
 		<path fill="@image.color2" d="M198.91 44.09c-2.88.4-15.48 21.4-18.32 20-3.24-1.55 10.09-23.39 10-25.86S164.71 22 161.84 22.54s-9.48 14.35-12.93 12.93c-3-1.26 6.13-14 5.29-16.23s-16.94-7.05-18.92-6.08c-3.91 1.93-16.92 22.64-29.6 45-3.1 5.34 16.37 13.41 39.42 19.11 12.29 3 17.94 11.9 17.66 20.65-.33 10.43 13.67 9.34 13.67-.18 0-9.78 9.69-13.05 18.07-13.8s14.37-1.9 16.27-5.35c5.11-9.57 8.43-16.6 8.4-18.48-.04-2.57-17.37-16.42-20.26-16.02z"/></svg>'
-	menu(title='Templates' image=svg_templates) { 
+	menu(title='Templates' image=svg_templates) {
 		item(title='default' commands
 		{
 			// from v1.8.38
@@ -65,7 +65,7 @@ menu(title=name_menu		 type='taskbar' pos=0 sep='after' where=(is_tm_set1 and is
 
 // Аbbreviations
 $ds	= '@"\t"default'	// the default value - very often without value
-$os	= '@"\t"optional'	// optional - doesn't look good with these values 
+$os	= '@"\t"optional'	// optional - doesn't look good with these values
 $mi = '@"\t"manual'		// но input panel for manual input
 
 menu(title='section_manager' type='taskbar' menu=name_menu expanded=true vis=is_tm_set image=\uE116) {
@@ -216,7 +216,7 @@ menu(title='section_manager' type='taskbar' menu=name_menu expanded=true vis=is_
 		$th_item_margin_r=ini.get(path_nsi, name_sct, 'theme.item.margin.right')
 		$th_item_margin_t=ini.get(path_nsi, name_sct, 'theme.item.margin.top')
 		$th_item_margin_b=ini.get(path_nsi, name_sct, 'theme.item.margin.bottom')
-		item(title='reset' image=svg_reset sep='after' 	vis=if(th_item_text_n=='' and th_item_text_s=='' and th_item_text_nd=='' and th_item_text_sd=='' 
+		item(title='reset' image=svg_reset sep='after' 	vis=if(th_item_text_n=='' and th_item_text_s=='' and th_item_text_nd=='' and th_item_text_sd==''
 											and th_item_back_n=='' and th_item_back_s=='' and th_item_back_nd=='' and th_item_back_sd==''
 											and th_item_border_n=='' and th_item_border_s=='' and th_item_border_nd=='' and th_item_border_sd==''
 											and th_item_opacity=='' and th_item_radius=='' and th_item_prefixs==''
@@ -413,7 +413,7 @@ menu(title='section_manager' type='taskbar' menu=name_menu expanded=true vis=is_
 		$array_colors	=regex.matches(th_bg_gradient_stop, '(,\s*)([^,\]\[]+)(?=\s*,)')
 		$array_opacities=regex.matches(th_bg_gradient_stop, '(,\s*)(\b([1-9]\d?|100)\b)(?=\s*\]\s*)')
 		$array_ratios	=regex.matches(th_bg_gradient_stop, '(\/\/\s*)(\d{2}:\d{2}:\d{2})')
-		$array_trans	=regex.matches(th_bg_gradient_stop, '(#\s*)(\b([0-9]\d?|100)\b)')				
+		$array_trans	=regex.matches(th_bg_gradient_stop, '(#\s*)(\b([0-9]\d?|100)\b)')
 
 		$ratio_base=str.trim(str.sub(array_ratios[0],2))
 		$trans_base=str.trim(str.sub(array_trans[0],1))
@@ -497,7 +497,7 @@ menu(title='section_manager' type='taskbar' menu=name_menu expanded=true vis=is_
 																				cmd=ini.set(path_nsi, name_sct, 'theme.shadow.color', ''),
 																				cmd=ini.set(path_nsi, name_sct, 'theme.shadow.opacity', ''),
 																				cmd=ini.set(path_nsi, name_sct, 'theme.shadow.offset', ''),
-																				cmd=cmd_crate } )														
+																				cmd=cmd_crate } )
 		menu(title='size' image=svg_size)	{ item(vis=vis.hidden) }
 		menu(title='color' image=svg_color)	{ item(vis=vis.hidden) }
 		menu(title='opacity' image=svg_opacity) { item(vis=vis.hidden) }
@@ -505,7 +505,7 @@ menu(title='section_manager' type='taskbar' menu=name_menu expanded=true vis=is_
 		menu(title='offset') 				{ item(vis=vis.hidden) } }
 	menu(title='Tip' 			image=svg_tip)				{
 		$th_tip_enabled=ini.get(path_nsi, name_sct, 'settings.tip.enabled') // default 0
-		item(title='enabled' sep			checked=th_tip_enabled=='1'			cmd=ini.set(path_nsi, name_sct, 'settings.tip.enabled', if(th_tip_enabled==1, '', '1')) & cmd_crate) } 
+		item(title='enabled' sep			checked=th_tip_enabled=='1'			cmd=ini.set(path_nsi, name_sct, 'settings.tip.enabled', if(th_tip_enabled==1, '', '1')) & cmd_crate) }
 	separator }
 
 //> https://en.wikipedia.org/wiki/Web_colors#Extended_colors
@@ -524,7 +524,7 @@ menu(menu=name_menu+'/image/color-1'						type='taskbar' expanded=1) {
 		item(title='accent +'	checked=th_image_c1=='color.accent_dark1'	image=color.accent_dark1		cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[color.accent_dark1, @th_image_c2, @th_image_c3]') & cmd_crate)
 		item(title='accent ++'	checked=th_image_c1=='color.accent_dark2'	image=color.accent_dark2		cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[color.accent_dark2, @th_image_c2, @th_image_c3]') & cmd_crate)
 		item(title='accent +++'	checked=th_image_c1=='color.accent_dark3'	image=color.accent_dark3		cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[color.accent_dark3, @th_image_c2, @th_image_c3]') & cmd_crate) }
-	item(title='transparent'	checked=th_image_c1=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[color.transparent, @th_image_c2, @th_image_c3]') & cmd_crate)	
+	item(title='transparent'	checked=th_image_c1=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[color.transparent, @th_image_c2, @th_image_c3]') & cmd_crate)
 	item(title='random'			checked=str.find(th_image_c1, 'color.random')>=0							cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[color.random, @th_image_c2, @th_image_c3]') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_image_c1, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[@color.random, @th_image_c2, @th_image_c3]') & cmd_crate)
@@ -693,7 +693,7 @@ menu(menu=name_menu+'/image/color-2'						type='taskbar' expanded=1) {
 		item(title='accent +'	checked=th_image_c2=='color.accent_dark1'	image=color.accent_dark1		cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[@th_image_c1, color.accent_dark1, @th_image_c3]') & cmd_crate)
 		item(title='accent ++'	checked=th_image_c2=='color.accent_dark2'	image=color.accent_dark2		cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[@th_image_c1, color.accent_dark2, @th_image_c3]') & cmd_crate)
 		item(title='accent +++'	checked=th_image_c2=='color.accent_dark3'	image=color.accent_dark3		cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[@th_image_c1, color.accent_dark3, @th_image_c3]') & cmd_crate) }
-	item(title='transparent'	checked=th_image_c2=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[@th_image_c1, color.transparent, @th_image_c3]') & cmd_crate)	
+	item(title='transparent'	checked=th_image_c2=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[@th_image_c1, color.transparent, @th_image_c3]') & cmd_crate)
 	item(title='random'			checked=str.find(th_image_c2, 'color.random')>=0							cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[@th_image_c1, color.random, @th_image_c3]') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_image_c2, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[@th_image_c1, @color.random, @th_image_c3]') & cmd_crate)
@@ -862,7 +862,7 @@ menu(menu=name_menu+'/image/color-3'						type='taskbar' expanded=1) {
 		item(title='accent +'	checked=th_image_c3=='color.accent_dark1'	image=color.accent_dark1		cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[@th_image_c1, @th_image_c2, color.accent_dark1]') & cmd_crate)
 		item(title='accent ++'	checked=th_image_c3=='color.accent_dark2'	image=color.accent_dark2		cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[@th_image_c1, @th_image_c2, color.accent_dark2]') & cmd_crate)
 		item(title='accent +++'	checked=th_image_c3=='color.accent_dark3'	image=color.accent_dark3		cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[@th_image_c1, @th_image_c2, color.accent_dark3]') & cmd_crate) }
-	item(title='transparent'	checked=th_image_c3=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[@th_image_c1, @th_image_c2, color.transparent]') & cmd_crate)	
+	item(title='transparent'	checked=th_image_c3=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[@th_image_c1, @th_image_c2, color.transparent]') & cmd_crate)
 	item(title='random'			checked=str.find(th_image_c3, 'color.random')>=0							cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[@th_image_c1, @th_image_c2, color.random]') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_image_c3, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.image.color', '[@th_image_c1, @th_image_c2, @color.random]') & cmd_crate)
@@ -1028,7 +1028,7 @@ menu(menu=name_menu+'/item/text color/normal'				type='taskbar' expanded=1) {
 		item(title='accent +'	checked=th_item_text_n=='color.accent_dark1'	image=color.accent_dark1	cmd=ini.set(path_nsi, name_sct, 'theme.item.text.normal', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_item_text_n=='color.accent_dark2'	image=color.accent_dark2	cmd=ini.set(path_nsi, name_sct, 'theme.item.text.normal', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_item_text_n=='color.accent_dark3'	image=color.accent_dark3	cmd=ini.set(path_nsi, name_sct, 'theme.item.text.normal', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_item_text_n=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.item.text.normal',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_item_text_n=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.item.text.normal',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_item_text_n, 'color.random')>=0							cmd=ini.set(path_nsi, name_sct, 'theme.item.text.normal', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_item_text_n, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.item.text.normal',  color.random ) & cmd_crate)
@@ -1194,7 +1194,7 @@ menu(menu=name_menu+'/item/text color/select'				type='taskbar' expanded=1) {
 		item(title='accent +'	checked=th_item_text_s=='color.accent_dark1'	image=color.accent_dark1	cmd=ini.set(path_nsi, name_sct, 'theme.item.text.select', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_item_text_s=='color.accent_dark2'	image=color.accent_dark2	cmd=ini.set(path_nsi, name_sct, 'theme.item.text.select', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_item_text_s=='color.accent_dark3'	image=color.accent_dark3	cmd=ini.set(path_nsi, name_sct, 'theme.item.text.select', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_item_text_s=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.item.text.select',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_item_text_s=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.item.text.select',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_item_text_s, 'color.random')>=0							cmd=ini.set(path_nsi, name_sct, 'theme.item.text.select', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_item_text_s, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.item.text.select',  color.random ) & cmd_crate)
@@ -1360,7 +1360,7 @@ menu(menu=name_menu+'/item/text color/normal-disabled'		type='taskbar' expanded=
 		item(title='accent +'	checked=th_item_text_nd=='color.accent_dark1'	image=color.accent_dark1	cmd=ini.set(path_nsi, name_sct, 'theme.item.text.normal.disabled', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_item_text_nd=='color.accent_dark2'	image=color.accent_dark2	cmd=ini.set(path_nsi, name_sct, 'theme.item.text.normal.disabled', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_item_text_nd=='color.accent_dark3'	image=color.accent_dark3	cmd=ini.set(path_nsi, name_sct, 'theme.item.text.normal.disabled', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_item_text_nd=='color.transparent'								cmd=ini.set(path_nsi, name_sct, 'theme.item.text.normal.disabled',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_item_text_nd=='color.transparent'								cmd=ini.set(path_nsi, name_sct, 'theme.item.text.normal.disabled',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_item_text_nd, 'color.random')>=0						cmd=ini.set(path_nsi, name_sct, 'theme.item.text.normal.disabled', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_item_text_nd, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.item.text.normal.disabled',  color.random ) & cmd_crate)
@@ -1526,7 +1526,7 @@ menu(menu=name_menu+'/item/text color/select-disabled'		type='taskbar' expanded=
 		item(title='accent +'	checked=th_item_text_sd=='color.accent_dark1'	image=color.accent_dark1	cmd=ini.set(path_nsi, name_sct, 'theme.item.text.select.disabled', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_item_text_sd=='color.accent_dark2'	image=color.accent_dark2	cmd=ini.set(path_nsi, name_sct, 'theme.item.text.select.disabled', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_item_text_sd=='color.accent_dark3'	image=color.accent_dark3	cmd=ini.set(path_nsi, name_sct, 'theme.item.text.select.disabled', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_item_text_nd=='color.transparent'								cmd=ini.set(path_nsi, name_sct, 'theme.item.text.select.disabled',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_item_text_nd=='color.transparent'								cmd=ini.set(path_nsi, name_sct, 'theme.item.text.select.disabled',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_item_text_nd, 'color.random')>=0						cmd=ini.set(path_nsi, name_sct, 'theme.item.text.select.disabled', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_item_text_sd, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.item.text.select.disabled',  color.random ) & cmd_crate)
@@ -1692,7 +1692,7 @@ menu(menu=name_menu+'/item/back color/normal'				type='taskbar' expanded=1) {
 		item(title='accent +'	checked=th_item_back_n=='color.accent_dark1'	image=color.accent_dark1	cmd=ini.set(path_nsi, name_sct, 'theme.item.back.normal', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_item_back_n=='color.accent_dark2'	image=color.accent_dark2	cmd=ini.set(path_nsi, name_sct, 'theme.item.back.normal', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_item_back_n=='color.accent_dark3'	image=color.accent_dark3	cmd=ini.set(path_nsi, name_sct, 'theme.item.back.normal', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_item_back_n=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.item.back.normal',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_item_back_n=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.item.back.normal',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_item_back_n, 'color.random')>=0							cmd=ini.set(path_nsi, name_sct, 'theme.item.back.normal', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_item_back_n, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.item.back.normal',  color.random ) & cmd_crate)
@@ -1858,7 +1858,7 @@ menu(menu=name_menu+'/item/back color/select'				type='taskbar' expanded=1) {
 		item(title='accent +'	checked=th_item_back_s=='color.accent_dark1'	image=color.accent_dark1	cmd=ini.set(path_nsi, name_sct, 'theme.item.back.select', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_item_back_s=='color.accent_dark2'	image=color.accent_dark2	cmd=ini.set(path_nsi, name_sct, 'theme.item.back.select', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_item_back_s=='color.accent_dark3'	image=color.accent_dark3	cmd=ini.set(path_nsi, name_sct, 'theme.item.back.select', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_item_back_s=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.item.back.select',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_item_back_s=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.item.back.select',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_item_back_s, 'color.random')>=0							cmd=ini.set(path_nsi, name_sct, 'theme.item.back.select', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_item_back_s, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.item.back.select',  color.random ) & cmd_crate)
@@ -2024,7 +2024,7 @@ menu(menu=name_menu+'/item/back color/normal-disabled'		type='taskbar' expanded=
 		item(title='accent +'	checked=th_item_back_nd=='color.accent_dark1'	image=color.accent_dark1	cmd=ini.set(path_nsi, name_sct, 'theme.item.back.normal.disabled', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_item_back_nd=='color.accent_dark2'	image=color.accent_dark2	cmd=ini.set(path_nsi, name_sct, 'theme.item.back.normal.disabled', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_item_back_nd=='color.accent_dark3'	image=color.accent_dark3	cmd=ini.set(path_nsi, name_sct, 'theme.item.back.normal.disabled', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_item_back_nd=='color.transparent'								cmd=ini.set(path_nsi, name_sct, 'theme.item.back.normal.disabled',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_item_back_nd=='color.transparent'								cmd=ini.set(path_nsi, name_sct, 'theme.item.back.normal.disabled',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_item_back_nd, 'color.random')>=0						cmd=ini.set(path_nsi, name_sct, 'theme.item.back.normal.disabled', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_item_back_nd, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.item.back.normal.disabled',  color.random ) & cmd_crate)
@@ -2190,7 +2190,7 @@ menu(menu=name_menu+'/item/back color/select-disabled'		type='taskbar' expanded=
 		item(title='accent +'	checked=th_item_back_sd=='color.accent_dark1'	image=color.accent_dark1	cmd=ini.set(path_nsi, name_sct, 'theme.item.back.select.disabled', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_item_back_sd=='color.accent_dark2'	image=color.accent_dark2	cmd=ini.set(path_nsi, name_sct, 'theme.item.back.select.disabled', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_item_back_sd=='color.accent_dark3'	image=color.accent_dark3	cmd=ini.set(path_nsi, name_sct, 'theme.item.back.select.disabled', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_item_back_nd=='color.transparent'								cmd=ini.set(path_nsi, name_sct, 'theme.item.back.select.disabled',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_item_back_nd=='color.transparent'								cmd=ini.set(path_nsi, name_sct, 'theme.item.back.select.disabled',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_item_back_nd, 'color.random')>=0						cmd=ini.set(path_nsi, name_sct, 'theme.item.back.select.disabled', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_item_back_sd, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.item.back.select.disabled',  color.random ) & cmd_crate)
@@ -2356,7 +2356,7 @@ menu(menu=name_menu+'/item/border color/normal'				type='taskbar' expanded=1) {
 		item(title='accent +'	checked=th_item_border_n=='color.accent_dark1'	image=color.accent_dark1	cmd=ini.set(path_nsi, name_sct, 'theme.item.border.normal', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_item_border_n=='color.accent_dark2'	image=color.accent_dark2	cmd=ini.set(path_nsi, name_sct, 'theme.item.border.normal', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_item_border_n=='color.accent_dark3'	image=color.accent_dark3	cmd=ini.set(path_nsi, name_sct, 'theme.item.border.normal', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_item_border_n=='color.transparent'								cmd=ini.set(path_nsi, name_sct, 'theme.item.border.normal',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_item_border_n=='color.transparent'								cmd=ini.set(path_nsi, name_sct, 'theme.item.border.normal',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_item_border_n, 'color.random')>=0						cmd=ini.set(path_nsi, name_sct, 'theme.item.border.normal', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_item_border_n, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.item.border.normal',  color.random ) & cmd_crate)
@@ -2522,7 +2522,7 @@ menu(menu=name_menu+'/item/border color/select'				type='taskbar' expanded=1) {
 		item(title='accent +'	checked=th_item_border_s=='color.accent_dark1'	image=color.accent_dark1	cmd=ini.set(path_nsi, name_sct, 'theme.item.border.select', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_item_border_s=='color.accent_dark2'	image=color.accent_dark2	cmd=ini.set(path_nsi, name_sct, 'theme.item.border.select', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_item_border_s=='color.accent_dark3'	image=color.accent_dark3	cmd=ini.set(path_nsi, name_sct, 'theme.item.border.select', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_item_border_s=='color.transparent'								cmd=ini.set(path_nsi, name_sct, 'theme.item.border.select',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_item_border_s=='color.transparent'								cmd=ini.set(path_nsi, name_sct, 'theme.item.border.select',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_item_border_s, 'color.random')>=0						cmd=ini.set(path_nsi, name_sct, 'theme.item.border.select', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_item_border_s, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.item.border.select',  color.random ) & cmd_crate)
@@ -2688,7 +2688,7 @@ menu(menu=name_menu+'/item/border color/normal-disabled'	type='taskbar' expanded
 		item(title='accent +'	checked=th_item_border_nd=='color.accent_dark1'	image=color.accent_dark1	cmd=ini.set(path_nsi, name_sct, 'theme.item.border.normal.disabled', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_item_border_nd=='color.accent_dark2'	image=color.accent_dark2	cmd=ini.set(path_nsi, name_sct, 'theme.item.border.normal.disabled', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_item_border_nd=='color.accent_dark3'	image=color.accent_dark3	cmd=ini.set(path_nsi, name_sct, 'theme.item.border.normal.disabled', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_item_border_nd=='color.transparent'								cmd=ini.set(path_nsi, name_sct, 'theme.item.border.normal.disabled',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_item_border_nd=='color.transparent'								cmd=ini.set(path_nsi, name_sct, 'theme.item.border.normal.disabled',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_item_border_nd, 'color.random')>=0						cmd=ini.set(path_nsi, name_sct, 'theme.item.border.normal.disabled', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_item_border_nd, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.item.border.normal.disabled',  color.random ) & cmd_crate)
@@ -2854,7 +2854,7 @@ menu(menu=name_menu+'/item/border color/select-disabled'	type='taskbar' expanded
 		item(title='accent +'	checked=th_item_border_sd=='color.accent_dark1'	image=color.accent_dark1	cmd=ini.set(path_nsi, name_sct, 'theme.item.border.select.disabled', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_item_border_sd=='color.accent_dark2'	image=color.accent_dark2	cmd=ini.set(path_nsi, name_sct, 'theme.item.border.select.disabled', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_item_border_sd=='color.accent_dark3'	image=color.accent_dark3	cmd=ini.set(path_nsi, name_sct, 'theme.item.border.select.disabled', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_item_border_nd=='color.transparent'								cmd=ini.set(path_nsi, name_sct, 'theme.item.border.select.disabled',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_item_border_nd=='color.transparent'								cmd=ini.set(path_nsi, name_sct, 'theme.item.border.select.disabled',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_item_border_nd, 'color.random')>=0						cmd=ini.set(path_nsi, name_sct, 'theme.item.border.select.disabled', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_item_border_sd, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.item.border.select.disabled',  color.random ) & cmd_crate)
@@ -3020,7 +3020,7 @@ menu(menu=name_menu+'/Symbol/color/normal'					type='taskbar' expanded=1) {
 		item(title='accent +'	checked=th_symbol_n=='color.accent_dark1'	image=color.accent_dark1		cmd=ini.set(path_nsi, name_sct, 'theme.symbol.normal', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_symbol_n=='color.accent_dark2'	image=color.accent_dark2		cmd=ini.set(path_nsi, name_sct, 'theme.symbol.normal', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_symbol_n=='color.accent_dark3'	image=color.accent_dark3		cmd=ini.set(path_nsi, name_sct, 'theme.symbol.normal', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_symbol_n=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.symbol.normal',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_symbol_n=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.symbol.normal',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_symbol_n, 'color.random')>=0							cmd=ini.set(path_nsi, name_sct, 'theme.symbol.normal', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_symbol_n, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.symbol.normal',  color.random ) & cmd_crate)
@@ -3186,7 +3186,7 @@ menu(menu=name_menu+'/Symbol/color/select'					type='taskbar' expanded=1) {
 		item(title='accent +'	checked=th_symbol_s=='color.accent_dark1'	image=color.accent_dark1		cmd=ini.set(path_nsi, name_sct, 'theme.symbol.select', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_symbol_s=='color.accent_dark2'	image=color.accent_dark2		cmd=ini.set(path_nsi, name_sct, 'theme.symbol.select', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_symbol_s=='color.accent_dark3'	image=color.accent_dark3		cmd=ini.set(path_nsi, name_sct, 'theme.symbol.select', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_symbol_s=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.symbol.select',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_symbol_s=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.symbol.select',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_symbol_s, 'color.random')>=0							cmd=ini.set(path_nsi, name_sct, 'theme.symbol.select', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_symbol_s, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.symbol.select',  color.random ) & cmd_crate)
@@ -3352,7 +3352,7 @@ menu(menu=name_menu+'/Symbol/color/normal-disabled'			type='taskbar' expanded=1)
 		item(title='accent +'	checked=th_symbol_nd=='color.accent_dark1'	image=color.accent_dark1		cmd=ini.set(path_nsi, name_sct, 'theme.symbol.normal.disabled', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_symbol_nd=='color.accent_dark2'	image=color.accent_dark2		cmd=ini.set(path_nsi, name_sct, 'theme.symbol.normal.disabled', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_symbol_nd=='color.accent_dark3'	image=color.accent_dark3		cmd=ini.set(path_nsi, name_sct, 'theme.symbol.normal.disabled', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_symbol_nd=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.symbol.normal.disabled',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_symbol_nd=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.symbol.normal.disabled',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_symbol_nd, 'color.random')>=0							cmd=ini.set(path_nsi, name_sct, 'theme.symbol.normal.disabled', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_symbol_nd, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.symbol.normal.disabled',  color.random ) & cmd_crate)
@@ -3518,7 +3518,7 @@ menu(menu=name_menu+'/Symbol/color/select-disabled'			type='taskbar' expanded=1)
 		item(title='accent +'	checked=th_symbol_sd=='color.accent_dark1'	image=color.accent_dark1		cmd=ini.set(path_nsi, name_sct, 'theme.symbol.select.disabled', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_symbol_sd=='color.accent_dark2'	image=color.accent_dark2		cmd=ini.set(path_nsi, name_sct, 'theme.symbol.select.disabled', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_symbol_sd=='color.accent_dark3'	image=color.accent_dark3		cmd=ini.set(path_nsi, name_sct, 'theme.symbol.select.disabled', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_symbol_nd=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.symbol.select.disabled',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_symbol_nd=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.symbol.select.disabled',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_symbol_nd, 'color.random')>=0							cmd=ini.set(path_nsi, name_sct, 'theme.symbol.select.disabled', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_symbol_sd, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.symbol.select.disabled',  color.random ) & cmd_crate)
@@ -3684,7 +3684,7 @@ menu(menu=name_menu+'/Separator/color'						type='taskbar' expanded=1) {
 		item(title='accent +'	checked=th_sep_color=='color.accent_dark1'	image=color.accent_dark1		cmd=ini.set(path_nsi, name_sct, 'theme.separator.color', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_sep_color=='color.accent_dark2'	image=color.accent_dark2		cmd=ini.set(path_nsi, name_sct, 'theme.separator.color', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_sep_color=='color.accent_dark3'	image=color.accent_dark3		cmd=ini.set(path_nsi, name_sct, 'theme.separator.color', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_sep_color=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.separator.color',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_sep_color=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.separator.color',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_sep_color, 'color.random')>=0							cmd=ini.set(path_nsi, name_sct, 'theme.separator.color', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_sep_color, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.separator.color',  color.random ) & cmd_crate)
@@ -3850,7 +3850,7 @@ menu(menu=name_menu+'/Background/color'						type='taskbar' expanded=1) {
 		item(title='accent +'	checked=th_bg_color=='color.accent_dark1'	image=color.accent_dark1		cmd=ini.set(path_nsi, name_sct, 'theme.background.color', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_bg_color=='color.accent_dark2'	image=color.accent_dark2		cmd=ini.set(path_nsi, name_sct, 'theme.background.color', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_bg_color=='color.accent_dark3'	image=color.accent_dark3		cmd=ini.set(path_nsi, name_sct, 'theme.background.color', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_bg_color=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.background.color',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_bg_color=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.background.color',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_bg_color, 'color.random')>=0							cmd=ini.set(path_nsi, name_sct, 'theme.background.color', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_bg_color, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.background.color',  color.random ) & cmd_crate)
@@ -4011,7 +4011,7 @@ menu(menu=name_menu+'/Gradient/color-1'						type='taskbar' expanded=1) {
 	$array_colors	=regex.matches(is_ch, '(,\s*)([^,\]\[]+)(?=\s*,)')
 	$array_opacities=regex.matches(is_ch, '(,\s*)(\b([1-9]\d?|100)\b)(?=\s*\]\s*)')
 	$array_ratios	=regex.matches(is_ch, '(\/\/\s*)(\d{2}:\d{2}:\d{2})')
-	$array_trans	=regex.matches(is_ch, '(#\s*)(\b([0-9]\d?|100)\b)')				
+	$array_trans	=regex.matches(is_ch, '(#\s*)(\b([0-9]\d?|100)\b)')
 
 	$ratio=str.trim(str.sub(array_ratios[0],2))
 	$trans=str.trim(str.sub(array_trans[0],1))
@@ -4037,7 +4037,7 @@ menu(menu=name_menu+'/Gradient/color-1'						type='taskbar' expanded=1) {
 		item(title='accent +'	checked=se12b=='color.accent_dark1'	image=color.accent_dark1				cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', 'color.accent_dark1')) & cmd_crate)
 		item(title='accent ++'	checked=se12b=='color.accent_dark2'	image=color.accent_dark2				cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', 'color.accent_dark2')) & cmd_crate)
 		item(title='accent +++'	checked=se12b=='color.accent_dark3'	image=color.accent_dark3				cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', 'color.accent_dark3')) & cmd_crate) }
-	item(title='transparent'	checked=se12b=='color.transparent'											cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', '@color.transparent')) & cmd_crate)	
+	item(title='transparent'	checked=se12b=='color.transparent'											cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', '@color.transparent')) & cmd_crate)
 	item(title='random'			checked=str.find(se12b, 'color.random')>=0									cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', 'color.random')) & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(se12b, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', '@color.random' )) & cmd_crate)
@@ -4198,7 +4198,7 @@ menu(menu=name_menu+'/Gradient/color-2'						type='taskbar' expanded=1) {
 	$array_colors	=regex.matches(is_ch, '(,\s*)([^,\]\[]+)(?=\s*,)')
 	$array_opacities=regex.matches(is_ch, '(,\s*)(\b([1-9]\d?|100)\b)(?=\s*\]\s*)')
 	$array_ratios	=regex.matches(is_ch, '(\/\/\s*)(\d{2}:\d{2}:\d{2})')
-	$array_trans	=regex.matches(is_ch, '(#\s*)(\b([0-9]\d?|100)\b)')				
+	$array_trans	=regex.matches(is_ch, '(#\s*)(\b([0-9]\d?|100)\b)')
 
 	$ratio=str.trim(str.sub(array_ratios[0],2))
 	$trans=str.trim(str.sub(array_trans[0],1))
@@ -4224,7 +4224,7 @@ menu(menu=name_menu+'/Gradient/color-2'						type='taskbar' expanded=1) {
 		item(title='accent +'	checked=se22b=='color.accent_dark1'	image=color.accent_dark1				cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', 'color.accent_dark1')) & cmd_crate)
 		item(title='accent ++'	checked=se22b=='color.accent_dark2'	image=color.accent_dark2				cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', 'color.accent_dark2')) & cmd_crate)
 		item(title='accent +++'	checked=se22b=='color.accent_dark3'	image=color.accent_dark3				cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', 'color.accent_dark3')) & cmd_crate) }
-	item(title='transparent'	checked=se22b=='color.transparent'											cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', '@color.transparent')) & cmd_crate)	
+	item(title='transparent'	checked=se22b=='color.transparent'											cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', '@color.transparent')) & cmd_crate)
 	item(title='random'			checked=str.find(se22b, 'color.random')>=0									cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', 'color.random')) & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(se22b, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', '@color.random' )) & cmd_crate)
@@ -4386,7 +4386,7 @@ menu(menu=name_menu+'/Gradient/color-3'						type='taskbar' expanded=1) {
 	$array_colors	=regex.matches(is_ch, '(,\s*)([^,\]\[]+)(?=\s*,)')
 	$array_opacities=regex.matches(is_ch, '(,\s*)(\b([1-9]\d?|100)\b)(?=\s*\]\s*)')
 	$array_ratios	=regex.matches(is_ch, '(\/\/\s*)(\d{2}:\d{2}:\d{2})')
-	$array_trans	=regex.matches(is_ch, '(#\s*)(\b([0-9]\d?|100)\b)')				
+	$array_trans	=regex.matches(is_ch, '(#\s*)(\b([0-9]\d?|100)\b)')
 
 	$ratio=str.trim(str.sub(array_ratios[0],2))
 	$trans=str.trim(str.sub(array_trans[0],1))
@@ -4412,7 +4412,7 @@ menu(menu=name_menu+'/Gradient/color-3'						type='taskbar' expanded=1) {
 		item(title='accent +'	checked=se32b=='color.accent_dark1'	image=color.accent_dark1				cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', 'color.accent_dark1')) & cmd_crate)
 		item(title='accent ++'	checked=se32b=='color.accent_dark2'	image=color.accent_dark2				cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', 'color.accent_dark2')) & cmd_crate)
 		item(title='accent +++'	checked=se32b=='color.accent_dark3'	image=color.accent_dark3				cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', 'color.accent_dark3')) & cmd_crate) }
-	item(title='transparent'	checked=se32b=='color.transparent'											cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', '@color.transparent')) & cmd_crate)	
+	item(title='transparent'	checked=se32b=='color.transparent'											cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', '@color.transparent')) & cmd_crate)
 	item(title='random'			checked=str.find(se32b, 'color.random')>=0									cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', 'color.random')) & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(se32b, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', str.replace(sv, '#######', '@color.random' )) & cmd_crate)
@@ -4578,7 +4578,7 @@ menu(menu=name_menu+'/Border/color'							type='taskbar' expanded=1) {
 		item(title='accent +'	checked=th_brdr_color=='color.accent_dark1'	image=color.accent_dark1		cmd=ini.set(path_nsi, name_sct, 'theme.border.color', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_brdr_color=='color.accent_dark2'	image=color.accent_dark2		cmd=ini.set(path_nsi, name_sct, 'theme.border.color', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_brdr_color=='color.accent_dark3'	image=color.accent_dark3		cmd=ini.set(path_nsi, name_sct, 'theme.border.color', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_brdr_color=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.border.color',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_brdr_color=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.border.color',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_brdr_color, 'color.random')>=0							cmd=ini.set(path_nsi, name_sct, 'theme.border.color', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_brdr_color, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.border.color',  color.random ) & cmd_crate)
@@ -4744,7 +4744,7 @@ menu(menu=name_menu+'/Shadow/color'							type='taskbar' expanded=1) {
 		item(title='accent +'	checked=th_shdw_color=='color.accent_dark1'	image=color.accent_dark1		cmd=ini.set(path_nsi, name_sct, 'theme.shadow.color', 'color.accent_dark1') & cmd_crate)
 		item(title='accent ++'	checked=th_shdw_color=='color.accent_dark2'	image=color.accent_dark2		cmd=ini.set(path_nsi, name_sct, 'theme.shadow.color', 'color.accent_dark2') & cmd_crate)
 		item(title='accent +++'	checked=th_shdw_color=='color.accent_dark3'	image=color.accent_dark3		cmd=ini.set(path_nsi, name_sct, 'theme.shadow.color', 'color.accent_dark3') & cmd_crate) }
-	item(title='transparent'	checked=th_shdw_color=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.shadow.color',  color.transparent ) & cmd_crate)	
+	item(title='transparent'	checked=th_shdw_color=='color.transparent'									cmd=ini.set(path_nsi, name_sct, 'theme.shadow.color',  color.transparent ) & cmd_crate)
 	item(title='random'			checked=str.find(th_shdw_color, 'color.random')>=0							cmd=ini.set(path_nsi, name_sct, 'theme.shadow.color', 'color.random') & cmd_crate)
 	item(title='custom color code@mi' sep='before'	checked=str.start(th_shdw_color, '#') vis=disable)
 	item(title='auto pick'																					cmd=ini.set(path_nsi, name_sct, 'theme.shadow.color',  color.random ) & cmd_crate)
@@ -5056,7 +5056,7 @@ menu(menu=name_menu+'/System/popup'							type='taskbar' expanded=1) { //40#
 	item(title='R17'	image=[[\uE170, image.color1],[if(is_ch== 17, \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.layout.popup',  17) & cmd_crate)
 	item(title='R18'	image=[[\uE170, image.color1],[if(is_ch== 18, \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.layout.popup',  18) & cmd_crate)
 	item(title='R19'	image=[[\uE170, image.color1],[if(is_ch== 19, \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.layout.popup',  19) & cmd_crate)
-	item(title='R20'	image=[[\uE170, image.color1],[if(is_ch== 20, \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.layout.popup',  20) & cmd_crate) 
+	item(title='R20'	image=[[\uE170, image.color1],[if(is_ch== 20, \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.layout.popup',  20) & cmd_crate)
 	item(				vis=label col)
 	item(title='L 1@os'	image=[[\uE170, image.color1],[if(is_ch== -1, \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.layout.popup',  -1) & cmd_crate)
 	item(title='L 2@os'	image=[[\uE170, image.color1],[if(is_ch== -2, \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.layout.popup',  -2) & cmd_crate)
@@ -5824,7 +5824,7 @@ menu(menu=name_menu+'/separator/margin/bottom'				type='taskbar' expanded=1) { /
 	item(title='39'		image=[[\uE170, image.color1],[if(is_ch==39, \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.separator.margin.bottom', 39) & cmd_crate)
 	item(title='40'		image=[[\uE170, image.color1],[if(is_ch==40, \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.separator.margin.bottom', 40) & cmd_crate) }
 menu(menu=name_menu+'/Background/opacity'					type='taskbar' expanded=1) { //40<   ????
-	$is_ch=ini.get(path_nsi, name_sct, 'theme.separator.opacity')
+	$is_ch=ini.get(path_nsi, name_sct, 'theme.background.opacity')
 	item(title=' 0'		image=[[\uE170, image.color2],[if(is_ch== '', \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.background.opacity',  '') & cmd_crate)
 	item(title=' 1'		image=[[\uE170, image.color1],[if(is_ch==  2, \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.background.opacity',   2) & cmd_crate)
 	item(title=' 2'		image=[[\uE170, image.color1],[if(is_ch==  5, \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.background.opacity',   5) & cmd_crate)
@@ -5951,7 +5951,7 @@ menu(menu=name_menu+'/Gradient/linear ratio'				type='taskbar' expanded=1) {
 	$array_colors	=regex.matches(is_ch, '(,\s*)([^,\]\[]+)(?=\s*,)')
 	$array_opacities=regex.matches(is_ch, '(,\s*)(\b([1-9]\d?|100)\b)(?=\s*\]\s*)')
 	$array_ratios	=regex.matches(is_ch, '(\/\/\s*)(\d{2}:\d{2}:\d{2})')
-	$array_trans	=regex.matches(is_ch, '(#\s*)(\b([0-9]\d?|100)\b)')				
+	$array_trans	=regex.matches(is_ch, '(#\s*)(\b([0-9]\d?|100)\b)')
 
 	$ratio=str.trim(str.sub(array_ratios[0],2))
 	$trans=str.trim(str.sub(array_trans[0],1))
@@ -5977,38 +5977,38 @@ menu(menu=name_menu+'/Gradient/linear ratio'				type='taskbar' expanded=1) {
 		$sb2 = '@if(trans!=100 and trans!='', ', [(@se21b-(@se21b-@se11b)/2*(1-@trans/100)), @se22c, @se23c]'), [@se21b, @se22c, @se23c]@if(se31b!='' and trans!=100 and trans!='', ', [(@se21b+(@se31b-@se21b)/2*(1-@trans/100)), @se22c, @se23c]')'
 		$sb3 = '@if(se31b!='', '@if(trans!=100 and trans!='', ', [(@se31b-(@se31b-@se21b)/2*(1-@trans/100)), @se32c, @se33c]'), [@se31b, @se32c, @se33c]')]'
 		$sb9 = '//@if(ratio!='', '@(ratio)')@if(trans!='', '#@(trans)')'
-		
-		cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', 
+
+		cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop',
 			'[[@se11b, @se12c, @se13c]@if(trans!=100 and trans!='', ', [(@se11b+(@se21b-@se11b)/2*(1-@trans/100)), @se12c, @se13c], [(@se21b-(@se21b-@se11b)/2*(1-@trans/100)), @se22c, @se23c]'), [@se21b, @se22c, @se23c]'
 			+'@if(se31b!='', '@if(trans!=100 and trans!='', ', [(@se21b+(@se31b-@se21b)/2*(1-@trans/100)), @se22c, @se23c], [(@se31b-(@se31b-@se21b)/2*(1-@trans/100)), @se32c, @se33c]'), [@se31b, @se32c, @se33c]')]//@if(ratio!='', '@(ratio)')@if(trans!='', '#@(trans)')') & cmd_crate)
 	*/
 	item(title='custom@mi' checked=(array_stops[0]!='' and ratio=='') vis=disable)
     separator
-	item(title='50:50' /*0.0,1.0*/ checked=ratio=='50:50:00' cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', 
+	item(title='50:50' /*0.0,1.0*/ checked=ratio=='50:50:00' cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop',
 		'[[0.0, @se12c, @se13c]@if(trans!=100 and trans!='', ', [(0.0+(1.0-0.0)/2*(1-@trans/100)), @se12c, @se13c], [(1.0-(1.0-0.0)/2*(1-@trans/100)), @se22c, @se23c]'), [1.0, @se22c, @se23c]'
 		+'@if(0, '@if(trans!=100 and trans!='', ', [(1.0+(@se31b-1.0)/2*(1-@trans/100)), @se22c, @se23c], [(@se31b-(@se31b-1.0)/2*(1-@trans/100)), @se32c, @se33c]'), [@se31b, @se32c, @se33c]')] //50:50:00@if(trans!='', '#@(trans)')') & cmd_crate)
-	item(title='25:75' /*0.0,0.5*/ checked=ratio=='25:75:00' cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', 
+	item(title='25:75' /*0.0,0.5*/ checked=ratio=='25:75:00' cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop',
 		'[[0.0, @se12c, @se13c]@if(trans!=100 and trans!='', ', [(0.0+(0.5-0.0)/2*(1-@trans/100)), @se12c, @se13c], [(0.5-(0.5-0.0)/2*(1-@trans/100)), @se22c, @se23c]'), [0.5, @se22c, @se23c]'
 		+'@if(0, '@if(trans!=100 and trans!='', ', [(0.5+(@se31b-0.5)/2*(1-@trans/100)), @se22c, @se23c], [(@se31b-(@se31b-0.5)/2*(1-@trans/100)), @se32c, @se33c]'), [@se31b, @se32c, @se33c]')] //25:75:00@if(trans!='', '#@(trans)')') & cmd_crate)
-	item(title='75:25'  /*0.5,1.0*/ checked=ratio=='75:25:00' cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', 
+	item(title='75:25'  /*0.5,1.0*/ checked=ratio=='75:25:00' cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop',
 		'[[0.5, @se12c, @se13c]@if(trans!=100 and trans!='', ', [(0.5+(1.0-0.5)/2*(1-@trans/100)), @se12c, @se13c], [(1.0-(1.0-0.5)/2*(1-@trans/100)), @se22c, @se23c]'), [1.0, @se22c, @se23c]'
 		+'@if(0, '@if(trans!=100 and trans!='', ', [(1.0+(@se31b-1.0)/2*(1-@trans/100)), @se22c, @se23c], [(@se31b-(@se31b-1.0)/2*(1-@trans/100)), @se32c, @se33c]'), [@se31b, @se32c, @se33c]')] //75:25:00@if(trans!='', '#@(trans)')') & cmd_crate)
 	separator
-	item(title='33:34:33' /*0.16,0.50,0.84*/ checked=ratio=='33:34:33' cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', 
+	item(title='33:34:33' /*0.16,0.50,0.84*/ checked=ratio=='33:34:33' cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop',
 		'[[0.16, @se12c, @se13c]@if(trans!=100 and trans!='', ', [(0.16+(0.50-0.16)/2*(1-@trans/100)), @se12c, @se13c], [(0.50-(0.50-0.16)/2*(1-@trans/100)), @se22c, @se23c] '), [0.50, @se22c, @se23c]'
 		+'@if(1, '@if(trans!=100 and trans!='', ', [(0.50+(0.84-0.50)/2*(1-@trans/100)), @se22c, @se23c], [(0.84-(0.84-0.50)/2*(1-@trans/100)), @se32c, @se33c]'), [0.84, @se32c, @se33c]')] //33:34:33@if(trans!='', '#@(trans)')') & cmd_crate)
-	item(title='25:50:25' /*0.00,0.50,1.00*/ checked=ratio=='25:50:25' cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', 
+	item(title='25:50:25' /*0.00,0.50,1.00*/ checked=ratio=='25:50:25' cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop',
 		'[[0.00, @se12c, @se13c]@if(trans!=100 and trans!='', ', [(0.00+(0.50-0.00)/2*(1-@trans/100)), @se12c, @se13c], [(0.50-(0.50-0.00)/2*(1-@trans/100)), @se22c, @se23c]'), [0.50, @se22c, @se23c]'
 		+'@if(1, '@if(trans!=100 and trans!='', ', [(0.50+(1.00-0.50)/2*(1-@trans/100)), @se22c, @se23c], [(1.00-(1.00-0.50)/2*(1-@trans/100)), @se32c, @se33c]'), [1.00, @se32c, @se33c]')] //25:50:25@if(trans!='', '#@(trans)')') & cmd_crate)
-	item(title='20:40:40' /*0.00,0.40,0.80*/ checked=ratio=='20:40:40' cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', 
+	item(title='20:40:40' /*0.00,0.40,0.80*/ checked=ratio=='20:40:40' cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop',
 		'[[0.00, @se12c, @se13c]@if(trans!=100 and trans!='', ', [(0.00+(0.40-0.00)/2*(1-@trans/100)), @se12c, @se13c], [(0.40-(0.40-0.00)/2*(1-@trans/100)), @se22c, @se23c]'), [0.40, @se22c, @se23c]'
 		+'@if(1, '@if(trans!=100 and trans!='', ', [(0.40+(0.80-0.40)/2*(1-@trans/100)), @se22c, @se23c], [(0.80-(0.80-0.40)/2*(1-@trans/100)), @se32c, @se33c]'), [0.80, @se32c, @se33c]')] //20:40:40@if(trans!='', '#@(trans)')') & cmd_crate)
-	item(title='40:20:40' /*0.30,0.50,0.70*/ checked=ratio=='40:20:40' cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', 
+	item(title='40:20:40' /*0.30,0.50,0.70*/ checked=ratio=='40:20:40' cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop',
 		'[[0.30, @se12c, @se13c]@if(trans!=100 and trans!='', ', [(0.30+(0.50-0.30)/2*(1-@trans/100)), @se12c, @se13c], [(0.50-(0.50-0.30)/2*(1-@trans/100)), @se22c, @se23c]'), [0.50, @se22c, @se23c]'
 		+'@if(1, '@if(trans!=100 and trans!='', ', [(0.50+(0.70-0.50)/2*(1-@trans/100)), @se22c, @se23c], [(0.70-(0.70-0.50)/2*(1-@trans/100)), @se32c, @se33c]'), [0.70, @se32c, @se33c]')] //40:20:40@if(trans!='', '#@(trans)')') & cmd_crate)
-	item(title='40:40:20' /*0.20,0.60,1.00*/ checked=ratio=='40:40:20' cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', 
+	item(title='40:40:20' /*0.20,0.60,1.00*/ checked=ratio=='40:40:20' cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop',
 		'[[0.20, @se12c, @se13c]@if(trans!=100 and trans!='', ', [(0.20+(0.60-0.20)/2*(1-@trans/100)), @se12c, @se13c], [(0.60-(0.60-0.20)/2*(1-@trans/100)), @se22c, @se23c]'), [0.60, @se22c, @se23c]'
-		+'@if(1, '@if(trans!=100 and trans!='', ', [(0.60+(1.00-0.60)/2*(1-@trans/100)), @se22c, @se23c], [(1.00-(1.00-0.60)/2*(1-@trans/100)), @se32c, @se33c]'), [1.00, @se32c, @se33c]')] //40:40:20@if(trans!='', '#@(trans)')') & cmd_crate) 
+		+'@if(1, '@if(trans!=100 and trans!='', ', [(0.60+(1.00-0.60)/2*(1-@trans/100)), @se22c, @se23c], [(1.00-(1.00-0.60)/2*(1-@trans/100)), @se32c, @se33c]'), [1.00, @se32c, @se33c]')] //40:40:20@if(trans!='', '#@(trans)')') & cmd_crate)
 	}
 menu(menu=name_menu+'/Gradient/opacity-1'					type='taskbar' expanded=1) { //40#
 	$is_ch=ini.get(path_nsi, name_sct, 'theme.background.gradient.stop')
@@ -6016,7 +6016,7 @@ menu(menu=name_menu+'/Gradient/opacity-1'					type='taskbar' expanded=1) { //40#
 	$array_colors	=regex.matches(is_ch, '(,\s*)([^,\]\[]+)(?=\s*,)')
 	$array_opacities=regex.matches(is_ch, '(,\s*)(\b([1-9]\d?|100)\b)(?=\s*\]\s*)')
 	$array_ratios	=regex.matches(is_ch, '(\/\/\s*)(\d{2}:\d{2}:\d{2})')
-	$array_trans	=regex.matches(is_ch, '(#\s*)(\b([0-9]\d?|100)\b)')				
+	$array_trans	=regex.matches(is_ch, '(#\s*)(\b([0-9]\d?|100)\b)')
 
 	$ratio=str.trim(str.sub(array_ratios[0],2))
 	$trans=str.trim(str.sub(array_trans[0],1))
@@ -6081,7 +6081,7 @@ menu(menu=name_menu+'/Gradient/opacity-2'					type='taskbar' expanded=1) { //40#
 	$array_colors	=regex.matches(is_ch, '(,\s*)([^,\]\[]+)(?=\s*,)')
 	$array_opacities=regex.matches(is_ch, '(,\s*)(\b([1-9]\d?|100)\b)(?=\s*\]\s*)')
 	$array_ratios	=regex.matches(is_ch, '(\/\/\s*)(\d{2}:\d{2}:\d{2})')
-	$array_trans	=regex.matches(is_ch, '(#\s*)(\b([0-9]\d?|100)\b)')				
+	$array_trans	=regex.matches(is_ch, '(#\s*)(\b([0-9]\d?|100)\b)')
 
 	$ratio=str.trim(str.sub(array_ratios[0],2))
 	$trans=str.trim(str.sub(array_trans[0],1))
@@ -6146,7 +6146,7 @@ menu(menu=name_menu+'/Gradient/opacity-3'					type='taskbar' expanded=1) { //40#
 	$array_colors	=regex.matches(is_ch, '(,\s*)([^,\]\[]+)(?=\s*,)')
 	$array_opacities=regex.matches(is_ch, '(,\s*)(\b([1-9]\d?|100)\b)(?=\s*\]\s*)')
 	$array_ratios	=regex.matches(is_ch, '(\/\/\s*)(\d{2}:\d{2}:\d{2})')
-	$array_trans	=regex.matches(is_ch, '(#\s*)(\b([0-9]\d?|100)\b)')				
+	$array_trans	=regex.matches(is_ch, '(#\s*)(\b([0-9]\d?|100)\b)')
 
 	$ratio=str.trim(str.sub(array_ratios[0],2))
 	$trans=str.trim(str.sub(array_trans[0],1))
@@ -6211,7 +6211,7 @@ menu(menu=name_menu+'/Gradient/transitions'					type='taskbar' expanded=1) {
 	$array_colors	=regex.matches(is_ch, '(,\s*)([^,\]\[]+)(?=\s*,)')
 	$array_opacities=regex.matches(is_ch, '(,\s*)(\b([1-9]\d?|100)\b)(?=\s*\]\s*)')
 	$array_ratios	=regex.matches(is_ch, '(\/\/\s*)(\d{2}:\d{2}:\d{2})')
-	$array_trans	=regex.matches(is_ch, '(#\s*)(\b([0-9]\d?|100)\b)')				
+	$array_trans	=regex.matches(is_ch, '(#\s*)(\b([0-9]\d?|100)\b)')
 
 	$ratio=str.trim(str.sub(array_ratios[0],2))
 	$trans=str.trim(str.sub(array_trans[0],1))
@@ -6487,7 +6487,7 @@ menu(menu=name_menu+'/Border/padding/bottom'				type='taskbar' expanded=1) { //4
 	item(title='37'		image=[[\uE170, image.color1],[if(is_ch==37, \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.border.padding.bottom', 37) & cmd_crate)
 	item(title='38'		image=[[\uE170, image.color1],[if(is_ch==38, \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.border.padding.bottom', 38) & cmd_crate)
 	item(title='39'		image=[[\uE170, image.color1],[if(is_ch==39, \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.border.padding.bottom', 39) & cmd_crate)
-	item(title='40'		image=[[\uE170, image.color1],[if(is_ch==40, \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.border.padding.bottom', 40) & cmd_crate) }				
+	item(title='40'		image=[[\uE170, image.color1],[if(is_ch==40, \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.border.padding.bottom', 40) & cmd_crate) }
 menu(menu=name_menu+'/Shadow/size'							type='taskbar' expanded=1) { //30=
 	$is_ch=ini.get(path_nsi, name_sct, 'theme.shadow.size')
 	item(title=' 0'		image=[[\uE170, image.color2],[if(is_ch=='', \uE16E)]]		cmd=ini.set(path_nsi, name_sct, 'theme.shadow.size', '') & cmd_crate)
@@ -6626,7 +6626,7 @@ menu(title='settings' type='taskbar' menu='@name_menu' pos=indexof('manage') ima
 		item(title='auto set image and group'	checked=th_set_mod_auto!=0			cmd=ini.set(path_nsi, name_sct, 'settings.modify.auto', if(th_set_mod_auto!=0, 0, '')) & cmd_crate) }
 	menu(title='script add-er@os' tip='enable/disable new items processing') {
         $th_set_new_enabled=ini.get(path_nsi, name_sct, 'settings.new.enabled')
-		$th_set_new_image=ini.get(path_nsi, name_sct, 'settings.new.image') 
+		$th_set_new_image=ini.get(path_nsi, name_sct, 'settings.new.image')
         item(title='enabled' vis=disable checked=th_set_new_enabled!=0 cmd=ini.set(path_nsi, name_sct, 'settings.new.enabled', if(th_set_new_enabled!=0, 0, '')) & cmd_crate)
 		separator
         item(title='image' checked=th_set_new_image!=0 cmd=ini.set(path_nsi, name_sct, 'settings.new.image', if(th_set_new_image!=0, 0, '')) & cmd_crate) }
@@ -6737,7 +6737,7 @@ menu(title='Accent' type='taskbar' menu='@name_menu/Templates') {
 		cmd=ini.set(path_nsi, name_sct, 'theme.background.effect', 2),
 		cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.enabled', 1),
 		cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.linear', '[00.00, 00.00, 100.0, 100.0] //045'),
-		cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', '[[0.5, color.accent_dark3, 100], [1.0, color.accent, 100]] '),		
+		cmd=ini.set(path_nsi, name_sct, 'theme.background.gradient.stop', '[[0.5, color.accent_dark3, 100], [1.0, color.accent, 100]] '),
 		cmd=cmd_crate } )
 	item(title='Accent Gradient Light' commands {
 		cmd=io.delete(path_nsi),

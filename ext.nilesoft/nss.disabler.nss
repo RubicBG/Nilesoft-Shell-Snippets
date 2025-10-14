@@ -1,3 +1,6 @@
+// Author: Rubic / RubicBG
+// https://github.com/RubicBG/Nilesoft-Shell-Snippets/
+
 // remove clsid=
 	// Global
 	$global_non = 0

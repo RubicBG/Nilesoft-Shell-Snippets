@@ -2,7 +2,7 @@
 // Based on: Nilesoft Shell original snippet
 // https://github.com/RubicBG/Nilesoft-Shell-Snippets/
 
-menu(title='Context Menu Mode' image=\uE0C5 vis=if(!sys.is11, 'disable')) {
+menu(title='Shell Menu Mode' image=\uE0C5 vis=if(!sys.is11, 'disable')) {
 	item(image=[\uE249, image.color2] title='Nilesoft Only' tip='Use only Nilesoft Shell context menu (removes Windows 11 "modern" context menu completely)'
 		// admin cmd-ps=`& '@quote(app.exe)' '-s' '-u' '-t' '-restart'; & '@quote(app.exe)' '-s' '-r' '-t';`
 		window='hidden' admin cmd-line=`/c call @quote(app.exe) -s -u -t -restart & call @quote(app.exe) -s -r -t`)
@@ -14,7 +14,7 @@ menu(title='Context Menu Mode' image=\uE0C5 vis=if(!sys.is11, 'disable')) {
 				modified = regex.replace(cfg_read, '\s*(?:settings\.priority|priority)\s*=\s*(?:true|false|[01])', "\n")
 				if(cfg_read!=modified, msg('Remove settings.priority from shell.nss', 'Nilesoft Shell', msg.warning) & io.delete(app.cfg) & io.file.create(app.cfg, modified)) } wait=1,
 		// admin cmd-ps=`& '@quote(app.exe)' '-s' '-u' '-t' '-restart'; Sleep 2; & '@quote(app.exe)' '-s' '-r';`})
-		window='hidden' admin cmd-line=`/c reg.exe delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" /f & call @quote(app.exe) -s -u -t -restart & timeout /t 2 /nobreak & call @quote(app.exe) -s -r` })
+		window='hidden' admin cmd-line=`/c reg.exe delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" /f & call @quote(app.exe) -s -u -t -restart & timeout /t 3 /nobreak & call @quote(app.exe) -s -r` })
 	separator()
 	$svg_win = image.svg('<svg width="100" height="100" viewBox="-50 -50 612 612" >
 	  <polygon style="fill:#90C300;" points="242.526,40.421 512,0 512,239.832 242.526,239.832 "/>
