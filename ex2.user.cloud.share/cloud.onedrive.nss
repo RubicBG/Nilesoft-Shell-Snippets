@@ -41,6 +41,8 @@ modify(menu=menu_od_name image=svg_od_win where= this.title==
 modify(menu=menu_od_name image=svg_od_win where= is_obp && this.title(
 	// "&Always keep on this device" - pinned
 	eval(str.res(path_od_dll, -9637)), eval(str.res(path_od_dll, -9637).trimstart('&')),
+	// "Archive", "Reactivate"
+	eval(str.res(path_od_dll, -53050)), eval(str.res(path_od_dll, -53051)),
 	// "&Free up space"
 	eval(str.res(path_od_dll, -9636)), eval(str.res(path_od_dll, -9636).trimstart('&')),
 	// "&View online"

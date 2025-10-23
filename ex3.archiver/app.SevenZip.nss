@@ -1,10 +1,6 @@
 // Author: Rubic / RubicBG
 // https://github.com/RubicBG/Nilesoft-Shell-Snippets/
 
-// Hide default menu: NS can not recognize drag&drop paths, so use:
-remove(find='7-Zip')
-// remove(clsid='{23170F69-40C1-278A-1000-000100020000}' where=!this.isuwp)
-
 // Executable Paths: The script is configured to work with an installed version of 7zip, if you want it to work with a portаble version you need to redirect the paths to executables
 $cmd_7zipC = path.combine(sys.prog,'7-Zip','7z.exe')
 $cmd_7zipG = path.combine(sys.prog,'7-Zip','7zG.exe')

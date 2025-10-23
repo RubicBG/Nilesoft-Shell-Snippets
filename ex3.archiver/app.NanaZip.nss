@@ -1,10 +1,3 @@
-// Author: Rubic / RubicBG
-// https://github.com/RubicBG/Nilesoft-Shell-Snippets/
-
-// Hide default menu: NS can not recognize drag&drop paths, so use:
-remove(find='NanaZip')
-// remove(clsid='{CAE3F1D4-7765-4D98-A060-52CD14D56EAB}' where=this.isuwp)
-
 // ? HKEY_CLASSES_ROOT\PackagedCom\ClassIndex\{CAE3F1D4-7765-4D98-A060-52CD14D56EAB}
 // ? HKEY_LOCAL_MACHINE\SOFTWARE\Classes\PackagedCom\ClassIndex\{CAE3F1D4-7765-4D98-A060-52CD14D56EAB}
 // ? HKEY_CLASSES_ROOT\PackagedCom\Package\40174MouriNaruto.NanaZip_3.1.1080.0_x64__gnj4mf6z9tkrc

@@ -43,6 +43,7 @@
 	// 3rd
 	remove(clsid='{23170F69-40C1-278A-1000-000100020000}' where=app.exists('{23170F69-40C1-278A-1000-000100020000}') title='7-Zip')
 	remove(clsid='{CAE3F1D4-7765-4D98-A060-52CD14D56EAB}' where=app.exists('{CAE3F1D4-7765-4D98-A060-52CD14D56EAB}') title='NanaZip')
+	remove(clsid='{469D94E9-6AF4-4395-B396-99B1308F8CE5}' where=app.exists('{469D94E9-6AF4-4395-B396-99B1308F8CE5}') title='NanaZip Preview')
 	remove(clsid='{B41DB860-64E4-11D2-9906-E49FADC173CA}' where=app.exists('{B41DB860-64E4-11D2-9906-E49FADC173CA}') title='WinRAR')
 	remove(clsid='{DCACA03D-01CA-410C-8F35-FBEB05CA8BF0}' where=app.exists('{DCACA03D-01CA-410C-8F35-FBEB05CA8BF0}') title='ABBYY FineReader (3)')
 	remove(clsid='{E6950302-61F0-4FEB-97DB-855E30D4A991}' where=app.exists('{E6950302-61F0-4FEB-97DB-855E30D4A991}') title='Notepad++')
@@ -357,6 +358,13 @@ menu(title='Shell Disabler' image=\uE1E5 tip='Disable/Enable common context menu
 			$guid = '{CAE3F1D4-7765-4D98-A060-52CD14D56EAB}'
 			$exst = app.exists(guid)
 			item(title='NanaZip' keys='UWP'
+				checked=exst
+				vis=if(not(reg.exists(str.fmt(reg_uwp, guid))), 2)
+				cmd=if(exst, app.delete(guid), app.set(guid, this.title)) and app.reload) }
+		menu(expanded=1 title='NanaZip Preview' tip='UWP') {
+			$guid = '{469D94E9-6AF4-4395-B396-99B1308F8CE5}'
+			$exst = app.exists(guid)
+			item(title='NanaZip Preview' keys='UWP'
 				checked=exst
 				vis=if(not(reg.exists(str.fmt(reg_uwp, guid))), 2)
 				cmd=if(exst, app.delete(guid), app.set(guid, this.title)) and app.reload) }
