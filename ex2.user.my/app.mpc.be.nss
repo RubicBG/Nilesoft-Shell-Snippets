@@ -14,7 +14,7 @@ item(title='Open in MPC' keys='SHIFT add' image=ico_mpcbe tip='Play selected vid
 	cmd=exe_mpcbe args=if(keys.shift(), '/add ', '/play ')+sel(true))
 
 // Context menu for directories containing supported video files
-menu(expanded=1 mode='sigle' type='dir' where=len(regex.matches(str.join(path.files(sel, '*', 3|16), '|'), '(?:@ext_match)(?:\b|$)'))>0) {
+menu(expanded=1 mode='sigle' type='dir' where=len(regex.matches(str.join(path.files(sel, '*', 3), '|'), '(?:@ext_match)(?:\b|$)'))>0) {
 	$dir_files = null
 	item(title='Open Supported file in MPC' keys='SHIFT add' image=ico_mpcbe tip='Play all supported media files from this folder in MPC-BE@"\n"Hold SHIFT to add to existing playlist'
 		cmd={ fr=null
