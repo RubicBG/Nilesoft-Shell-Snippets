@@ -9,14 +9,14 @@ $exe_mpcbe = eval(path.join(appx('HaukeGtze', 'path'), appx('HaukeGtze', 'execut
 $ico_mpcbe = eval(appx('HaukeGtze', 'logo'))
 
 // Context menu item for individual video files
-item(title='Open in MPC' keys='SHIFT add' image=ico_mpcbe tip='Play selected video@if(sel.count>1, 's') in MPC-BE@"\n"Hold SHIFT to add to playlist instead''
+item(title='Open in MPC' keys='SHIFT add' image=ico_mpcbe tip='Play selected video@if(sel.count>1, 's') in MPC-BE@"\n"Hold SHIFT to add to playlist instead'
     mode='multiple' type='file' where=str.contains(ext_match+'|', sel.file.ext+'|')
 	cmd=exe_mpcbe args=if(keys.shift(), '/add ', '/play ')+sel(true))
 
 // Context menu for directories containing supported video files
 menu(expanded=1 mode='sigle' type='dir' where=len(regex.matches(str.join(path.files(sel, '*', 3|16), '|'), '\.(?:@str.replace(ext_match, '.', null))(?:\b|$)'))>0) {
 	$dir_files = null
-	item(title='Open in MPC' keys='SHIFT add' image=ico_mpcbe tip=='Play all supported videos from this folder in MPC-BE@"\n"Hold SHIFT to add to existing playlist'
+	item(title='Open in MPC' keys='SHIFT add' image=ico_mpcbe tip='Play all supported videos from this folder in MPC-BE@"\n"Hold SHIFT to add to existing playlist'
 		cmd={ fr=null
             // Scan directory for all files (flags: 3=files, 16=full path)
             fs=path.files(sel, '*', 3|16)
