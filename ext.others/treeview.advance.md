@@ -25,6 +25,8 @@ Advanced context menu for Windows Explorer's navigation pane (TreeView) that pro
 
 **⚠️ WARNING: This is a testing version. Registry modifications carry inherent risks.**
 
+Based on tutorials and guides from [ElevenForum.com](https://www.elevenforum.com/), providing tested Windows 11 customization methods.
+
 ## Key Features
 
 - **Manage Navigation Pane Objects**: Show/hide Home, Quick Access, This PC, Libraries, Cloud storage, and system folders
@@ -89,13 +91,15 @@ Advanced context menu for Windows Explorer's navigation pane (TreeView) that pro
 
 ### Before Using
 
-1. **Create Backup First**: Run the included PowerShell script to export current settings:
+1. **Create Restore Point**: Run the included PowerShell script:
    ```powershell
    .\treeview.reg.export.namespace.ps1
    ```
-   This creates `exported_registry.reg` for restoration if needed.
+   This creates `exported_registry.reg` containing **default Windows settings** for GUID objects only. This file restores system defaults, not your current configuration.
 
-2. **Administrative Rights**: Some operations require admin privileges. When prompted:
+2. **⚠️ No Backup for Most Settings**: The script only exports GUID objects. Settings like pane visibility, compact view, launch folder, and other Explorer options have **no backup mechanism**.
+
+3. **Administrative Rights**: When prompted for elevation:
    - Changes affect ALL users (system-wide)
    - Without admin: Changes affect current user only
 
