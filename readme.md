@@ -7,7 +7,7 @@ important: all snippets work with the latest canary version:<br>
 👉 [Download](https://nilesoft.org/download#canary)
 
 Have questions or ideas? Use the invitation link below to join the community Discord and chat about Shell!<br>
-👉 [Join via Discord invitation](https://discord.gg/Mg3tum2sd8)
+👉 [![Discord](https://img.shields.io/discord/753922016012435456?color=%237289DA&label=Nilesoft&logo=discord&logoColor=white)](https://discord.gg/Mg3tum2sd8)
 
 
 ---
@@ -124,6 +124,8 @@ Have questions or ideas? Use the invitation link below to join the community Dis
 
 - [`Register Server`](/ex3.multifunction/ext.regsvr.md)<br>
 ![Screenshot](/ex3.multifunction/ext.regsvr.1.png)
+- [`Run with Priority`](/ex3.multifunction/ext.priority.md)<br>
+![Screenshot](/ex3.multifunction/ext.priority.1.png)
 - [`Windows Compatibility Extension`](/ex3.multifunction/ext.compatibility.md)<br>
 ![Screenshot](/ex3.multifunction/ext.compatibility.1.png)
 
