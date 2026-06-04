@@ -27,31 +27,31 @@ menu(type='*' where=(sel.count or wnd.is_taskbar or wnd.is_edit) and !str.end(se
 
 		$wt_escape_have=str.contains(sel.path, '[') or str.contains(sel.path, ']')
 		item(admin=has_admin tip=tip_run_admin title=title.Windows_Terminal where=package.exists("Microsoft.WindowsTerminal_")
-			image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-d "@sel.path\."' vis=if(wt_escape_have, 'disabled'))
+			image='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' cmd='WT.exe' arg='-d "@sel.path\."' vis=if(wt_escape_have, 'disabled'))
 		menu(title='Windows Terminal (Mods)' image='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' where=package.exists("Microsoft.WindowsTerminal_") vis=if(wt_escape_have, 'disabled')) {
 			// https://learn.microsoft.com/en-us/windows/terminal/command-line-arguments?tabs=windows
 			item(admin=has_admin title='Windows Terminal (tabs: CMD CMD)'
-				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Command Prompt" -d "@sel.path\."; new-tab -p "Command Prompt" -d "@sel.path\."; focus-tab -t 0')
+				image='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' cmd='WT.exe' arg='-p "Command Prompt" -d "@sel.path\."; new-tab -p "Command Prompt" -d "@sel.path\."; focus-tab -t 0')
 			item(admin=has_admin title='Windows Terminal (tabs: CMD PS)'
-				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Command Prompt" -d "@sel.path\."; new-tab -p "Windows PowerShell" -d "@sel.path\."; focus-tab -t 0')
+				image='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' cmd='WT.exe' arg='-p "Command Prompt" -d "@sel.path\."; new-tab -p "Windows PowerShell" -d "@sel.path\."; focus-tab -t 0')
 			item(admin=has_admin title='Windows Terminal (tabs: PS PS)'
-				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Windows PowerShell" -d "@sel.path\."; new-tab -p "Windows PowerShell" -d "@sel.path\."; focus-tab -t 0')
+				image='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' cmd='WT.exe' arg='-p "Windows PowerShell" -d "@sel.path\."; new-tab -p "Windows PowerShell" -d "@sel.path\."; focus-tab -t 0')
 			item(admin=has_admin title='Windows Terminal (colored tabs: PS PS)'
-				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='--tabColor #009999 -p "Windows PowerShell" -d "@sel.path\."; new-tab --tabColor #f59218 -p "Windows PowerShell" -d "@sel.path\."; focus-tab -t 0')
+				image='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' cmd='WT.exe' arg='--tabColor #009999 -p "Windows PowerShell" -d "@sel.path\."; new-tab --tabColor #f59218 -p "Windows PowerShell" -d "@sel.path\."; focus-tab -t 0')
 			separator()
 			item(admin=has_admin title='Windows Terminal (panes: CMD CMD)'
-				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Command Prompt" -d "@sel.path\."; split-pane -p "Command Prompt" -d "@sel.path\."')
+				image='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' cmd='WT.exe' arg='-p "Command Prompt" -d "@sel.path\."; split-pane -p "Command Prompt" -d "@sel.path\."')
 			item(admin=has_admin title='Windows Terminal (panes: CMD PS)'
-				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Command Prompt" -d "@sel.path\."; split-pane -p "Windows PowerShell" -d "@sel.path\."')
+				image='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' cmd='WT.exe' arg='-p "Command Prompt" -d "@sel.path\."; split-pane -p "Windows PowerShell" -d "@sel.path\."')
 			item(admin=has_admin title='Windows Terminal (panes: PS PS)'
-				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Windows PowerShell" -d "@sel.path\."; split-pane -p "Windows PowerShell" -d "@sel.path\."')
+				image='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' cmd='WT.exe' arg='-p "Windows PowerShell" -d "@sel.path\."; split-pane -p "Windows PowerShell" -d "@sel.path\."')
 			separator()
 			item(admin=has_admin title='Windows Terminal (horizontal panes: CMD CMD)'
-				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Command Prompt" -d "@sel.path\."; split-pane -H -p "Command Prompt" -d "@sel.path\."')
+				image='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' cmd='WT.exe' arg='-p "Command Prompt" -d "@sel.path\."; split-pane -H -p "Command Prompt" -d "@sel.path\."')
 			item(admin=has_admin title='Windows Terminal (horizontal panes: CMD PS)'
-				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Command Prompt" -d "@sel.path\."; split-pane -H -p "Windows PowerShell" -d "@sel.path\."')
+				image='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' cmd='WT.exe' arg='-p "Command Prompt" -d "@sel.path\."; split-pane -H -p "Windows PowerShell" -d "@sel.path\."')
 			item(admin=has_admin title='Windows Terminal (horizontal panes: PS PS)'
-				image cmd='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' arg='-p "Windows PowerShell" -d "@sel.path\."; split-pane -H -p "Windows PowerShell" -d "@sel.path\."')
+				image='@package.path("Microsoft.WindowsTerminal_")\WindowsTerminal.exe' cmd='WT.exe' arg='-p "Windows PowerShell" -d "@sel.path\."; split-pane -H -p "Windows PowerShell" -d "@sel.path\."')
 		}
 		item(admin=has_admin tip=tip_run_admin title='Windows Terminal Preview' where=package.exists("Microsoft.WindowsTerminalPreview_")
 			image cmd='@package.path("Microsoft.WindowsTerminalPreview_")\WindowsTerminal.exe' arg='-d "@sel.path\."' vis=if(wt_escape_have, 'disabled'))
